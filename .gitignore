@@ -42,3 +42,11 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 assets/images/board-1.jpg
+
+.dart_tool/
+.idea/
+build/
+linux/
+macos/
+web/
+windows/
