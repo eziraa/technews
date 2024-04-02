@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import 'package:flutter/material.dart';
 import 'package:technews/log_in.dart';
 import 'package:technews/on_boarding_1.dart';
@@ -14,5 +13,4 @@ void main() {
         home: SelectTopics()),
   );
 }
-=======
->>>>>>> ea5d82b10610e7252a6f3730cfad8729e69335de
+
