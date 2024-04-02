@@ -14,6 +14,7 @@ class Logo extends StatelessWidget {
           const CircleAvatar(
             child: Icon(Icons.newspaper),
           ),
+          const SizedBox(width: 10),
           RichText(
             text: const TextSpan(children: [
               TextSpan(
