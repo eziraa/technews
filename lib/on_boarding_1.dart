@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+class OnBoardingPage {
+  Color? color;
+  AssetImage? image;
+  bool isActive = false;
+
+  OnBoardingPage(this.color, this.image, this.isActive);
+}
+
 class OnBoarding1 extends StatefulWidget {
   const OnBoarding1({super.key});
 
@@ -8,12 +16,20 @@ class OnBoarding1 extends StatefulWidget {
 }
 
 class _OnBoarding1State extends State<OnBoarding1> {
-  Color color = Colors.red;
+  List<OnBoardingPage> pages = [];
 
   @override
   void initState() {
     super.initState();
-    color = Colors.blue;
+    pages = [
+      OnBoardingPage(
+          Colors.blue, const AssetImage('assets/images/onboarding1.png'), true),
+      OnBoardingPage(Colors.black26,
+          const AssetImage('assets/images/onboarding2.png'), false),
+      OnBoardingPage(Colors.black26,
+          const AssetImage('assets/images/onboarding3.png'), false),
+    ];
+    pages[0].isActive = true;
   }
 
   @override
@@ -25,9 +41,8 @@ class _OnBoarding1State extends State<OnBoarding1> {
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.6,
-            child: Container(
-              color: Colors.blueAccent,
-            ),
+            child:
+                const Image(image: AssetImage("assets/images/onboard-1.png")),
           ),
           Container(
             margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
@@ -62,24 +77,14 @@ class _OnBoarding1State extends State<OnBoarding1> {
             margin: const EdgeInsets.all(20),
             child: Row(
               children: [
-                const Row(
-                  children: [
-                    Icon(
-                      Icons.circle,
-                      color: Colors.red,
-                      size: 15,
-                    ),
-                    Icon(
-                      Icons.circle,
-                      color: Colors.black26,
-                      size: 15,
-                    ),
-                    Icon(
-                      Icons.circle,
-                      color: Colors.black26,
-                      size: 15,
-                    ),
-                  ],
+                Row(
+                  children: List.generate(
+                      3,
+                      (index) => const Icon(
+                            Icons.circle,
+                            color: Colors.red,
+                            size: 15,
+                          )),
                 ),
                 Expanded(
                   child: Container(),
@@ -89,10 +94,20 @@ class _OnBoarding1State extends State<OnBoarding1> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.blueAccent),
                   child: ElevatedButton(
-                    onPressed: null,
+                    onPressed: () {
+                      for (int i = 0; i < pages.length; i++) {
+                        if (pages[i].isActive) {
+                          pages[i].isActive = false;
+                          pages[i + 1].isActive = true;
+                          break;
+                        }
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        backgroundColor: Colors.blueAccent),
                     child: const Text(
                       "Next",
                       style: TextStyle(
