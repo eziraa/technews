@@ -8,15 +8,16 @@ class SelectTopics extends StatefulWidget {
 }
 
 class _SelectTopicsState extends State<SelectTopics> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.only(top: 20),
-        child: const Column(
+        child: Column(
           children: [
-            Row(
+            const Row(
               children: [
                 Icon(Icons.arrow_back_sharp),
                 SizedBox(
@@ -28,6 +29,20 @@ class _SelectTopicsState extends State<SelectTopics> {
                 ),
               ],
             ),
+            Wrap(
+              spacing: 10,
+              children: List.generate(
+                13,
+                (index) => const Flexible(
+                  child: ElevatedButton(
+                    onPressed: null,
+                    child: Text(
+                      "Category",
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
