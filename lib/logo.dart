@@ -9,6 +9,7 @@ class Logo extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Image.asset('assets/images/logo.png'),
           const CircleAvatar(
