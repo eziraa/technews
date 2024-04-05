@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:technews/logo.dart';
 
 class LogInPage extends StatefulWidget {
-    const LogInPage({super.key});
- 
+  const LogInPage({super.key});
+
   @override
   State<LogInPage> createState() => _LogInPageState();
 }
@@ -41,9 +41,12 @@ class _LogInPageState extends State<LogInPage> {
               color: Colors.blueAccent,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(0))),
-                onPressed: null,
+                onPressed: () {
+                  Navigator.pushNamed(context, "/home_page");
+                },
                 child: const Text(
                   "Log in",
                   style: TextStyle(
