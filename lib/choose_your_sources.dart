@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:technews/CustomWidget.dart';
 
 class NewsSource {
   AssetImage asset = const AssetImage("assets/images/logo.png");
@@ -35,9 +36,6 @@ class _ChooseNewsSourcesState extends State<ChooseNewsSources> {
       NewsSource(),
       NewsSource(),
       NewsSource(),
-      NewsSource(),
-      NewsSource(),
-      NewsSource(),
     ];
     super.initState();
   }
@@ -66,6 +64,10 @@ class _ChooseNewsSourcesState extends State<ChooseNewsSources> {
               ),
             ],
           ),
+          const SizedBox(
+            height: 20,
+          ),
+          CustomWidget().getSearchBox(),
           const SizedBox(
             height: 20,
           ),
