@@ -27,8 +27,7 @@ class _LogInPageState extends State<LogInPage> {
                     decoration: InputDecoration(
                         labelText: "Username", labelStyle: TextStyle()),
                   ),
-                  SizedBox(height: 10),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                   TextField(
                     decoration: InputDecoration(
                         labelText: "Password", labelStyle: TextStyle()),
