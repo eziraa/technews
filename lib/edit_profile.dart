@@ -87,7 +87,8 @@ class _EditProfileState extends State<EditProfile> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: "Username",
-                              labelStyle: TextStyle()),
+                        labelStyle: TextStyle(),
+                      ),
                         ),
                         SizedBox(height: 10),
                         SizedBox(height: 10),
@@ -109,14 +110,17 @@ class _EditProfileState extends State<EditProfile> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: "Phone Number",
-                              labelStyle: TextStyle()),
+                        labelStyle: TextStyle(),
+                      ),
                         ),
                         SizedBox(height: 10),
                       ],
                     ),
                   ),
                 ],
-              )),
-        ));
+          ),
+        ),
+      ),
+    );
   }
 }
