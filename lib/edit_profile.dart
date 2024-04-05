@@ -55,9 +55,12 @@ class _EditProfileState extends State<EditProfile> {
                           ],
                           shape: BoxShape.circle,
                           image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  "https://s.france24.com/media/display/e6279b3c-db08-11ee-b7f5-005056bf30b7/w:1024/p:16x9/news_en_1920x1080.jpg"))),
+                            // image: NetworkImage(
+                            //     "https://s.france24.com/media/display/e6279b3c-db08-11ee-b7f5-005056bf30b7/w:1024/p:16x9/news_en_1920x1080.jpg"
+                            image: AssetImage(
+                                'technews/assets/images/profile.jpg'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Positioned(
                         bottom: 0,
@@ -82,22 +85,29 @@ class _EditProfileState extends State<EditProfile> {
                       children: [
                         TextField(
                           decoration: InputDecoration(
-                              labelText: "Username", labelStyle: TextStyle()),
+                              border: OutlineInputBorder(),
+                              labelText: "Username",
+                              labelStyle: TextStyle()),
                         ),
                         SizedBox(height: 10),
                         SizedBox(height: 10),
                         TextField(
                           decoration: InputDecoration(
-                              labelText: "FullName", labelStyle: TextStyle()),
+                              border: OutlineInputBorder(),
+                              labelText: "FullName",
+                              labelStyle: TextStyle()),
                         ),
                         SizedBox(height: 10),
                         TextField(
                           decoration: InputDecoration(
-                              labelText: "Email", labelStyle: TextStyle()),
+                              border: OutlineInputBorder(),
+                              labelText: "Email",
+                              labelStyle: TextStyle()),
                         ),
                         SizedBox(height: 10),
                         TextField(
                           decoration: InputDecoration(
+                              border: OutlineInputBorder(),
                               labelText: "Phone Number",
                               labelStyle: TextStyle()),
                         ),

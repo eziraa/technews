@@ -36,7 +36,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                       SizedBox(width: 10),
                       ElevatedButton(
                         onPressed: null,
-                        child: Text("Get OTP",
+                                                child: Text("Get OTP",
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.white,
@@ -60,9 +60,9 @@ class _VerifyEmailState extends State<VerifyEmail> {
               color: Colors.blue,
               child:const ElevatedButton(
                 // style: ElevatedButton.styleFrom(
-                //   shape: RoundedRectangleBorder(
-                //     borderRadius: BorderRadius.circular(10.0),
-                //   ),
+                  //   shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(10.0),
+                  //   ),
                 // ),
                 onPressed: null,
                 child: Text(

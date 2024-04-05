@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:technews/logo.dart';
 
 class LogInPage extends StatefulWidget {
-  const LogInPage({super.key});
-
+    const LogInPage({super.key});
+ 
   @override
   State<LogInPage> createState() => _LogInPageState();
 }

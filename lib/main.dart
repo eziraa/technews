@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:technews/select_topic.dart';
+import 'package:technews/edit_profile.dart';
 
 void main() {
   runApp(
@@ -7,7 +7,7 @@ void main() {
         title: 'Tech News App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.grey),
-        home: const SelectTopics()),
+        home: const EditProfile()),
   );
 }
 
