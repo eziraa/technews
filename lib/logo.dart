@@ -12,7 +12,7 @@ class Logo extends StatelessWidget {
         children: [
           // Image.asset('assets/images/logo.png'),
           const CircleAvatar(
-            child: Icon(Icons.newspaper),
+            child: Image(image: AssetImage("assets/images/logo.png")),
           ),
           const SizedBox(width: 10),
           RichText(
