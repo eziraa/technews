@@ -1,4 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class NewsSource {
+  AssetImage asset = const AssetImage("assets/images/logo.png");
+  String name = "BBC";
+  OutlinedButton button = OutlinedButton(
+    onPressed: null,
+    style: OutlinedButton.styleFrom(backgroundColor: Colors.blueAccent),
+    child: const Text(
+      "Following",
+      style: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        fontSize: 20.0,
+      ),
+    ),
+  );
+}
 
 class ChooseNewsSources extends StatefulWidget {
   const ChooseNewsSources({super.key});
@@ -8,71 +26,99 @@ class ChooseNewsSources extends StatefulWidget {
 }
 
 class _ChooseNewsSourcesState extends State<ChooseNewsSources> {
+  List<NewsSource> newsSources = [];
+  @override
+  void initState() {
+    newsSources = [
+      NewsSource(),
+      NewsSource(),
+      NewsSource(),
+      NewsSource(),
+      NewsSource(),
+      NewsSource(),
+      NewsSource(),
+      NewsSource(),
+    ];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.only(top: 20),
-        child: Column(
-          children: [
-            const Row(
+        body: Container(
+      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.only(top: 20),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(Icons.arrow_back_sharp)),
+              const SizedBox(
+                width: 30,
+              ),
+              const Text(
+                "Choose your news sources",
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Wrap(
+              spacing: 20,
+              runSpacing: 20,
               children: [
-                Icon(Icons.arrow_back_sharp),
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  "Choose your topics",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                ...newsSources.map(
+                  (source) {
+                    return Flexible(
+                      child: Container(
+                        child: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 30,
+                              child: Image(
+                                image: source.asset,
+                                width: 30,
+                                height: 30,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              source.name,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 15,
+                                  color: Color.fromARGB(255, 0, 0, 0)),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              child: source.button,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Wrap(
-              spacing: 10,
-              children: List.generate(
-                13,
-                (index) => Flexible(
-                  child: Column(
-                    children: [
-                      const CircleAvatar(
-                        child: Image(
-                            width: 20,
-                            height: 20,
-                            fit: BoxFit.fill,
-                            image: AssetImage("assets/images/onboard-1.png")),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text("Source"),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        color: Colors.blue,
-                        child: const ElevatedButton(
-                          onPressed: null,
-                          child: Text(
-                            style: TextStyle(backgroundColor: Colors.blue),
-                            "Follow",
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
-    );
+    ));
   }
 }
