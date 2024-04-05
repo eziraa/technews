@@ -1,11 +1,16 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OnBoardingPage {
-  Color? color;
-  AssetImage? image;
-  bool isActive = false;
-
-  OnBoardingPage(this.color, this.image, this.isActive);
+  List<Color> colorList = [];
+  String imageAddress = "";
+  int pageIndex = 0;
+  OnBoardingPage(
+      {required this.colorList,
+      required this.imageAddress,
+      required this.pageIndex});
 }
 
 class OnBoarding1 extends StatefulWidget {
@@ -16,20 +21,16 @@ class OnBoarding1 extends StatefulWidget {
 }
 
 class _OnBoarding1State extends State<OnBoarding1> {
-  List<OnBoardingPage> pages = [];
-
+  OnBoardingPage page =
+      OnBoardingPage(colorList: [], imageAddress: "imageAddress", pageIndex: 1);
   @override
   void initState() {
+    page = OnBoardingPage(colorList: [
+      Colors.blue,
+      const Color.fromRGBO(0, 0, 0, 0.259),
+      Colors.black26
+    ], imageAddress: "assets/images/onboard-0.png", pageIndex: 0);
     super.initState();
-    pages = [
-      OnBoardingPage(
-          Colors.blue, const AssetImage('assets/images/onboarding1.png'), true),
-      OnBoardingPage(Colors.black26,
-          const AssetImage('assets/images/onboarding2.png'), false),
-      OnBoardingPage(Colors.black26,
-          const AssetImage('assets/images/onboarding3.png'), false),
-    ];
-    pages[0].isActive = true;
   }
 
   @override
@@ -40,9 +41,11 @@ class _OnBoarding1State extends State<OnBoarding1> {
         children: [
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.6,
-            child:
-                const Image(image: AssetImage("assets/images/onboard-1.png")),
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: Image(
+              image: AssetImage(page.imageAddress),
+              fit: BoxFit.cover,
+            ),
           ),
           Container(
             margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
@@ -64,12 +67,12 @@ class _OnBoarding1State extends State<OnBoarding1> {
           Container(
             margin: const EdgeInsets.only(left: 20, right: 50, bottom: 20),
             child: const Text(
-              '\nlorum impsum d Null Null Null Null Null Null Null Null Null Null Null Null Null Null Null Null Null Null Null Null Null',
+              "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus, in praesentium? Perspiciatis nulla unde tempora, doloribus optio voluptates, ipsam, sed nam sunt earum quae harum debitis veniam repellat at enim?",
               style: TextStyle(
-                fontWeight: FontWeight.w700,
-                color: Colors.black,
-                fontSize: 16,
-              ),
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontFamily: "arial"),
             ),
           ),
           const SizedBox(height: 80),
@@ -80,9 +83,9 @@ class _OnBoarding1State extends State<OnBoarding1> {
                 Row(
                   children: List.generate(
                       3,
-                      (index) => const Icon(
+                      (index) => Icon(
                             Icons.circle,
-                            color: Colors.red,
+                            color: page.colorList[index],
                             size: 15,
                           )),
                 ),
@@ -95,12 +98,19 @@ class _OnBoarding1State extends State<OnBoarding1> {
                       color: Colors.blueAccent),
                   child: ElevatedButton(
                     onPressed: () {
-                      for (int i = 0; i < pages.length; i++) {
-                        if (pages[i].isActive) {
-                          pages[i].isActive = false;
-                          pages[i + 1].isActive = true;
-                          break;
-                        }
+                      if (page.pageIndex < 2) {
+                        page.colorList[page.pageIndex] = Colors.black26;
+                        page.colorList[page.pageIndex + 1] = Colors.blueAccent;
+                        setState(() {
+                          page = OnBoardingPage(
+                            colorList: page.colorList,
+                            pageIndex: page.pageIndex + 1,
+                            imageAddress:
+                                "assets/images/onboard-${++page.pageIndex}.png",
+                          );
+                        });
+                      } else {
+                        Navigator.pushNamed(context, "/log_in");
                       }
                     },
                     style: ElevatedButton.styleFrom(
