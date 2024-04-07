@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:technews/CustomWidget.dart';
 
 class Trending extends StatefulWidget {
   const Trending({super.key});
@@ -17,6 +18,7 @@ String dotDisplayer(String text) {
 }
 
 class _TrendingState extends State<Trending> {
+  CustomWidget custom = CustomWidget();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,22 +45,7 @@ class _TrendingState extends State<Trending> {
           return Center(
               child: Column(
             children: [
-              Container(
-                width: 380,
-                height: 250,
-                decoration: BoxDecoration(
-                    border: Border.all(width: 4, color: Colors.white),
-                    boxShadow: [
-                      BoxShadow(
-                          spreadRadius: 2,
-                          blurRadius: 10,
-                          color: Colors.black.withOpacity(0.1)),
-                    ],
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/profile.jpg'),
-                      fit: BoxFit.cover,
-                    )),
-              ),
+              custom.getImage('assets/images/bbc.jpg'),
               SizedBox(
                 width: 380,
                 height: 50,
@@ -89,7 +76,7 @@ class _TrendingState extends State<Trending> {
                         ],
                         shape: BoxShape.circle,
                         image: const DecorationImage(
-                          image: AssetImage('assets/images/profile.jpg'),
+                          image: AssetImage('assets/images/bbc.jpg'),
                           fit: BoxFit.cover,
                         )),
                   ),
