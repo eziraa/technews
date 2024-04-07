@@ -19,7 +19,7 @@ class Logo extends StatelessWidget {
           RichText(
             text: const TextSpan(children: [
               TextSpan(
-                text: "Touch",
+                text: "Tech",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -27,7 +27,7 @@ class Logo extends StatelessWidget {
                 ),
               ),
               TextSpan(
-                text: "Tech",
+                text: "Buzz",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
