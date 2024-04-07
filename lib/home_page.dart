@@ -15,21 +15,49 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customWidget.getAppBar(context),
-      body: Container(
-        padding: const EdgeInsets.all(20),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              customWidget.getSearchBox(),
-              _getTrending(),
-              _getNews(),
-              _getANews(),
-              _getANews(),
-            ],
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: customWidget.getSearchBox(),
           ),
-        ),
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _getTrending(),
+                    _getNews(),
+                    _getANews(),
+                    const SizedBox(height: 10),
+                    _getANews(),
+                    const SizedBox(height: 10),
+                    _getANews(),
+                    const SizedBox(height: 10),
+                    _getANews(),
+                    const SizedBox(height: 10),
+                    _getANews(),
+                    const SizedBox(height: 10),
+                    _getANews(),
+                    const SizedBox(height: 10),
+                    _getANews(),
+                    const SizedBox(height: 10),
+                    _getANews(),
+                    const SizedBox(height: 10),
+                    _getANews(),
+                    const SizedBox(height: 10),
+                    _getANews(),
+                    const SizedBox(height: 10),
+                    _getANews(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -142,8 +170,45 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _getANews() {
-    return Row(
-      children: [customWidget.getMediumImage("assets/images/6.jpg")],
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          customWidget.getMediumImage("assets/images/6.jpg"),
+          const SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              customWidget.blurredText("Europe"),
+              customWidget.getNormalText("Ukraine's president, Zelenskey says",
+                  size: 16),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  customWidget.getProfileImage("assets/images/bbc.jpg",
+                      size: 15),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  customWidget.getBoldText("BBC News",
+                      color: Colors.black54, size: 9),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  const Icon(
+                    Icons.access_time,
+                    size: 20,
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  customWidget.blurredText("4hour ago", size: 10)
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
