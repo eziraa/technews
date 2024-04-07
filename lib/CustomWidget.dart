@@ -50,10 +50,7 @@ class CustomWidget {
               ),
             ),
           ),
-          IconButton(
-            onPressed: null,
-            icon: Icon(Icons.edit_note_outlined),
-          ),
+          
         ],
       ),
     );
