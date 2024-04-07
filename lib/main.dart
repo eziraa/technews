@@ -6,6 +6,7 @@ import 'package:technews/log_in.dart';
 import 'package:technews/on_boarding_1.dart';
 import 'package:technews/select_topic.dart';
 import 'package:technews/edit_profile.dart';
+import 'package:technews/trending.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -21,5 +22,6 @@ void main() {
         '/select_topic': (context) => const SelectTopics(),
         '/choose_news_sources': (context) => const ChooseNewsSources(),
         '/edit_profile': (context) => const EditProfile(),
+        '/trending': (context) => const Trending(),
       }));
 }
