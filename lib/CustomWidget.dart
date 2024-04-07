@@ -50,8 +50,42 @@ class CustomWidget {
               ),
             ),
           ),
-          
         ],
+      ),
+    );
+  }
+
+  Widget blurredText(String data) {
+    return Text(
+      data,
+      style: const TextStyle(
+          color: Color.fromARGB(255, 150, 147, 147),
+          fontSize: 16,
+          fontWeight: FontWeight.bold),
+    );
+  }
+
+  Widget getImage(String imageAddress) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20, bottom: 20),
+      decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 205, 11, 11),
+          shape: BoxShape.rectangle,
+          boxShadow: [
+            BoxShadow(
+                color: Color.fromARGB(255, 150, 147, 147),
+                blurRadius: 8,
+                spreadRadius: 4,
+                offset: Offset(2, 6)),
+            BoxShadow(
+                color: Color.fromARGB(255, 150, 147, 147),
+                blurRadius: 8,
+                spreadRadius: 4,
+                offset: Offset(-2, -6)),
+          ]),
+      child: Image(
+        image: AssetImage(imageAddress),
+        fit: BoxFit.cover,
       ),
     );
   }
