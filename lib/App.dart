@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:technews/logo.dart';
 
 class MainApp extends StatefulWidget {
