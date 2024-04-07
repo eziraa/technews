@@ -1,0 +1,60 @@
+{
+    "tech_companies": [
+        {
+            "name": "Google",
+            "hq_location": "Mountain View, California, USA",
+            "founded": 1998,
+            "ceo": "Sundar Pichai",
+            "products": [ "Search", "Android", "YouTube", "Ads" ]
+        },
+        {
+            "name": "Apple",
+            "hq_location": "Cupertino, California, USA",
+            "founded": 1976,
+            "ceo": "Tim Cook",
+            "products": [ "iPhone", "iPad", "Mac", "Apple Watch" ]
+        },
+        {
+            "name": "Microsoft",
+            "hq_location": "Redmond, Washington, USA",
+            "founded": 1975,
+            "ceo": "Satya Nadella",
+            "products": [ "Windows", "Office", "Azure", "Xbox" ]
+        },
+        {
+            "name": "Amazon",
+            "hq_location": "Seattle, Washington, USA",
+            "founded": 1994,
+            "ceo": "Andy Jassy",
+            "products": [ "Amazon.com", "AWS", "Kindle", "Prime" ]
+        },
+        {
+            "name": "Facebook",
+            "hq_location": "Menlo Park, California, USA",
+            "founded": 2004,
+            "ceo": "Mark Zuckerberg",
+            "products": [ "Facebook", "Instagram", "WhatsApp", "Oculus" ]
+        },
+        {
+            "name": "Intel",
+            "hq_location": "Santa Clara, California, USA",
+            "founded": 1968,
+            "ceo": "Patrick Gelsinger",
+            "products": [ "Microprocessors", "Integrated Graphics", "Motherboards" ]
+        },
+        {
+            "name": "IBM",
+            "hq_location": "Armonk, New York, USA",
+            "founded": 1911,
+            "ceo": "Arvind Krishna",
+            "products": [ "Mainframes", "Watson", "Cloud Computing", "Consulting Services" ]
+        },
+        {
+            "name": "Tesla",
+            "hq_location": "Palo Alto, California, USA",
+            "founded": 2003,
+            "ceo": "Elon Musk",
+            "products": [ "Electric Vehicles", "Energy Storage", "Solar Products" ]
+        }
+    ]
+}

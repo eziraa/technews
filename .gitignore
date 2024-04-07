@@ -50,3 +50,5 @@ linux/
 macos/
 web/
 windows/
+lib/flex.dart
+index.html

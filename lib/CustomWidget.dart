@@ -50,11 +50,70 @@ class CustomWidget {
               ),
             ),
           ),
-          IconButton(
-            onPressed: null,
-            icon: Icon(Icons.edit_note_outlined),
-          ),
         ],
+      ),
+    );
+  }
+
+  Widget blurredText(String data) {
+    return Text(
+      data,
+      style: const TextStyle(
+          color: Color.fromARGB(255, 150, 147, 147),
+          fontSize: 16,
+          fontWeight: FontWeight.bold),
+    );
+  }
+
+  Widget getImage(String imageAddress) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20, bottom: 20),
+      decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 205, 11, 11),
+          shape: BoxShape.rectangle,
+          boxShadow: [
+            BoxShadow(
+                color: Color.fromARGB(255, 150, 147, 147),
+                blurRadius: 8,
+                spreadRadius: 4,
+                offset: Offset(2, 6)),
+            BoxShadow(
+                color: Color.fromARGB(255, 150, 147, 147),
+                blurRadius: 8,
+                spreadRadius: 4,
+                offset: Offset(-2, -6)),
+          ]),
+      child: Image(
+        image: AssetImage(imageAddress),
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  Widget getBoldText(String data,
+      {Color color = Colors.black, double size = 16}) {
+    return Text(
+      data,
+      style:
+          TextStyle(color: color, fontSize: size, fontWeight: FontWeight.bold),
+    );
+  }
+
+  Widget getNormalText(String data,
+      {Color color = Colors.black, double size = 16}) {
+    return Text(
+      data,
+      style: TextStyle(
+          color: color, fontSize: size, fontWeight: FontWeight.normal),
+    );
+  }
+
+  Widget getProfileImage(String address) {
+    return ClipOval(
+      child: Image(
+        image: AssetImage(address),
+        width: 30,
+        height: 30,
       ),
     );
   }
