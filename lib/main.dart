@@ -12,7 +12,7 @@ void main() {
       title: 'Tech News App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
-      initialRoute: '/on_boarding',
+      initialRoute: '/home_page',
       routes: {
         '/': (context) => const MainApp(),
         '/on_boarding': (context) => const OnBoarding1(),

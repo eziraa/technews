@@ -87,7 +87,8 @@ class _OnBoarding1State extends State<OnBoarding1> {
                             Icons.circle,
                             color: page.colorList[index],
                             size: 15,
-                          )),
+                    ),
+                  ),
                 ),
                 Expanded(
                   child: Container(),
@@ -108,7 +109,8 @@ class _OnBoarding1State extends State<OnBoarding1> {
                             imageAddress:
                                 "assets/images/onboard-${++page.pageIndex}.png",
                           );
-                        });
+                          },
+                        );
                       } else {
                         Navigator.pushNamed(context, "/log_in");
                       }
