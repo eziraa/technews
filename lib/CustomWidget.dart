@@ -5,17 +5,22 @@ class CustomWidget {
   AppBar getAppBar(BuildContext context) {
     return AppBar(
       actions: [
-        const Logo(),
-        SizedBox(
-          width: MediaQuery.of(context).size.width * 0.23,
-        ),
-        IconButton(
-          icon: const Icon(
-            Icons.notifications_outlined,
-            size: 30,
-          ),
-          onPressed: () {},
-          iconSize: 30,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Logo(),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.23,
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.notifications_outlined,
+                size: 30,
+              ),
+              onPressed: () {},
+              iconSize: 30,
+            ),
+          ],
         ),
       ],
     );
@@ -55,12 +60,12 @@ class CustomWidget {
     );
   }
 
-  Widget blurredText(String data) {
+  Widget blurredText(String data, {double size = 16}) {
     return Text(
       data,
-      style: const TextStyle(
-          color: Color.fromARGB(255, 150, 147, 147),
-          fontSize: 16,
+      style: TextStyle(
+          color: const Color.fromARGB(255, 150, 147, 147),
+          fontSize: size,
           fontWeight: FontWeight.bold),
     );
   }
@@ -68,10 +73,16 @@ class CustomWidget {
   Widget getImage(String imageAddress) {
     return Container(
       margin: const EdgeInsets.only(top: 20, bottom: 20),
-      decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 205, 11, 11),
+      decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 78, 75, 75),
           shape: BoxShape.rectangle,
-          boxShadow: [
+          border: Border.all(
+            color:
+                const Color.fromARGB(205, 96, 89, 89), // Set border color here
+            width: 2.0, // Set border width here
+          ),
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: const [
             BoxShadow(
                 color: Color.fromARGB(255, 150, 147, 147),
                 blurRadius: 8,
@@ -101,19 +112,41 @@ class CustomWidget {
 
   Widget getNormalText(String data,
       {Color color = Colors.black, double size = 16}) {
-    return Text(
-      data,
-      style: TextStyle(
-          color: color, fontSize: size, fontWeight: FontWeight.normal),
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
+      child: Text(
+        data,
+        softWrap: true, // Set softWrap to true
+        textAlign: TextAlign.center, // Set text alignment if needed
+      ),
     );
   }
 
-  Widget getProfileImage(String address) {
+  Widget getProfileImage(String address, {double size = 30}) {
     return ClipOval(
       child: Image(
         image: AssetImage(address),
-        width: 30,
-        height: 30,
+        width: size,
+        height: size,
+      ),
+    );
+  }
+
+  Widget getMediumImage(String address, {double size = 100}) {
+    return Container(
+      padding: const EdgeInsets.all(0.0), // Adjust padding as needed
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: const Color.fromARGB(255, 77, 73, 73), // Set border color here
+          width: 2.0, // Set border width here
+        ),
+        borderRadius: BorderRadius.circular(8.0), // Set border radius here
+      ),
+      child: Image(
+        image: AssetImage(address),
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
       ),
     );
   }
