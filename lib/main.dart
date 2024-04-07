@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:technews/App.dart';
 import 'package:technews/choose_your_sources.dart';
