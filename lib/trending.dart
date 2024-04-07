@@ -21,53 +21,31 @@ class _TrendingState extends State<Trending> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const SizedBox(child: Text('Trending News', textAlign: TextAlign.left,),),
-        leading: const IconButton(
-          icon: Icon(
+        title: const SizedBox(
+          child: Text(
+            'Trending News',
+            textAlign: TextAlign.left,
+          ),
+        ),
+        leading: IconButton(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
-          onPressed: null,
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
-      body: Center(
-          child: Column(
-        children: [
-          Container(
-            width: 380,
-            height: 250,
-            decoration: BoxDecoration(
-                border: Border.all(width: 4, color: Colors.white),
-                boxShadow: [
-                  BoxShadow(
-                      spreadRadius: 2,
-                      blurRadius: 10,
-                      color: Colors.black.withOpacity(0.1)),
-                ],
-                image: const DecorationImage(
-                  image: AssetImage('assets/images/profile.jpg'),
-                  fit: BoxFit.cover,
-                )),
-          ),
-          SizedBox(
-            width: 380,
-            height: 50,
-            child: Text(
-              dotDisplayer(
-                  'Europe Europe: Lorem, ipsum dolor sit amet consect etur adipisicing elit.Lorem, ipsum dolor ipsum dolor'),
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-              textAlign: TextAlign.left, // Aligning text to the left
-            ),
-          ),
-          Row(
+      body: ListView.builder(
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index) {
+          return Center(
+              child: Column(
             children: [
               Container(
-                margin: const EdgeInsets.only(left: 15, right: 10, bottom: 10),
-                width: 40,
-                height: 40,
+                width: 380,
+                height: 250,
                 decoration: BoxDecoration(
                     border: Border.all(width: 4, color: Colors.white),
                     boxShadow: [
@@ -76,28 +54,63 @@ class _TrendingState extends State<Trending> {
                           blurRadius: 10,
                           color: Colors.black.withOpacity(0.1)),
                     ],
-                    shape: BoxShape.circle,
                     image: const DecorationImage(
                       image: AssetImage('assets/images/profile.jpg'),
                       fit: BoxFit.cover,
                     )),
               ),
-              const SizedBox(
-                child: Text('BBC News'),
-              ),
-              const IconButton(
-                icon: Icon(
-                  Icons.access_time,
+              SizedBox(
+                width: 380,
+                height: 50,
+                child: Text(
+                  dotDisplayer(
+                      'Europe Europe: Lorem, ipsum dolor sit amet consect etur adipisicing elit.Lorem, ipsum dolor ipsum dolor'),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.left, // Aligning text to the left
                 ),
-                onPressed: null,
               ),
-              const SizedBox(
-                child: Text('4h ago'),
-              ),
+              Row(
+                children: [
+                  Container(
+                    margin:
+                        const EdgeInsets.only(left: 15, right: 10, bottom: 10),
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        border: Border.all(width: 4, color: Colors.white),
+                        boxShadow: [
+                          BoxShadow(
+                              spreadRadius: 2,
+                              blurRadius: 10,
+                              color: Colors.black.withOpacity(0.1)),
+                        ],
+                        shape: BoxShape.circle,
+                        image: const DecorationImage(
+                          image: AssetImage('assets/images/profile.jpg'),
+                          fit: BoxFit.cover,
+                        )),
+                  ),
+                  const SizedBox(
+                    child: Text('BBC News'),
+                  ),
+                  const IconButton(
+                    icon: Icon(
+                      Icons.access_time,
+                    ),
+                    onPressed: null,
+                  ),
+                  const SizedBox(
+                    child: Text('4h ago'),
+                  ),
+                ],
+              )
             ],
-          )
-        ],
-      )),
+          ));
+        },
+      ),
     );
   }
 }

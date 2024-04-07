@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:technews/CustomWidget.dart';
-import 'package:technews/logo.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -48,7 +47,12 @@ class _HomePageState extends State<HomePage> {
               ),
               TextButton(
                 child: customWidget.blurredText("See All"),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    "/trending",
+                  );
+                },
               )
               // Ico
             ],
