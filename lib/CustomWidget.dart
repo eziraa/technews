@@ -89,4 +89,32 @@ class CustomWidget {
       ),
     );
   }
+
+  Widget getBoldText(String data,
+      {Color color = Colors.black, double size = 16}) {
+    return Text(
+      data,
+      style:
+          TextStyle(color: color, fontSize: size, fontWeight: FontWeight.bold),
+    );
+  }
+
+  Widget getNormalText(String data,
+      {Color color = Colors.black, double size = 16}) {
+    return Text(
+      data,
+      style: TextStyle(
+          color: color, fontSize: size, fontWeight: FontWeight.normal),
+    );
+  }
+
+  Widget getProfileImage(String address) {
+    return ClipOval(
+      child: Image(
+        image: AssetImage(address),
+        width: 30,
+        height: 30,
+      ),
+    );
+  }
 }
