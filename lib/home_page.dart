@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Container(
             padding: const EdgeInsets.all(20),
-            child: customWidget.getSearchBox(),
+            child: customWidget.getSearchBox(context),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -29,28 +29,28 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     _getTrending(),
-                    _getNews(),
-                    _getANews(),
+                    getNews(),
+                    getANews(),
                     const SizedBox(height: 10),
-                    _getANews(),
+                    getANews(),
                     const SizedBox(height: 10),
-                    _getANews(),
+                    getANews(),
                     const SizedBox(height: 10),
-                    _getANews(),
+                    getANews(),
                     const SizedBox(height: 10),
-                    _getANews(),
+                    getANews(),
                     const SizedBox(height: 10),
-                    _getANews(),
+                    getANews(),
                     const SizedBox(height: 10),
-                    _getANews(),
+                    getANews(),
                     const SizedBox(height: 10),
-                    _getANews(),
+                    getANews(),
                     const SizedBox(height: 10),
-                    _getANews(),
+                    getANews(),
                     const SizedBox(height: 10),
-                    _getANews(),
+                    getANews(),
                     const SizedBox(height: 10),
-                    _getANews(),
+                    getANews(),
                   ],
                 ),
               ),
@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _getNews() {
+  Widget getNews() {
     return Column(
       children: [
         Container(
@@ -131,7 +131,9 @@ class _HomePageState extends State<HomePage> {
               ),
               TextButton(
                 child: customWidget.blurredText("See All"),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, "/latest");
+                },
               )
               // Ico
             ],
@@ -173,7 +175,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _getANews() {
+  Widget getANews() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(

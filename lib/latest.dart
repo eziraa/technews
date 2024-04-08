@@ -65,14 +65,6 @@ class _LatestPageState extends State<LatestPage> {
           child: Row(
             children: [
               customWidget.getBoldText("Latest", size: 24),
-              Expanded(
-                child: Container(),
-              ),
-              TextButton(
-                child: customWidget.blurredText("See All"),
-                onPressed: () {},
-              )
-              // Ico
             ],
           ),
         ),
@@ -140,7 +132,8 @@ class _LatestPageState extends State<LatestPage> {
                   ),
                   const Icon(
                     Icons.access_time,
-                    size: 20,
+                    size: 10,
+                    color: Colors.black38,
                   ),
                   const SizedBox(
                     width: 5,
