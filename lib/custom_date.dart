@@ -45,18 +45,18 @@ class DateTile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Text(
         '${label ?? ''}${label != null ? ', ' : ''}${_formatDate(date)}',
-        style: TextStyle(fontSize: 18),
+        style: const TextStyle(fontSize: 18),
       ),
     );
   }
 
   String _formatDate(DateTime date) {
     if (label == 'Today') {
-      return 'Today, ${_formatMonthAndDay(date)}';
+      return _formatMonthAndDay(date);
     } else if (label == 'Yesterday') {
-      return 'Yesterday, ${_formatMonthAndDay(date)}';
+      return _formatMonthAndDay(date);
     } else {
-      return '${_formatFullDate(date)}';
+      return _formatFullDate(date);
     }
   }
 
