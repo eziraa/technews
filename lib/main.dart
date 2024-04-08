@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:technews/App.dart';
 import 'package:technews/choose_your_sources.dart';
@@ -32,6 +30,6 @@ void main() {
         '/notification': (context) => const Notifications(),
         '/latest': (context) => const LatestPage(),
         '/search': (context) => const SearchPage(),
-        // '/saved': (context) => const SavedPage(),
+        '/saved': (context) => const SavedPage(),
       }));
 }
