@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomDateDisplay {
-  static List<Widget> build(BuildContext context) {
+  static List<Widget> getDate(BuildContext context) {
     List<Widget> dateTiles = [];
 
     // Today's date
@@ -42,7 +42,7 @@ class DateTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Text(
         '${label ?? ''}${label != null ? ', ' : ''}${_formatDate(date)}',
         style: const TextStyle(fontSize: 18),
