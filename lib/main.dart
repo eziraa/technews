@@ -5,7 +5,6 @@ import 'package:technews/home_page.dart';
 import 'package:technews/log_in.dart';
 import 'package:technews/on_boarding_1.dart';
 import 'package:technews/saved.dart';
-// import 'package:technews/saved.dart';
 import 'package:technews/search.dart';
 import 'package:technews/select_topic.dart';
 import 'package:technews/edit_profile.dart';
