@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:technews/CustomWidget.dart';
 import 'package:technews/custom_date.dart';
 
 class Notifications extends StatefulWidget {
@@ -44,57 +45,118 @@ class _NotificationState extends State<Notifications> {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-              padding: const EdgeInsets.only(left: 0),
-              child: CustomDateDisplay.getDate(context)[0]),
-          SingleChildScrollView(
-            // Wrap the Row with SingleChildScrollView
-            scrollDirection:
-                Axis.horizontal, // Set the scroll direction to horizontal
-            child: Row(
+      body: SingleChildScrollView(
+        scrollDirection:
+            Axis.vertical, // Set the scroll direction to horizontal
+        child: Column(
+          children: [
+            getDayNoti(),
+            getDayNoti(),
+            getDayNoti(),
+            getDayNoti(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget getDayNoti() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+            padding: const EdgeInsets.only(left: 0),
+            child: CustomDateDisplay.getDate(context)[0]),
+        SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          // Wrap the Row with SingleChildScrollView
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
               children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 4, color: Colors.white),
-                    shape: BoxShape.circle,
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/bbc.jpg'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                getNotification(),
+                const SizedBox(
+                  height: 6,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 0),
-                      child: Text(
-                        dotDisplayer(
-                          'Europe Europe: Lorem, ipsum dolor sit amet consect etur adipisicing elit.Lorem, ipsum dolor ipsum dolor',
-                        ),
-                        textAlign: TextAlign.left,
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                    ),
-                    const Text(
-                      '4h ago',
-                      textAlign: TextAlign.left,
-                    ),
-                  ],
+                getNotification(),
+                const SizedBox(
+                  height: 6,
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Follow'),
+                getNotification(),
+                const SizedBox(
+                  height: 6,
+                ),
+                getNotification(),
+                const SizedBox(
+                  height: 6,
+                ),
+                getNotification(),
+                const SizedBox(
+                  height: 6,
+                ),
+                getNotification(),
+                const SizedBox(
+                  height: 6,
+                ),
+                getNotification(),
+                const SizedBox(
+                  height: 6,
+                ),
+                getNotification(),
+                const SizedBox(
+                  height: 6,
+                ),
+                getNotification(),
+                const SizedBox(
+                  height: 6,
                 ),
               ],
             ),
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget getNotification() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.all(10),
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              border: Border.all(width: 4, color: Colors.white),
+              shape: BoxShape.circle,
+              image: const DecorationImage(
+                image: AssetImage('assets/images/bbc.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 40),
+                child: Text(
+                  dotDisplayer(
+                    'Europe Europe: Lorem, ipsum dolor sit amet consect etur adipisicing elit.Lorem, ipsum dolor ipsum dolor',
+                  ),
+                  textAlign: TextAlign.left,
+                  style: const TextStyle(color: Colors.black),
+                ),
+              ),
+              const Text(
+                '4h ago',
+                textAlign: TextAlign.left,
+              ),
+            ],
+          ),
+          CustomWidget().getElevatedBtn(context, "Follow")
         ],
       ),
     );
