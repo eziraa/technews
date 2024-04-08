@@ -10,8 +10,8 @@ class Trending extends StatefulWidget {
 
 String dotDisplayer(String text) {
   int textLength = text.length;
-  if (textLength > 85) {
-    return '${text.substring(0, 84)}...';
+  if (textLength > 70) {
+    return '${text.substring(0, 69)}...';
   } else {
     return text;
   }
@@ -45,21 +45,10 @@ class _TrendingState extends State<Trending> {
           return Center(
               child: Column(
             children: [
-              Container(
-                width: 380,
-                height: 250,
-                decoration: BoxDecoration(
-                    border: Border.all(width: 4, color: Colors.white),
-                    boxShadow: [
-                      BoxShadow(
-                          spreadRadius: 2,
-                          blurRadius: 10,
-                          color: Colors.black.withOpacity(0.1)),
-                    ],
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/profile.jpg'),
-                      fit: BoxFit.cover,
-                    )),
+              custom.getImage('assets/images/bbc.jpg'),
+              const Text(
+                'Europe',
+                textAlign: TextAlign.left,
               ),
               SizedBox(
                 width: 380,
