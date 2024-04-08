@@ -118,6 +118,7 @@ class _NewsChannelState extends State<NewsChannel> {
                     ),
                   ),
                 ),
+                const SizedBox(height: 10,)
               ],
             ),
             Expanded(
