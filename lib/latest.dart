@@ -1,44 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:technews/CustomWidget.dart';
+import 'package:technews/home_page.dart';
 
-class Latest extends StatefulWidget {
-  const Latest({super.key});
+class LatestPage extends StatefulWidget {
+  const LatestPage({super.key});
 
   @override
-  State<Latest> createState() => _LatestState();
+  State<LatestPage> createState() => _LatestPageState();
 }
 
-class _LatestState extends State<Latest> {
+class _LatestPageState extends State<LatestPage> {
+  CustomWidget customWidget = CustomWidget();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const SizedBox(
-            child: Text(
-              'Latest News',
-              textAlign: TextAlign.left,
-            ),
+      appBar: AppBar(
+        title: const SizedBox(
+          child: Text(
+            'Latest News',
+            textAlign: TextAlign.left,
           ),
-          leading: IconButton(
+        ),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          IconButton(
             icon: const Icon(
-              Icons.arrow_back,
+              Icons.notifications,
               color: Colors.black,
             ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+            onPressed: () {},
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(
-                Icons.notifications,
-                color: Colors.black,
-              ),
-            onPressed: () {
-              
-            },
-            ),
-          ],
-        ),
+        ],
+      ),
     );
   }
 }

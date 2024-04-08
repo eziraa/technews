@@ -26,7 +26,7 @@ class CustomWidget {
     );
   }
 
-  Widget getSearchBox() {
+  Widget getSearchBox(BuildContext context) {
     return Container(
       height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -42,17 +42,21 @@ class CustomWidget {
           ),
         ],
       ),
-      child: const Row(
+      child: Row(
         children: [
-          Icon(Icons.search, color: Colors.grey),
-          SizedBox(width: 10),
+          const Icon(Icons.search, color: Colors.grey),
+          const SizedBox(width: 10),
           Expanded(
             child: TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Search...',
                 border: InputBorder.none,
                 hintStyle: TextStyle(color: Colors.grey),
               ),
+              onChanged: (String text) => {
+                if (ModalRoute.of(context)?.settings.name != "/search")
+                  Navigator.pushNamed(context, "/search")
+              },
             ),
           ),
         ],
@@ -73,6 +77,8 @@ class CustomWidget {
   Widget getImage(String imageAddress) {
     return Container(
       margin: const EdgeInsets.only(top: 20, bottom: 20),
+      width: 380,
+      height: 270,
       decoration: BoxDecoration(
           color: const Color.fromARGB(255, 78, 75, 75),
           shape: BoxShape.rectangle,
@@ -112,7 +118,8 @@ class CustomWidget {
 
   Widget getNormalText(String data,
       {Color color = Colors.black, double size = 16}) {
-    return Padding(
+    return Container(
+      width: 100,
       padding: const EdgeInsets.all(2.0),
       child: Text(
         data,
@@ -148,6 +155,59 @@ class CustomWidget {
         height: size,
         fit: BoxFit.cover,
       ),
+    );
+  }
+
+  Widget getElevatedBtn(BuildContext context, String text) {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10), color: Colors.blueAccent),
+      child: ElevatedButton(
+        onPressed: null,
+        style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            backgroundColor: Colors.blueAccent),
+        child: Text(
+          text,
+          style: const TextStyle(
+              color: Color.fromARGB(255, 250, 254, 253), fontSize: 20),
+        ),
+      ),
+    );
+  }
+
+  Widget getBottomNavBar(BuildContext context) {
+    return BottomNavigationBar(
+      onTap: (index) {
+        switch (index) {
+          case 0:
+            Navigator.pushNamed(context, "/home_page");
+            break;
+          case 1:
+            Navigator.pushNamed(context, "/search");
+            break;
+          case 2:
+            Navigator.pushNamed(context, "/saved");
+            break;
+        }
+      },
+      currentIndex: 0,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: "Home",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.save_outlined),
+          label: "search",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search_outlined),
+          label: "saved",
+        ),
+      ],
     );
   }
 }

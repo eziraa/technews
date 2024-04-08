@@ -46,7 +46,10 @@ class _TrendingState extends State<Trending> {
               child: Column(
             children: [
               custom.getImage('assets/images/bbc.jpg'),
-              const Text('Europe',textAlign: TextAlign.left,),
+              const Text(
+                'Europe',
+                textAlign: TextAlign.left,
+              ),
               SizedBox(
                 width: 380,
                 height: 50,
