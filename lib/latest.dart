@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:technews/CustomWidget.dart';
-import 'package:technews/home_page.dart';
 
 class LatestPage extends StatefulWidget {
   const LatestPage({super.key});
