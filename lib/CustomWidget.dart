@@ -26,7 +26,7 @@ class CustomWidget {
     );
   }
 
-  Widget getSearchBox() {
+  Widget getSearchBox(BuildContext context) {
     return Container(
       height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -42,17 +42,19 @@ class CustomWidget {
           ),
         ],
       ),
-      child: const Row(
+      child: Row(
         children: [
-          Icon(Icons.search, color: Colors.grey),
-          SizedBox(width: 10),
+          const Icon(Icons.search, color: Colors.grey),
+          const SizedBox(width: 10),
           Expanded(
             child: TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Search...',
                 border: InputBorder.none,
                 hintStyle: TextStyle(color: Colors.grey),
               ),
+              onChanged: (String text) =>
+                  {Navigator.pushNamed(context, "/search")},
             ),
           ),
         ],
