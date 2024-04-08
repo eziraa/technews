@@ -18,6 +18,7 @@ String dotDisplayer(String text) {
 }
 
 class _TrendingState extends State<Trending> {
+  CustomWidget custom = CustomWidget();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,8 +46,21 @@ class _TrendingState extends State<Trending> {
               child: Column(
             children: [
               Container(
-                  padding: EdgeInsets.all(10),
-                  child: CustomWidget().getImage("assets/images/profile.jpg")),
+                width: 380,
+                height: 250,
+                decoration: BoxDecoration(
+                    border: Border.all(width: 4, color: Colors.white),
+                    boxShadow: [
+                      BoxShadow(
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                          color: Colors.black.withOpacity(0.1)),
+                    ],
+                    image: const DecorationImage(
+                      image: AssetImage('assets/images/profile.jpg'),
+                      fit: BoxFit.cover,
+                    )),
+              ),
               SizedBox(
                 width: 380,
                 height: 50,
@@ -77,7 +91,7 @@ class _TrendingState extends State<Trending> {
                         ],
                         shape: BoxShape.circle,
                         image: const DecorationImage(
-                          image: AssetImage('assets/images/profile.jpg'),
+                          image: AssetImage('assets/images/bbc.jpg'),
                           fit: BoxFit.cover,
                         )),
                   ),

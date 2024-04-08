@@ -1,3 +1,4 @@
+import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:technews/App.dart';
@@ -13,7 +14,8 @@ import 'package:technews/trending.dart';
 import 'package:technews/latest.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(
+    MaterialApp(
       title: 'Tech News App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
