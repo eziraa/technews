@@ -78,14 +78,15 @@ class _SavedPageState extends State<SavedPage> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          customWidget.getMediumImage("assets/images/6.jpg"),
+          customWidget.getMediumImage("assets/images/6.jpg", size: 60),
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               customWidget.blurredText("Europe"),
-              customWidget.getNormalText("Ukraine's president, Zelenskey says",
-                  size: 16),
+              customWidget.getNormalText(
+                  "${"Ukraine's president, Zelenskey says".substring(0, 10)}...",
+                  size: 10),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -112,6 +113,7 @@ class _SavedPageState extends State<SavedPage> {
               ),
             ],
           ),
+          customWidget.getElevatedBtn(context, "Remove")
         ],
       ),
     );

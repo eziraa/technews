@@ -76,6 +76,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ],
       ),
+      bottomNavigationBar: customWidget.getBottomNavBar(context),
     );
   }
 

@@ -7,6 +7,7 @@ import 'package:technews/on_boarding_1.dart';
 import 'package:technews/saved.dart';
 // import 'package:technews/saved.dart';
 import 'package:technews/search.dart';
+import 'package:technews/see-a%20news.dart';
 import 'package:technews/select_topic.dart';
 import 'package:technews/edit_profile.dart';
 import 'package:technews/trending.dart';
@@ -18,7 +19,7 @@ void main() {
       title: 'Tech News App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
-      initialRoute: '/search',
+      initialRoute: '/news-detail',
       routes: {
         '/': (context) => const MainApp(),
         '/on_boarding': (context) => const OnBoarding1(),
@@ -32,5 +33,6 @@ void main() {
         '/latest': (context) => const LatestPage(),
         '/search': (context) => const SearchPage(),
         '/saved': (context) => const SavedPage(),
+        '/news-detail': (context) => const SeeNewsDetailPage(),
       }));
 }

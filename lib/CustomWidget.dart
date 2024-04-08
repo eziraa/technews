@@ -25,6 +25,29 @@ class CustomWidget {
       ],
     );
   }
+  AppBar getAppBarWithShare(BuildContext context) {
+    return AppBar(
+      actions: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.23,
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.share_rounded,
+                size: 30,
+              ),
+              onPressed: () {},
+              iconSize: 30,
+            ),
+            const SizedBox(width: 5),
+          ],
+        ),
+      ],
+    );
+  }
 
   Widget getSearchBox(BuildContext context) {
     return Container(
@@ -119,12 +142,11 @@ class CustomWidget {
   Widget getNormalText(String data,
       {Color color = Colors.black, double size = 16}) {
     return Container(
-      width: 100,
       padding: const EdgeInsets.all(2.0),
       child: Text(
         data,
         softWrap: true, // Set softWrap to true
-        textAlign: TextAlign.center, // Set text alignment if needed
+        textAlign: TextAlign.start, // Set text alignment if needed
       ),
     );
   }
@@ -158,8 +180,9 @@ class CustomWidget {
     );
   }
 
-  Widget getElevatedBtn(BuildContext context, String text) {
+  Widget getElevatedBtn(BuildContext context, String text, {double size = 20}) {
     return Container(
+      padding: const EdgeInsets.all(0),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: Colors.blueAccent),
       child: ElevatedButton(
@@ -167,12 +190,13 @@ class CustomWidget {
         style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
+
             ),
             backgroundColor: Colors.blueAccent),
         child: Text(
           text,
-          style: const TextStyle(
-              color: Color.fromARGB(255, 250, 254, 253), fontSize: 20),
+          style: TextStyle(
+              color: const Color.fromARGB(255, 250, 254, 253), fontSize: size),
         ),
       ),
     );
