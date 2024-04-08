@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:technews/CustomWidget.dart';
 
 class Trending extends StatefulWidget {
   const Trending({super.key});
@@ -44,21 +45,8 @@ class _TrendingState extends State<Trending> {
               child: Column(
             children: [
               Container(
-                width: 380,
-                height: 250,
-                decoration: BoxDecoration(
-                    border: Border.all(width: 4, color: Colors.white),
-                    boxShadow: [
-                      BoxShadow(
-                          spreadRadius: 2,
-                          blurRadius: 10,
-                          color: Colors.black.withOpacity(0.1)),
-                    ],
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/profile.jpg'),
-                      fit: BoxFit.cover,
-                    )),
-              ),
+                  padding: EdgeInsets.all(10),
+                  child: CustomWidget().getImage("assets/images/profile.jpg")),
               SizedBox(
                 width: 380,
                 height: 50,
