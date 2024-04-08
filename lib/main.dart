@@ -8,6 +8,7 @@ import 'package:technews/select_topic.dart';
 import 'package:technews/edit_profile.dart';
 import 'package:technews/trending.dart';
 import 'package:technews/latest.dart';
+import 'package:technews/notification.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -25,5 +26,6 @@ void main() {
         '/edit_profile': (context) => const EditProfile(),
         '/trending': (context) => const Trending(),
         '/latest': (context) => const Latest(),
+        '/notification': (context) => const Notifications(),
       }));
 }
