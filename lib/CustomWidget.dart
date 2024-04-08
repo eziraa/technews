@@ -73,6 +73,8 @@ class CustomWidget {
   Widget getImage(String imageAddress) {
     return Container(
       margin: const EdgeInsets.only(top: 20, bottom: 20),
+      width: 380,
+      height: 270,
       decoration: BoxDecoration(
           color: const Color.fromARGB(255, 78, 75, 75),
           shape: BoxShape.rectangle,
