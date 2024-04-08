@@ -11,6 +11,7 @@ import 'package:technews/edit_profile.dart';
 import 'package:technews/trending.dart';
 import 'package:technews/latest.dart';
 import 'package:technews/notification.dart';
+import 'package:technews/news_channel.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -31,5 +32,6 @@ void main() {
         '/latest': (context) => const LatestPage(),
         '/search': (context) => const SearchPage(),
         '/saved': (context) => const SavedPage(),
+        '/news_channel': (context) => const NewsChannel()
       }));
 }
