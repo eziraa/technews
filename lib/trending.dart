@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:technews/custom-section.dart';
 import 'package:technews/custom_widget.dart';
 
 class Trending extends StatefulWidget {
@@ -41,10 +42,12 @@ class _TrendingState extends State<Trending> {
       body: ListView.builder(
         itemCount: 5,
         itemBuilder: (BuildContext context, int index) {
-          return Center(
+          return Padding(
+              padding: const EdgeInsets.all(20),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomWidget.getImage('assets/images/bbc.jpg'),
+                  CustomWidget.getImage('assets/images/6.jpg'),
               const Text(
                 'Europe',
                 textAlign: TextAlign.left,
@@ -62,41 +65,7 @@ class _TrendingState extends State<Trending> {
                   textAlign: TextAlign.left, // Aligning text to the left
                 ),
               ),
-              Row(
-                children: [
-                  Container(
-                    margin:
-                        const EdgeInsets.only(left: 15, right: 10, bottom: 10),
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 4, color: Colors.white),
-                        boxShadow: [
-                          BoxShadow(
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              color: Colors.black.withOpacity(0.1)),
-                        ],
-                        shape: BoxShape.circle,
-                        image: const DecorationImage(
-                          image: AssetImage('assets/images/bbc.jpg'),
-                          fit: BoxFit.cover,
-                        )),
-                  ),
-                  const SizedBox(
-                    child: Text('BBC News'),
-                  ),
-                  const IconButton(
-                    icon: Icon(
-                      Icons.access_time,
-                    ),
-                    onPressed: null,
-                  ),
-                  const SizedBox(
-                    child: Text('4h ago'),
-                  ),
-                ],
-              )
+                  CustomSection.getANewsFooter(10)
             ],
           ));
         },

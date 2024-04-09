@@ -124,10 +124,9 @@ class _NotificationState extends State<Notifications> {
       child: Row(
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 10),
             padding: const EdgeInsets.all(10),
-            width: 80,
-            height: 80,
+            width: 70,
+            height: 70,
             decoration: BoxDecoration(
               border: Border.all(width: 4, color: Colors.white),
               shape: BoxShape.circle,
@@ -141,7 +140,7 @@ class _NotificationState extends State<Notifications> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 40),
+                padding: const EdgeInsets.only(right: 10),
                 child: Text(
                   dotDisplayer(
                     'Europe Europe: Lorem, ipsum dolor sit amet consect etur adipisicing elit.Lorem, ipsum dolor ipsum dolor',
@@ -156,7 +155,7 @@ class _NotificationState extends State<Notifications> {
               ),
             ],
           ),
-          CustomWidget.getElevatedBtn(context, "Follow")
+          CustomWidget.getElevatedBtn(context, "Follow", size: 16)
         ],
       ),
     );

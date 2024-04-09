@@ -6,14 +6,12 @@ import 'package:technews/log_in.dart';
 import 'package:technews/on_boarding_1.dart';
 import 'package:technews/saved.dart';
 import 'package:technews/search.dart';
+import 'package:technews/see_a_news.dart';
 import 'package:technews/select_topic.dart';
 import 'package:technews/edit_profile.dart';
 import 'package:technews/trending.dart';
 import 'package:technews/latest.dart';
 import 'package:technews/notification.dart';
-import 'package:technews/news_channel.dart';
-import 'package:technews/settings.dart';
-import 'package:technews/change_password.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -34,8 +32,6 @@ void main() {
         '/latest': (context) => const LatestPage(),
         '/search': (context) => const SearchPage(),
         '/saved': (context) => const SavedPage(),
-        '/news_channel': (context) => const NewsChannel(),
-        '/settings': (context) => const Settings(),
-        '/change_password': (constext) => const ChangePassword(),
+        '/news-detail': (context) => const SeeNewsDetailPage(),
       }));
 }

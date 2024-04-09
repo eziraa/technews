@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:technews/logo.dart';
+import 'package:flutter_share_me/flutter_share_me.dart';
 
 class CustomWidget {
   static AppBar getAppBar(BuildContext context) {
@@ -17,7 +18,9 @@ class CustomWidget {
                 Icons.notifications_outlined,
                 size: 30,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "/notification");
+              },
               iconSize: 30,
             ),
           ],
@@ -25,6 +28,7 @@ class CustomWidget {
       ],
     );
   }
+
   static AppBar getAppBarWithShare(BuildContext context) {
     return AppBar(
       actions: [
@@ -39,7 +43,9 @@ class CustomWidget {
                 Icons.share_rounded,
                 size: 30,
               ),
-              onPressed: () {},
+              onPressed: () {
+                FlutterShareMe().shareToSystem(msg: "content");
+              },
               iconSize: 30,
             ),
             const SizedBox(width: 5),
@@ -153,7 +159,6 @@ class CustomWidget {
 
   static Widget getProfileImage(String address, {double size = 30}) {
     return Container(
-      margin: const EdgeInsets.only(left: 15),
       padding: const EdgeInsets.all(10),
       width: size,
       height: size,
@@ -191,6 +196,7 @@ class CustomWidget {
       {double size = 20}) {
     return Container(
       padding: const EdgeInsets.all(0),
+      height: size * 2.5,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: Colors.blueAccent),
       child: ElevatedButton(
@@ -198,9 +204,9 @@ class CustomWidget {
         style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
-
             ),
             backgroundColor: Colors.blueAccent),
+            
         child: Text(
           text,
           style: TextStyle(
