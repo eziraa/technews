@@ -153,7 +153,6 @@ class CustomWidget {
 
   static Widget getProfileImage(String address, {double size = 30}) {
     return Container(
-      margin: const EdgeInsets.only(left: 15),
       padding: const EdgeInsets.all(10),
       width: size,
       height: size,
