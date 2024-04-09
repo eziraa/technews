@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:share/share.dart';
 import 'package:technews/logo.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 
@@ -19,7 +18,9 @@ class CustomWidget {
                 Icons.notifications_outlined,
                 size: 30,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "/notification");
+              },
               iconSize: 30,
             ),
           ],
@@ -27,6 +28,7 @@ class CustomWidget {
       ],
     );
   }
+
   static AppBar getAppBarWithShare(BuildContext context) {
     return AppBar(
       actions: [
@@ -194,6 +196,7 @@ class CustomWidget {
       {double size = 20}) {
     return Container(
       padding: const EdgeInsets.all(0),
+      height: size * 2.5,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: Colors.blueAccent),
       child: ElevatedButton(
@@ -203,6 +206,7 @@ class CustomWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             backgroundColor: Colors.blueAccent),
+            
         child: Text(
           text,
           style: TextStyle(
