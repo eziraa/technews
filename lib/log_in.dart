@@ -45,11 +45,32 @@ class _LogInPageState extends State<LogInPage> {
                 textStyle: const TextStyle(fontSize: 20),
               ),
               onPressed: () {},
-              child: const Text('Forgot password', style: TextStyle(color: Colors.blue),),
+              child: const Text(
+                'Forgot password',
+                style: TextStyle(color: Colors.blue),
+              ),
             ),
             Container(
                 margin: const EdgeInsets.all(20),
-                child: CustomWidget.getElevatedBtn(context, 'Log in')),
+                // child: CustomWidget.getElevatedBtn(context, 'Log in')),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/home_page");
+                  },
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      backgroundColor: Colors.blueAccent),
+                  child: const Text(
+                    'Log in',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 250, 254, 253),
+                    ),
+                  ),
+                )),
           ],
         ),
       ),
