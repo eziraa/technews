@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:technews/custom_widget.dart';
-// ignore: depend_on_referenced_packages
-import 'package:share/share.dart';
-
 
 class SeeNewsDetailPage extends StatefulWidget {
   const SeeNewsDetailPage({super.key});
