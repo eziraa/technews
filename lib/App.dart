@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:technews/logo.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -28,8 +26,8 @@ class _MainAppState extends State<MainApp> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Image.asset(
-                    'assets/images/logo.png', // replace with your image path
-                    fit: BoxFit.cover, // adjust image fitting as needed
+                    'assets/images/logo.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -89,16 +87,6 @@ class _MainAppState extends State<MainApp> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  // Container(margin: const EdgeInsets.all(10),
-                  //   child: const Text(
-                  //     'Welcome to TechBuzz! Stay ahead with the latest updates, trends, and innovations in the world of technology. Dive into insightful articles, breaking news, and expert analyses. Explore the future of tech with us today!',
-                  //     textAlign: TextAlign.center,
-                  //     style: TextStyle(
-                  //         fontSize: 18,
-                  //         fontWeight: FontWeight.w300,
-                  //         color: Colors.blueGrey),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
