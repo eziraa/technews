@@ -23,36 +23,33 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _getTrending(),
-                    CustomSection.getNews(context),
-                    CustomSection.getANews(context),
-                    const SizedBox(height: 10),
-                    CustomSection.getANews(context),
-                    const SizedBox(height: 10),
-                    CustomSection.getANews(context),
-                    const SizedBox(height: 10),
-                    CustomSection.getANews(context),
-                    const SizedBox(height: 10),
-                    CustomSection.getANews(context),
-                    const SizedBox(height: 10),
-                    CustomSection.getANews(context),
-                    const SizedBox(height: 10),
-                    CustomSection.getANews(context),
-                    const SizedBox(height: 10),
-                    CustomSection.getANews(context),
-                    const SizedBox(height: 10),
-                    CustomSection.getANews(context),
-                    const SizedBox(height: 10),
-                    CustomSection.getANews(context),
-                    const SizedBox(height: 10),
-                    CustomSection.getANews(context),
-                  ],
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _getTrending(),
+                  CustomSection.getLatestNewsHeader(context),
+                  CustomSection.getANews(context),
+                  const SizedBox(height: 10),
+                  CustomSection.getANews(context),
+                  const SizedBox(height: 10),
+                  CustomSection.getANews(context),
+                  const SizedBox(height: 10),
+                  CustomSection.getANews(context),
+                  const SizedBox(height: 10),
+                  CustomSection.getANews(context),
+                  const SizedBox(height: 10),
+                  CustomSection.getANews(context),
+                  const SizedBox(height: 10),
+                  CustomSection.getANews(context),
+                  const SizedBox(height: 10),
+                  CustomSection.getANews(context),
+                  const SizedBox(height: 10),
+                  CustomSection.getANews(context),
+                  const SizedBox(height: 10),
+                  CustomSection.getANews(context),
+                  const SizedBox(height: 10),
+                  CustomSection.getANews(context),
+                ],
               ),
             ),
           ),
@@ -64,7 +61,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _getTrending() {
     return Container(
-      margin: const EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
