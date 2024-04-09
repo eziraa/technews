@@ -27,30 +27,47 @@ class __SettingsState extends State<Settings> {
         ),
       ),
       body: Column(
-        children: [
-          Row(
-            children: [
-              IconButton(
-                icon: const Icon(
-                  Icons.notifications,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-              IconButton(
-                icon: const Icon(
-                  Icons.chevron_right,
-                  color: Colors.black,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          )
-        ],
+        children: [_getRow(icon1: Icons.notifications_outlined, text: 'Notification', icon2: Icons.chevron_right )],
       ),
     );
   }
+
+Widget _getRow({required IconData icon1, required String text, required IconData icon2}) {
+    return Row(
+      children: [
+        const Divider(
+          thickness: 10,
+          color: Colors.black,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: IconButton(
+            icon: Icon(
+              icon1,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        Text(
+          text,
+          style: TextStyle(fontSize: 18),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 190),
+          child: IconButton(
+            icon: Icon(
+              icon2,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+      ],
+    );
+  }
 }
+
