@@ -79,7 +79,7 @@ class CustomSection {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CustomWidget.getMediumImage("assets/images/6.jpg", size: 60),
+              CustomWidget.getMediumImage("assets/images/6.jpg", size: 70),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,8 +87,8 @@ class CustomSection {
                   CustomWidget.blurredText("Europe"),
                   CustomWidget.getNormalText(
                       "${"Ukraine's president, Zelenskey says".substring(0)}...",
-                      size: 10),
-                  getANewsFooter(),
+                      size: 7),
+                  getANewsFooter(6),
                 ],
               ),
             ],
@@ -98,29 +98,33 @@ class CustomSection {
     );
   }
 
-  static Widget getANewsFooter() {
+  static Widget getANewsFooter(double size) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         CustomWidget.getProfileImage("assets/images/bbc.jpg",
-                          size: 15),
-                      const SizedBox(
-                        width: 5,
+          size: size * 4,
+        ),
+        SizedBox(
+          width: size,
                       ),
                       CustomWidget.getBoldText("BBC News",
-                          color: Colors.black54, size: 9),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Icon(
+          color: Colors.black54,
+          size: size * 1.5,
+        ),
+        SizedBox(
+          width: size,
+        ),
+        Icon(
                         Icons.access_time,
-                        size: 10,
+          size: size * 2,
                         color: Colors.black38,
                       ),
-                      const SizedBox(
-                        width: 5,
+        SizedBox(
+          width: size,
                       ),
-        CustomWidget.blurredText("4hour ago", size: 10),
+        CustomWidget.blurredText("4hour ago", size: size * 1.5),
       ],
     );
   }
