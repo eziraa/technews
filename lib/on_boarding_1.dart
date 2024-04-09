@@ -40,7 +40,7 @@ class _OnBoarding1State extends State<OnBoarding1> {
         imageAddress: "assets/images/onboard-0.png",
         pageIndex: 0,
         text:
-            "SVG (Scalable Vector Graphics): SVG files are vector-based and can scale without losing quality. They also support transparency, so you can export your icon with a transparent background.");
+            "Welcome to TechBuzz! Stay informed with the latest headlines, updates, and stories. Explore breaking news and get instant updates on trending topics from around the world. Join our community for news that matters.");
     super.initState();
   }
 
