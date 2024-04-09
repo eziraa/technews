@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -27,47 +29,85 @@ class __SettingsState extends State<Settings> {
         ),
       ),
       body: Column(
-        children: [_getRow(icon1: Icons.notifications_outlined, text: 'Notification', icon2: Icons.chevron_right )],
+        children: [
+          _getRow(
+              icon1: Icons.notifications_outlined,
+              text: 'Notification',
+              icon2: FontAwesomeIcons.toggleOn),
+          _getRow(
+              icon1: Icons.lock_outline,
+              text: 'Change Password',
+              icon2: Icons.chevron_right),
+          _getRow(
+              icon1: Icons.location_on,
+              text: 'Location',
+              icon2: FontAwesomeIcons.toggleOn),
+          _getRow(
+              icon1: FontAwesomeIcons.moon,
+              text: 'Dark mode',
+              icon2: FontAwesomeIcons.toggleOn),
+          _getRow(
+              icon1: Icons.help_outline,
+              text: 'Help',
+              icon2: Icons.chevron_right),
+          Container(
+            margin: const EdgeInsets.only(left: 10),
+            child: Row(
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Entypo.log_out,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                const Text(
+                  'Log out',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
 
-Widget _getRow({required IconData icon1, required String text, required IconData icon2}) {
-    return Row(
-      children: [
-        const Divider(
-          thickness: 10,
-          color: Colors.black,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: IconButton(
-            icon: Icon(
-              icon1,
-            ),
+  Widget _getRow({
+    required IconData icon1,
+    required String text,
+    required IconData icon2,
+  }) {
+    return Container(
+      margin: const EdgeInsets.all(10),
+      child: Row(
+        children: [
+          IconButton(
+            icon: Icon(icon1),
             onPressed: () {
+              // onPressed action for icon1
               Navigator.pop(context);
             },
           ),
-        ),
-        Text(
-          text,
-          style: TextStyle(fontSize: 18),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 190),
-          child: IconButton(
+          Expanded(
+            child: Text(
+              text,
+              style: const TextStyle(fontSize: 18),
+            ),
+          ),
+          IconButton(
             icon: Icon(
               icon2,
               color: Colors.black,
             ),
             onPressed: () {
+              // onPressed action for icon2
               Navigator.pop(context);
             },
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
-
