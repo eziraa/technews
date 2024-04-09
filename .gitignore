@@ -52,3 +52,4 @@ web/
 windows/
 lib/flex.dart
 index.html
+lib/bottom.dart

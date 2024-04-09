@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:technews/CustomWidget.dart';
+import 'package:technews/custom_widget.dart';
 import 'package:technews/custom_date.dart';
 
 class Notifications extends StatefulWidget {
