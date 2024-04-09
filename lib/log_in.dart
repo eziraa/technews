@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:technews/custom_widget.dart';
 import 'package:technews/logo.dart';
 
 class LogInPage extends StatefulWidget {
@@ -39,26 +40,16 @@ class _LogInPageState extends State<LogInPage> {
                 ],
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 50),
-              color: Colors.blueAccent,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0))),
-                onPressed: () {
-                  Navigator.pushNamed(context, "/home_page");
-                },
-                child: const Text(
-                  "Log in",
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: const TextStyle(fontSize: 20),
               ),
+              onPressed: () {},
+              child: const Text('Forgot password', style: TextStyle(color: Colors.blue),),
             ),
+            Container(
+                margin: const EdgeInsets.all(20),
+                child: CustomWidget.getElevatedBtn(context, 'Log in')),
           ],
         ),
       ),
