@@ -152,11 +152,18 @@ class CustomWidget {
   }
 
   Widget getProfileImage(String address, {double size = 30}) {
-    return ClipOval(
-      child: Image(
-        image: AssetImage(address),
-        width: size,
-        height: size,
+    return Container(
+      margin: const EdgeInsets.only(left: 15),
+      padding: const EdgeInsets.all(10),
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        border: Border.all(width: 4, color: Colors.white),
+        shape: BoxShape.circle,
+        image: const DecorationImage(
+          image: AssetImage('assets/images/bbc.jpg'),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
