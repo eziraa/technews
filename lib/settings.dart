@@ -35,10 +35,6 @@ class __SettingsState extends State<Settings> {
               text: 'Change Password',
               icon2: Icons.chevron_right),
           _getRow(
-              icon1: Icons.location_on,
-              text: 'Location',
-              icon2: FontAwesomeIcons.toggleOn),
-          _getRow(
               icon1: FontAwesomeIcons.moon,
               text: 'Dark mode',
               icon2: FontAwesomeIcons.toggleOn),
