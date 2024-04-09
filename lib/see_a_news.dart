@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:technews/custom_widget.dart';
+// ignore: depend_on_referenced_packages
+import 'package:share/share.dart';
+
 
 class SeeNewsDetailPage extends StatefulWidget {
   const SeeNewsDetailPage({super.key});
@@ -17,21 +20,30 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
         children: [
           Container(
               padding: const EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  CustomWidget.getProfileImage("assets/images/1.jpg",
-                      size: 100),
-                  const SizedBox(width: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
                     children: [
-                      CustomWidget.getBoldText("BBC News"),
-                      CustomWidget.blurredText("15 minute ago"),
+                      CustomWidget.getProfileImage("assets/images/1.jpg",
+                          size: 70),
+                      const SizedBox(width: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomWidget.getBoldText("BBC News"),
+                          CustomWidget.blurredText("15 minute ago", size: 12),
+                        ],
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      CustomWidget.getElevatedBtn(context, "Following",
+                          size: 16)
                     ],
                   ),
-                  Expanded(child: Container()),
-                  CustomWidget.getElevatedBtn(context, "Following")
-                ],
+                ),
               )),
           Expanded(
             child: SingleChildScrollView(
@@ -40,6 +52,7 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomWidget.getImage("assets/images/4.jpg"),
                     const SizedBox(height: 10),
@@ -77,110 +90,6 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
       ]),
     );
   }
-
-  Widget getNews() {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.only(top: 10, bottom: 0),
-          child: Row(
-            children: [
-              CustomWidget.getBoldText("Latest", size: 24),
-              Expanded(
-                child: Container(),
-              ),
-              TextButton(
-                child: CustomWidget.blurredText("See All"),
-                onPressed: () {
-                  Navigator.pushNamed(context, "/latest");
-                },
-              )
-              // Ico
-            ],
-          ),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(children: [
-            for (String item in [
-              'Artificial Intelligence (AI)',
-              'Machine Learning',
-              'Data Science',
-              'Blockchain and Cryptocurrency',
-              'Cybersecurity',
-              'Cloud Computing',
-              'Internet of Things (IoT)',
-              '5G and Connectivity',
-              'Augmented Reality (AR) and Virtual Reality (VR)',
-              'Gaming',
-              'Mobile Technology',
-              'Hardware',
-              'Software Development',
-              'Tech Policy and Regulation',
-              'Tech Business and Startups',
-              'Tech Events and Conferences'
-            ])
-              Row(
-                children: [
-                  TextButton(
-                    child: CustomWidget.blurredText(item),
-                    onPressed: () {},
-                  ),
-                  const SizedBox(width: 3)
-                ],
-              )
-          ]),
-        ),
-      ],
-    );
-  }
-
-  Widget getANews() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CustomWidget.getMediumImage("assets/images/6.jpg", size: 60),
-            const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomWidget.blurredText("Europe"),
-                CustomWidget.getNormalText(
-                    "${"Ukraine's president, Zelenskey says".substring(0)}...",
-                    size: 10),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CustomWidget.getProfileImage("assets/images/bbc.jpg",
-                        size: 15),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    CustomWidget.getBoldText("BBC News",
-                        color: Colors.black54, size: 9),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    const Icon(
-                      Icons.access_time,
-                      size: 10,
-                      color: Colors.black38,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    CustomWidget.blurredText("4hour ago", size: 10)
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+ 
+  
 }
