@@ -6,10 +6,12 @@ class OnBoardingPage {
   List<Color> colorList = [];
   String imageAddress = "";
   int pageIndex = 0;
+  String text = "";
   OnBoardingPage(
       {required this.colorList,
       required this.imageAddress,
-      required this.pageIndex});
+      required this.pageIndex,
+      required this.text});
 }
 
 class OnBoarding1 extends StatefulWidget {
@@ -20,15 +22,25 @@ class OnBoarding1 extends StatefulWidget {
 }
 
 class _OnBoarding1State extends State<OnBoarding1> {
-  OnBoardingPage page =
-      OnBoardingPage(colorList: [], imageAddress: "imageAddress", pageIndex: 1);
+  OnBoardingPage page = OnBoardingPage(
+      colorList: [], imageAddress: "imageAddress", pageIndex: 1, text: "");
+  List<String> textList = [
+    "Welcome to TechBuzz! Stay informed with the latest headlines, updates, and stories. Explore breaking news and get instant updates on trending topics from around the world. Join our community for news that matters.",
+    "Enjoy curated stories, live updates, and insightful analysis. Dive deep into the news that shapes our world. With our app, you'll have access to a comprehensive news experience. Get started today!",
+    "Discover the world's events with us. Dive into a comprehensive news experience. From local to global, we've got you covered. Download now and stay connected to the latest happenings wherever you go!"
+  ];
   @override
   void initState() {
-    page = OnBoardingPage(colorList: [
-      Colors.blue,
-      const Color.fromRGBO(0, 0, 0, 0.259),
-      Colors.black26
-    ], imageAddress: "assets/images/onboard-0.png", pageIndex: 0);
+    page = OnBoardingPage(
+        colorList: [
+          Colors.blue,
+          const Color.fromRGBO(0, 0, 0, 0.259),
+          Colors.black26
+        ],
+        imageAddress: "assets/images/onboard-0.png",
+        pageIndex: 0,
+        text:
+            "SVG (Scalable Vector Graphics): SVG files are vector-based and can scale without losing quality. They also support transparency, so you can export your icon with a transparent background.");
     super.initState();
   }
 
@@ -48,7 +60,6 @@ class _OnBoarding1State extends State<OnBoarding1> {
               child: Image(
                 image: AssetImage(page.imageAddress),
                 fit: BoxFit.cover,
-
               ),
             ),
             Container(
@@ -70,13 +81,10 @@ class _OnBoarding1State extends State<OnBoarding1> {
             ),
             Container(
               margin: const EdgeInsets.only(left: 20, right: 50, bottom: 20),
-              child: const Text(
-                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus, in praesentium? Perspiciatis nulla unde tempora, doloribus optio voluptates, ipsam, ",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontFamily: "arial"),
+              child: Text(
+                page.text,
+                style: const TextStyle(
+                    color: Colors.black, fontSize: 16, fontFamily: "arial"),
               ),
             ),
             const SizedBox(height: 80),
@@ -110,11 +118,11 @@ class _OnBoarding1State extends State<OnBoarding1> {
                           setState(
                             () {
                               page = OnBoardingPage(
-                                colorList: page.colorList,
-                                pageIndex: page.pageIndex + 1,
-                                imageAddress:
-                                    "assets/images/onboard-${++page.pageIndex}.png",
-                              );
+                                  colorList: page.colorList,
+                                  pageIndex: page.pageIndex + 1,
+                                  imageAddress:
+                                      "assets/images/onboard-${++page.pageIndex}.png",
+                                  text: textList[page.pageIndex]);
                             },
                           );
                         } else {
