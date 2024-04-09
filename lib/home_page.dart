@@ -58,6 +58,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      bottomNavigationBar: customWidget.getBottomNavBar(context),
     );
   }
 
@@ -176,44 +177,55 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget getANews() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          customWidget.getMediumImage("assets/images/6.jpg"),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, "/news-detail");
+      },
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              customWidget.blurredText("Europe"),
-              customWidget.getNormalText("Ukraine's president, Zelenskey says",
-                  size: 16),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+              customWidget.getMediumImage("assets/images/6.jpg", size: 60),
+              const SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  customWidget.getProfileImage("assets/images/bbc.jpg",
-                      size: 15),
-                  const SizedBox(
-                    width: 5,
+                  customWidget.blurredText("Europe"),
+                  customWidget.getNormalText(
+                      "${"Ukraine's president, Zelenskey says".substring(0)}...",
+                      size: 10),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      customWidget.getProfileImage("assets/images/bbc.jpg",
+                          size: 15),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      customWidget.getBoldText("BBC News",
+                          color: Colors.black54, size: 9),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      const Icon(
+                        Icons.access_time,
+                        size: 10,
+                        color: Colors.black38,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      customWidget.blurredText("4hour ago", size: 10)
+                    ],
                   ),
-                  customWidget.getBoldText("BBC News",
-                      color: Colors.black54, size: 9),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Icon(
-                    Icons.access_time,
-                    size: 20,
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  customWidget.blurredText("4hour ago", size: 10)
                 ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
