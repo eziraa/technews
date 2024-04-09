@@ -88,10 +88,21 @@ class CustomSection {
                   CustomWidget.getNormalText(
                       "${"Ukraine's president, Zelenskey says".substring(0)}...",
                       size: 10),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CustomWidget.getProfileImage("assets/images/bbc.jpg",
+                  getANewsFooter(),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Widget getANewsFooter() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        CustomWidget.getProfileImage("assets/images/bbc.jpg",
                           size: 15),
                       const SizedBox(
                         width: 5,
@@ -109,15 +120,8 @@ class CustomSection {
                       const SizedBox(
                         width: 5,
                       ),
-                      CustomWidget.blurredText("4hour ago", size: 10)
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+        CustomWidget.blurredText("4hour ago", size: 10),
+      ],
     );
   }
 }
