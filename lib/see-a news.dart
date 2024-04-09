@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:technews/CustomWidget.dart';
+import 'package:technews/custom_widget.dart';
 
 class SeeNewsDetailPage extends StatefulWidget {
   const SeeNewsDetailPage({super.key});

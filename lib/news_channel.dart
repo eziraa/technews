@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:technews/CustomWidget.dart';
+import 'package:technews/custom_widget.dart';
 
 class NewsChannel extends StatefulWidget {
   const NewsChannel({super.key});
