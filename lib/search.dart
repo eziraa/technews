@@ -15,7 +15,6 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  CustomWidget customWidget = CustomWidget();
   List<SearchOptions> options = [];
   SearchOptions activeOption = SearchOptions(type: 'News', task: '');
   @override
@@ -31,12 +30,12 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customWidget.getAppBar(context),
+      appBar: CustomWidget.getAppBar(context),
       body: Column(
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(15),
-            child: customWidget.getSearchBox(context),
+            child: CustomWidget.getSearchBox(context),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -75,7 +74,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ],
       ),
-      bottomNavigationBar: customWidget.getBottomNavBar(context),
+      bottomNavigationBar: CustomWidget.getBottomNavBar(context),
     );
   }
 
@@ -91,7 +90,7 @@ class _SearchPageState extends State<SearchPage> {
                   Row(
                     children: [
                       TextButton(
-                        child: customWidget.blurredText(option.type ?? ""),
+                        child: CustomWidget.blurredText(option.type ?? ""),
                         onPressed: () {
                           setState(() {
                             activeOption = option;
@@ -125,24 +124,24 @@ class _SearchPageState extends State<SearchPage> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          customWidget.getMediumImage("assets/images/6.jpg", size: 60),
+          CustomWidget.getMediumImage("assets/images/6.jpg", size: 60),
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              customWidget.blurredText("Europe"),
-              customWidget.getNormalText(
+              CustomWidget.blurredText("Europe"),
+              CustomWidget.getNormalText(
                   "${"Ukraine's president, Zelenskey says".substring(0, 10)}...",
                   size: 10),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  customWidget.getProfileImage("assets/images/bbc.jpg",
+                  CustomWidget.getProfileImage("assets/images/bbc.jpg",
                       size: 15),
                   const SizedBox(
                     width: 5,
                   ),
-                  customWidget.getBoldText("BBC News",
+                  CustomWidget.getBoldText("BBC News",
                       color: Colors.black54, size: 9),
                   const SizedBox(
                     width: 5,
@@ -155,12 +154,12 @@ class _SearchPageState extends State<SearchPage> {
                   const SizedBox(
                     width: 5,
                   ),
-                  customWidget.blurredText("4hour ago", size: 10)
+                  CustomWidget.blurredText("4hour ago", size: 10)
                 ],
               ),
             ],
           ),
-          customWidget.getElevatedBtn(context, activeOption.task ?? "")
+          CustomWidget.getElevatedBtn(context, activeOption.task ?? "")
         ],
       ),
     );

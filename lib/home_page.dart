@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:technews/CustomWidget.dart';
+import 'package:technews/custom-section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,16 +10,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  CustomWidget customWidget = CustomWidget();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customWidget.getAppBar(context),
+      appBar: CustomWidget.getAppBar(context),
       body: Column(
         children: [
           Container(
             padding: const EdgeInsets.all(20),
-            child: customWidget.getSearchBox(context),
+            child: CustomWidget.getSearchBox(context),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     _getTrending(),
-                    getNews(),
+                    CustomSection.getNews(context),
                     getANews(),
                     const SizedBox(height: 10),
                     getANews(),
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      bottomNavigationBar: customWidget.getBottomNavBar(context),
+      bottomNavigationBar: CustomWidget.getBottomNavBar(context),
     );
   }
 
@@ -70,12 +70,12 @@ class _HomePageState extends State<HomePage> {
         children: [
           Row(
             children: [
-              customWidget.getBoldText("Trending", size: 24),
+              CustomWidget.getBoldText("Trending", size: 24),
               Expanded(
                 child: Container(),
               ),
               TextButton(
-                child: customWidget.blurredText("See All"),
+                child: CustomWidget.blurredText("See All"),
                 onPressed: () {
                   Navigator.pushNamed(
                     context,
@@ -89,18 +89,18 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 7,
           ),
-          customWidget.getImage("assets/images/1.jpg"),
-          customWidget.blurredText("Europe"),
-          customWidget.getNormalText("Russian warship : Moskava sinks  ",
+          CustomWidget.getImage("assets/images/1.jpg"),
+          CustomWidget.blurredText("Europe"),
+          CustomWidget.getNormalText("Russian warship : Moskava sinks  ",
               size: 24),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              customWidget.getProfileImage("assets/images/bbc.jpg"),
+              CustomWidget.getProfileImage("assets/images/bbc.jpg"),
               const SizedBox(
                 width: 5,
               ),
-              customWidget.getBoldText("BBC News", color: Colors.black54),
+              CustomWidget.getBoldText("BBC News", color: Colors.black54),
               const SizedBox(
                 width: 20,
               ),
@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 width: 5,
               ),
-              customWidget.blurredText("4hour ago")
+              CustomWidget.blurredText("4hour ago")
             ],
           ),
         ],
@@ -119,62 +119,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget getNews() {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.only(top: 10, bottom: 0),
-          child: Row(
-            children: [
-              customWidget.getBoldText("Latest", size: 24),
-              Expanded(
-                child: Container(),
-              ),
-              TextButton(
-                child: customWidget.blurredText("See All"),
-                onPressed: () {
-                  Navigator.pushNamed(context, "/latest");
-                },
-              )
-              // Ico
-            ],
-          ),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(children: [
-            for (String item in [
-              'Artificial Intelligence (AI)',
-              'Machine Learning',
-              'Data Science',
-              'Blockchain and Cryptocurrency',
-              'Cybersecurity',
-              'Cloud Computing',
-              'Internet of Things (IoT)',
-              '5G and Connectivity',
-              'Augmented Reality (AR) and Virtual Reality (VR)',
-              'Gaming',
-              'Mobile Technology',
-              'Hardware',
-              'Software Development',
-              'Tech Policy and Regulation',
-              'Tech Business and Startups',
-              'Tech Events and Conferences'
-            ])
-              Row(
-                children: [
-                  TextButton(
-                    child: customWidget.blurredText(item),
-                    onPressed: () {},
-                  ),
-                  const SizedBox(width: 3)
-                ],
-              )
-          ]),
-        ),
-      ],
-    );
-  }
+  
 
   Widget getANews() {
     return GestureDetector(
@@ -188,24 +133,24 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              customWidget.getMediumImage("assets/images/6.jpg", size: 60),
+              CustomWidget.getMediumImage("assets/images/6.jpg", size: 60),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  customWidget.blurredText("Europe"),
-                  customWidget.getNormalText(
+                  CustomWidget.blurredText("Europe"),
+                  CustomWidget.getNormalText(
                       "${"Ukraine's president, Zelenskey says".substring(0)}...",
                       size: 10),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      customWidget.getProfileImage("assets/images/bbc.jpg",
+                      CustomWidget.getProfileImage("assets/images/bbc.jpg",
                           size: 15),
                       const SizedBox(
                         width: 5,
                       ),
-                      customWidget.getBoldText("BBC News",
+                      CustomWidget.getBoldText("BBC News",
                           color: Colors.black54, size: 9),
                       const SizedBox(
                         width: 5,
@@ -218,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(
                         width: 5,
                       ),
-                      customWidget.blurredText("4hour ago", size: 10)
+                      CustomWidget.blurredText("4hour ago", size: 10)
                     ],
                   ),
                 ],

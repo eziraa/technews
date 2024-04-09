@@ -9,14 +9,13 @@ class SavedPage extends StatefulWidget {
 }
 
 class _SavedPageState extends State<SavedPage> {
-  CustomWidget customWidget = CustomWidget();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customWidget.getAppBar(context),
+      appBar: CustomWidget.getAppBar(context),
       body: Column(
         children: [
-          customWidget.getSearchBox(context),
+          CustomWidget.getSearchBox(context),
           Expanded(
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
@@ -64,7 +63,7 @@ class _SavedPageState extends State<SavedPage> {
           margin: const EdgeInsets.only(top: 5, bottom: 0),
           child: Row(
             children: [
-              customWidget.getBoldText("Saved", size: 24),
+              CustomWidget.getBoldText("Saved", size: 24),
             ],
           ),
         ),
@@ -77,24 +76,24 @@ class _SavedPageState extends State<SavedPage> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          customWidget.getMediumImage("assets/images/6.jpg", size: 60),
+          CustomWidget.getMediumImage("assets/images/6.jpg", size: 60),
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              customWidget.blurredText("Europe"),
-              customWidget.getNormalText(
+              CustomWidget.blurredText("Europe"),
+              CustomWidget.getNormalText(
                   "${"Ukraine's president, Zelenskey says".substring(0, 10)}...",
                   size: 10),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  customWidget.getProfileImage("assets/images/bbc.jpg",
+                  CustomWidget.getProfileImage("assets/images/bbc.jpg",
                       size: 15),
                   const SizedBox(
                     width: 5,
                   ),
-                  customWidget.getBoldText("BBC News",
+                  CustomWidget.getBoldText("BBC News",
                       color: Colors.black54, size: 9),
                   const SizedBox(
                     width: 5,
@@ -107,12 +106,12 @@ class _SavedPageState extends State<SavedPage> {
                   const SizedBox(
                     width: 5,
                   ),
-                  customWidget.blurredText("4hour ago", size: 10)
+                  CustomWidget.blurredText("4hour ago", size: 10)
                 ],
               ),
             ],
           ),
-          customWidget.getElevatedBtn(context, "Remove")
+          CustomWidget.getElevatedBtn(context, "Remove")
         ],
       ),
     );

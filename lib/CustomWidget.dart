@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:technews/logo.dart';
 
 class CustomWidget {
-  AppBar getAppBar(BuildContext context) {
+  static AppBar getAppBar(BuildContext context) {
     return AppBar(
       actions: [
         Row(
@@ -25,7 +25,7 @@ class CustomWidget {
       ],
     );
   }
-  AppBar getAppBarWithShare(BuildContext context) {
+  static AppBar getAppBarWithShare(BuildContext context) {
     return AppBar(
       actions: [
         Row(
@@ -49,7 +49,7 @@ class CustomWidget {
     );
   }
 
-  Widget getSearchBox(BuildContext context) {
+  static Widget getSearchBox(BuildContext context) {
     return Container(
       height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -87,7 +87,7 @@ class CustomWidget {
     );
   }
 
-  Widget blurredText(String data, {double size = 16}) {
+  static Widget blurredText(String data, {double size = 16}) {
     return Text(
       data,
       style: TextStyle(
@@ -97,7 +97,7 @@ class CustomWidget {
     );
   }
 
-  Widget getImage(String imageAddress) {
+  static Widget getImage(String imageAddress) {
     return Container(
       margin: const EdgeInsets.only(top: 20, bottom: 20),
       width: 380,
@@ -130,7 +130,7 @@ class CustomWidget {
     );
   }
 
-  Widget getBoldText(String data,
+  static Widget getBoldText(String data,
       {Color color = Colors.black, double size = 16}) {
     return Text(
       data,
@@ -139,7 +139,7 @@ class CustomWidget {
     );
   }
 
-  Widget getNormalText(String data,
+  static Widget getNormalText(String data,
       {Color color = Colors.black, double size = 16}) {
     return Container(
       padding: const EdgeInsets.all(2.0),
@@ -151,7 +151,7 @@ class CustomWidget {
     );
   }
 
-  Widget getProfileImage(String address, {double size = 30}) {
+  static Widget getProfileImage(String address, {double size = 30}) {
     return Container(
       margin: const EdgeInsets.only(left: 15),
       padding: const EdgeInsets.all(10),
@@ -168,7 +168,7 @@ class CustomWidget {
     );
   }
 
-  Widget getMediumImage(String address, {double size = 100}) {
+  static Widget getMediumImage(String address, {double size = 100}) {
     return Container(
       padding: const EdgeInsets.all(0.0), // Adjust padding as needed
       decoration: BoxDecoration(
@@ -187,7 +187,8 @@ class CustomWidget {
     );
   }
 
-  Widget getElevatedBtn(BuildContext context, String text, {double size = 20}) {
+  static Widget getElevatedBtn(BuildContext context, String text,
+      {double size = 20}) {
     return Container(
       padding: const EdgeInsets.all(0),
       decoration: BoxDecoration(
@@ -209,7 +210,7 @@ class CustomWidget {
     );
   }
 
-  Widget getBottomNavBar(BuildContext context) {
+  static Widget getBottomNavBar(BuildContext context) {
     return BottomNavigationBar(
       onTap: (index) {
         switch (index) {
