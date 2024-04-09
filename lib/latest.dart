@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:technews/custom-section.dart';
 import 'package:technews/custom_widget.dart';
 
 class LatestPage extends StatefulWidget {
@@ -38,6 +39,36 @@ class _LatestPageState extends State<LatestPage> {
             onPressed: () {},
           ),
         ],
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            CustomSection.getNewsSourcesHrBar(),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+            CustomSection.getANews(context),
+            const SizedBox(height: 5),
+          ],
+        ),
       ),
     );
   }
