@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:technews/custom_widget.dart';
 
 class CustomSection {
-  static Widget getNews(BuildContext context) {
+  static Widget getLatestNewsHeader(BuildContext context) {
     return Column(
       children: [
-        Container(
-          margin: const EdgeInsets.only(top: 10, bottom: 0),
+        Padding(
+          padding:
+              const EdgeInsets.only(left: 20, bottom: 0, right: 5, top: 10),
           child: Row(
             children: [
               CustomWidget.getBoldText("Latest", size: 24),
@@ -29,37 +30,40 @@ class CustomSection {
   }
 
   static getNewsSourcesHrBar() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(children: [
-        for (String item in [
-          'Artificial Intelligence (AI)',
-          'Machine Learning',
-          'Data Science',
-          'Blockchain and Cryptocurrency',
-          'Cybersecurity',
-          'Cloud Computing',
-          'Internet of Things (IoT)',
-          '5G and Connectivity',
-          'Augmented Reality (AR) and Virtual Reality (VR)',
-          'Gaming',
-          'Mobile Technology',
-          'Hardware',
-          'Software Development',
-          'Tech Policy and Regulation',
-          'Tech Business and Startups',
-          'Tech Events and Conferences'
-        ])
-          Row(
-            children: [
-              TextButton(
-                child: CustomWidget.blurredText(item),
-                onPressed: () {},
-              ),
-              const SizedBox(width: 3)
-            ],
-          )
-      ]),
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(children: [
+          for (String item in [
+            'Artificial Intelligence (AI)',
+            'Machine Learning',
+            'Data Science',
+            'Blockchain and Cryptocurrency',
+            'Cybersecurity',
+            'Cloud Computing',
+            'Internet of Things (IoT)',
+            '5G and Connectivity',
+            'Augmented Reality (AR) and Virtual Reality (VR)',
+            'Gaming',
+            'Mobile Technology',
+            'Hardware',
+            'Software Development',
+            'Tech Policy and Regulation',
+            'Tech Business and Startups',
+            'Tech Events and Conferences'
+          ])
+            Row(
+              children: [
+                TextButton(
+                  child: CustomWidget.blurredText(item),
+                  onPressed: () {},
+                ),
+                const SizedBox(width: 3)
+              ],
+            )
+        ]),
+      ),
     );
   }
 
@@ -68,10 +72,10 @@ class CustomSection {
       onTap: () {
         Navigator.pushNamed(context, "/news-detail");
       },
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
