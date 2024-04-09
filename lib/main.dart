@@ -13,6 +13,7 @@ import 'package:technews/latest.dart';
 import 'package:technews/notification.dart';
 import 'package:technews/news_channel.dart';
 import 'package:technews/settings.dart';
+import 'package:technews/change_password.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -35,5 +36,6 @@ void main() {
         '/saved': (context) => const SavedPage(),
         '/news_channel': (context) => const NewsChannel(),
         '/settings': (context) => const Settings(),
+        '/change_password': (constext) => const ChangePassword(),
       }));
 }
