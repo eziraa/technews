@@ -26,7 +26,31 @@ class __SettingsState extends State<Settings> {
           },
         ),
       ),
-      
+      body: Column(
+        children: [
+          Row(
+            children: [
+              IconButton(
+                icon: const Icon(
+                  Icons.notifications,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.chevron_right,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
