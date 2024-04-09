@@ -31,10 +31,6 @@ class __SettingsState extends State<Settings> {
       body: Column(
         children: [
           _getRow(
-              icon1: Icons.notifications_outlined,
-              text: 'Notification',
-              icon2: FontAwesomeIcons.toggleOn),
-          _getRow(
               icon1: Icons.lock_outline,
               text: 'Change Password',
               icon2: Icons.chevron_right),
