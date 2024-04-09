@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:technews/custom_widget.dart';
 
 class NewsChannel extends StatefulWidget {
@@ -117,6 +115,7 @@ class _NewsChannelState extends State<NewsChannel> {
                     ),
                   ),
                 ),
+                const SizedBox(height: 10,)
               ],
             ),
             Expanded(

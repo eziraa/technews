@@ -19,13 +19,6 @@ class _MainAppState extends State<MainApp> {
             children: [
               const Logo(),
               const SizedBox(height: 20),
-              const Text(
-                'Tech News',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
               const SizedBox(height: 20),
               const Text(
                 'A place to stay up to date with the latest tech news',
