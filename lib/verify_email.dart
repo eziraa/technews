@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:technews/custom_widget.dart';
 import 'package:technews/logo.dart';
 
 class VerifyEmail extends StatefulWidget {
@@ -12,20 +13,22 @@ class _VerifyEmailState extends State<VerifyEmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
+      ),
       body: Container(
-        color: Colors.white,
-        padding: const EdgeInsets.all(50),
+        margin: const EdgeInsets.all(20),
         child: Column(
           children: [
             const Logo(),
             const SizedBox(height: 30),
             Container(
               margin: const EdgeInsets.only(top: 50),
-              child: const Column(
+              child: Column(
                 children: [
                   Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: TextField(
                           decoration: InputDecoration(
                             labelText: "Enter Your Email",
@@ -33,50 +36,50 @@ class _VerifyEmailState extends State<VerifyEmail> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
+                      // ElevatedButton(
+                      //   onPressed: null,
+                      //   child: Text("Get OTP",
+                      //       style: TextStyle(
+                      //         fontSize: 14,
+                      //         color: Colors.white,
+                      //       )),
+                      // ),
                       ElevatedButton(
-                        onPressed: null,
-                                                child: Text("Get OTP",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            )),
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            backgroundColor: Colors.blueAccent),
+                        child: const Text(
+                          'Get OTP',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 250, 254, 253),
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
-                  TextField(
+                  const SizedBox(height: 10),
+                  const TextField(
                     decoration: InputDecoration(
                       labelText: "Verification Code",
                       labelStyle: TextStyle(),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),
             Container(
               margin: const EdgeInsets.only(top: 50),
-              color: Colors.blue,
-              child:const ElevatedButton(
-                // style: ElevatedButton.styleFrom(
-                  //   shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(10.0),
-                  //   ),
-                // ),
-                onPressed: null,
-                child: Text(
-                  "Verify",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              child: CustomWidget.getElevatedBtn(context, 'Verify')
             ),
           ], // Closing square bracket for Column children
-        ), // Closing parenthesis for Column
+        ),
       ), // Closing parenthesis for Container
     ); // Closing parenthesis for Scaffold
   }
