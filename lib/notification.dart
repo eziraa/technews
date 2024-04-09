@@ -156,7 +156,7 @@ class _NotificationState extends State<Notifications> {
               ),
             ],
           ),
-          CustomWidget().getElevatedBtn(context, "Follow")
+          CustomWidget.getElevatedBtn(context, "Follow")
         ],
       ),
     );

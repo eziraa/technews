@@ -66,7 +66,7 @@ class _ChooseNewsSourcesState extends State<ChooseNewsSources> {
           const SizedBox(
             height: 20,
           ),
-          CustomWidget().getSearchBox(context),
+          CustomWidget.getSearchBox(context),
           const SizedBox(
             height: 20,
           ),

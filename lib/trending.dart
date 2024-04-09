@@ -18,7 +18,6 @@ String dotDisplayer(String text) {
 }
 
 class _TrendingState extends State<Trending> {
-  CustomWidget custom = CustomWidget();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +44,7 @@ class _TrendingState extends State<Trending> {
           return Center(
               child: Column(
             children: [
-              custom.getImage('assets/images/bbc.jpg'),
+              CustomWidget.getImage('assets/images/bbc.jpg'),
               const Text(
                 'Europe',
                 textAlign: TextAlign.left,

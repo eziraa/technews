@@ -9,7 +9,6 @@ class NewsChannel extends StatefulWidget {
 }
 
 class _NewsChannelState extends State<NewsChannel> {
-  CustomWidget customWidget = CustomWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -94,12 +93,12 @@ class _NewsChannelState extends State<NewsChannel> {
                       margin:
                           const EdgeInsets.only(left: 25, top: 10, right: 60),
                       child:
-                          CustomWidget().getElevatedBtn(context, 'Following'),
+                          CustomWidget.getElevatedBtn(context, 'Following'),
                     ),
                     Container(
                         margin: const EdgeInsets.only(top: 10),
                         child:
-                            CustomWidget().getElevatedBtn(context, 'Website')),
+                            CustomWidget.getElevatedBtn(context, 'Website')),
                   ],
                 ),
                 const SizedBox(
@@ -149,28 +148,28 @@ class _NewsChannelState extends State<NewsChannel> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          customWidget.getMediumImage("assets/images/6.jpg", size: 80),
+          CustomWidget.getMediumImage("assets/images/6.jpg", size: 80),
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              customWidget.blurredText("Europe"),
+              CustomWidget.blurredText("Europe"),
               Text(
                 "${"Ukraine's president, Zelenskey says hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh".substring(0, 30)}...",
                 style: const TextStyle(fontSize: 18),
               ),
-              // customWidget.getNormalText(
+              // CustomWidget.getNormalText(
               //     "${"Ukraine's president, Zelenskey says hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh".substring(0, 20)}...",
               //     size: 18),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  customWidget.getProfileImage("assets/images/bbc.jpg",
+                  CustomWidget.getProfileImage("assets/images/bbc.jpg",
                       size: 15),
                   const SizedBox(
                     width: 10,
                   ),
-                  customWidget.getBoldText("BBC News",
+                  CustomWidget.getBoldText("BBC News",
                       color: Colors.black54, size: 12),
                   const SizedBox(
                     width: 10,
@@ -183,7 +182,7 @@ class _NewsChannelState extends State<NewsChannel> {
                   const SizedBox(
                     width: 13,
                   ),
-                  customWidget.blurredText("4hour ago", size: 13)
+                  CustomWidget.blurredText("4hour ago", size: 13)
                 ],
               ),
             ],
