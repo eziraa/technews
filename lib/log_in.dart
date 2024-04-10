@@ -46,7 +46,9 @@ class _LogInPageState extends State<LogInPage> {
                 style: TextButton.styleFrom(
                   textStyle: const TextStyle(fontSize: 20),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, "/verify_email");
+                },
                 child: const Text(
                   'Forgot password',
                   style: TextStyle(color: Colors.blue),
@@ -60,6 +62,31 @@ class _LogInPageState extends State<LogInPage> {
                   handler: () => {Navigator.pushNamed(context, "/home_page")},
                 ),
               ),
+              TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/sign_up");
+                  },
+                  child: RichText(
+                    text: const TextSpan(children: [
+                      TextSpan(
+                        text: "Don't have an account? ",
+                        style: TextStyle(
+                          color: Colors.blueAccent,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "Signup",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueAccent,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ]),
+                  )),
             ],
           ),
         ),

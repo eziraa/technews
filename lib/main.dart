@@ -9,16 +9,19 @@ import 'package:technews/search.dart';
 import 'package:technews/see_a_news.dart';
 import 'package:technews/select_topic.dart';
 import 'package:technews/edit_profile.dart';
-import 'package:technews/settings.dart';
+import 'package:technews/sign_up.dart';
 import 'package:technews/trending.dart';
 import 'package:technews/latest.dart';
 import 'package:technews/notification.dart';
+import 'package:technews/verify_email.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(
+    MaterialApp(
       title: 'Tech News App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
+      initialRoute: '/log_in',
       initialRoute: '/',
       routes: {
         '/': (context) => const MainApp(),
@@ -35,6 +38,8 @@ void main() {
         '/saved': (context) => const SavedPage(),
         '/news-detail': (context) => const SeeNewsDetailPage(),
         '/setting': (context) => const Settings(),
+        '/sign_up': (context) => const SignUpPage(),
+        '/verify_email': (context) => const VerifyEmail(),
       },
     ),
   );
