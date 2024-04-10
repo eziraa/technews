@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-
 
 class NewsSource extends StatefulWidget {
   const NewsSource({super.key});
@@ -18,13 +15,6 @@ class _NewsSourceState extends State<NewsSource> {
           title: const Text(
             'Choose your News Source',
             style: TextStyle(fontSize: 20),
-          ),
-          leading: const IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-            onPressed: null,
           ),
         ),
         body: ListView(
@@ -94,6 +84,21 @@ class _NewsSourceState extends State<NewsSource> {
                       'Follow',
                       style: TextStyle(color: Colors.blue),
                     ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.all(20),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/home_page");
+                  },
+                  child: const Text(
+                    'Finish',
+                    style: TextStyle(color: Colors.blue, fontSize: 16),
                   ),
                 ),
               ),
