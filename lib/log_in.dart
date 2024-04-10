@@ -51,7 +51,7 @@ class _LogInPageState extends State<LogInPage> {
                 },
                 child: const Text(
                   'Forgot password',
-                  style: TextStyle(color: Colors.blue),
+                  style: TextStyle(color: Colors.blue,fontSize: 12),
                 ),
               ),
               Container(
