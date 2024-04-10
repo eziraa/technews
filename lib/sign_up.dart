@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:technews/logo.dart';
+import 'package:technews/custom_widget.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -20,7 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
         padding: const EdgeInsets.all(50),
         child: Column(
           children: [
-            Logo().getLogo(),
+            Logo().getLogo(size: 60),
             const SizedBox(height: 30),
             const Column(
               children: [
@@ -46,23 +47,14 @@ class _SignUpPageState extends State<SignUpPage> {
                 SizedBox(height: 10),
               ],
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 50),
-              color: Colors.blueAccent,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0))),
-                onPressed: null,
-                child: const Text(
-                  "Sign up",
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+           Container(
+                margin: const EdgeInsets.all(20),
+                child: CustomWidget.getElevatedBtn(
+                  context,
+                  'Sign up',
+                  handler: () => {Navigator.pushNamed(context, "/log_in")},
                 ),
               ),
-            ),
           ],
         ),
       ),
