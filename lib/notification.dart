@@ -155,7 +155,7 @@ class _NotificationState extends State<Notifications> {
               ),
             ],
           ),
-          CustomWidget.getElevatedBtn(context, "Follow", size: 16)
+          Container(margin: const EdgeInsets.only(left: 50),child: CustomWidget.getElevatedBtn(context, "Follow", size: 16))
         ],
       ),
     );

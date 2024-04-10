@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Logo {
-
   Widget getLogo({double size = 140}) {
     return Container(
       padding: const EdgeInsets.only(top: 20),
