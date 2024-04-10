@@ -16,46 +16,49 @@ class _SignUpPageState extends State<SignUpPage> {
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
       ),
-      body: Container(
-        color: Colors.white,
-        padding: const EdgeInsets.all(50),
-        child: Column(
-          children: [
-            Logo().getLogo(size: 60),
-            const SizedBox(height: 30),
-            const Column(
-              children: [
-                TextField(
-                  decoration: InputDecoration(
-                      labelText: "Username", labelStyle: TextStyle()),
-                ),
-                SizedBox(height: 10),
-                TextField(
-                  decoration: InputDecoration(
-                      labelText: "Email", labelStyle: TextStyle()),
-                ),
-                SizedBox(height: 10),
-                TextField(
-                  decoration: InputDecoration(
-                      labelText: "Password", labelStyle: TextStyle()),
-                ),
-                SizedBox(height: 10),
-                TextField(
-                  decoration: InputDecoration(
-                      labelText: "Re-enter Password", labelStyle: TextStyle()),
-                ),
-                SizedBox(height: 10),
-              ],
-            ),
-           Container(
-                margin: const EdgeInsets.all(20),
-                child: CustomWidget.getElevatedBtn(
-                  context,
-                  'Sign up',
-                  handler: () => {Navigator.pushNamed(context, "/log_in")},
-                ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Container(
+          color: Colors.white,
+          padding: const EdgeInsets.all(50),
+          child: Column(
+            children: [
+              Logo().getLogo(size: 60),
+              const SizedBox(height: 30),
+              const Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                        labelText: "Username", labelStyle: TextStyle()),
+                  ),
+                  SizedBox(height: 10),
+                  TextField(
+                    decoration: InputDecoration(
+                        labelText: "Email", labelStyle: TextStyle()),
+                  ),
+                  SizedBox(height: 10),
+                  TextField(
+                    decoration: InputDecoration(
+                        labelText: "Password", labelStyle: TextStyle()),
+                  ),
+                  SizedBox(height: 10),
+                  TextField(
+                    decoration: InputDecoration(
+                        labelText: "Re-enter Password", labelStyle: TextStyle()),
+                  ),
+                  SizedBox(height: 10),
+                ],
               ),
-          ],
+             Container(
+                  margin: const EdgeInsets.all(20),
+                  child: CustomWidget.getElevatedBtn(
+                    context,
+                    'Sign up',
+                    handler: () => {Navigator.pushNamed(context, "/log_in")},
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );
