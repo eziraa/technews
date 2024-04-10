@@ -16,17 +16,17 @@ class _EditProfileState extends State<EditProfile> {
             'Edit your profile',
             style: TextStyle(fontSize: 20),
           ),
-          leading: const IconButton(
-            icon: Icon(
+          leading: IconButton(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
-            onPressed: null,
+            onPressed: () => {Navigator.pop(context)},
           ),
-          actions: const [
+          actions: [
             IconButton(
-                onPressed: null,
-                icon: Icon(
+                onPressed: () => {Navigator.pushNamed(context, "/settings")},
+                icon: const Icon(
                   Icons.settings,
                   color: Colors.black,
                 ))
