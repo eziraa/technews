@@ -257,19 +257,32 @@ class CustomWidget {
       currentIndex: 0,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: Icon(
+            Icons.home,
+            color: Colors.black87,
+          ),
           label: "Home",
+
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.save_outlined),
+          icon: Icon(
+            Icons.search,
+            color: Colors.black87,
+          ),
           label: "search",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search_outlined),
+          icon: Icon(
+            Icons.saved_search_outlined,
+            color: Colors.black87,
+          ),
           label: "saved",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.supervised_user_circle),
+          icon: Icon(
+            Icons.supervised_user_circle,
+            color: Colors.black87,
+          ),
           label: "Profile",
         ),
       ],
