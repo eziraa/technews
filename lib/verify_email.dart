@@ -20,7 +20,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
         margin: const EdgeInsets.all(20),
         child: Column(
           children: [
-            const Logo(),
+            Logo().getLogo(size: 70),
             const SizedBox(height: 30),
             Container(
               margin: const EdgeInsets.only(top: 50),

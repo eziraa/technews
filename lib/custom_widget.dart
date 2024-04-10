@@ -9,7 +9,7 @@ class CustomWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Logo(),
+            Logo().getLogo(size: 40),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.23,
             ),
@@ -193,14 +193,14 @@ class CustomWidget {
   }
 
   static Widget getElevatedBtn(BuildContext context, String text,
-      {double size = 20}) {
+      {double size = 20, VoidCallback? handler}) {
     return Container(
       padding: const EdgeInsets.all(0),
       height: size * 2.5,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: Colors.blueAccent),
       child: ElevatedButton(
-        onPressed: null,
+        onPressed: handler,
         style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -229,6 +229,9 @@ class CustomWidget {
           case 2:
             Navigator.pushNamed(context, "/saved");
             break;
+          case 3:
+            Navigator.pushNamed(context, "/edit_profile");
+            break;
         }
       },
       currentIndex: 0,
@@ -244,6 +247,10 @@ class CustomWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.search_outlined),
           label: "saved",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.supervised_user_circle),
+          label: "Profile",
         ),
       ],
     );

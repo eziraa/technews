@@ -13,45 +13,48 @@ class _SavedPageState extends State<SavedPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomWidget.getAppBar(context),
-      body: Column(
-        children: [
-          CustomWidget.getSearchBox(context),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _getSavedNews(),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                  ],
+      body: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: Column(
+          children: [
+            CustomWidget.getSearchBox(context),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _getSavedNews(),
+                      _getANews(),
+                      const SizedBox(height: 10),
+                      _getANews(),
+                      const SizedBox(height: 10),
+                      _getANews(),
+                      const SizedBox(height: 10),
+                      _getANews(),
+                      const SizedBox(height: 10),
+                      _getANews(),
+                      const SizedBox(height: 10),
+                      _getANews(),
+                      const SizedBox(height: 10),
+                      _getANews(),
+                      const SizedBox(height: 10),
+                      _getANews(),
+                      const SizedBox(height: 10),
+                      _getANews(),
+                      const SizedBox(height: 10),
+                      _getANews(),
+                      const SizedBox(height: 10),
+                      _getANews(),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

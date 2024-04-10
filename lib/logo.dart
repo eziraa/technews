@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class Logo extends StatelessWidget {
-  const Logo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+class Logo {
+  Widget getLogo({double size = 140}) {
     return Container(
       padding: const EdgeInsets.only(top: 20),
       child: Row(
@@ -13,7 +9,17 @@ class Logo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Image.asset('assets/images/logo.png'),
-          const SizedBox(width: 40, height: 40, child:  Image(image: AssetImage("assets/images/logo.png"))),
+          Container(
+            width: size,
+            height: size,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Image.asset(
+              'assets/images/logo.png',
+              fit: BoxFit.cover,
+            ),
+          ),
           const SizedBox(width: 10),
           RichText(
             text: const TextSpan(children: [

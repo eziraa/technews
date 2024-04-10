@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:technews/logo.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -19,17 +20,7 @@ class _MainAppState extends State<MainApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  width: 140,
-                  height: 140,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Image.asset(
-                    'assets/images/logo.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                Logo().getLogo(),
                 const SizedBox(width: 10),
                 RichText(
                   text: const TextSpan(children: [

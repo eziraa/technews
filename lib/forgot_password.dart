@@ -24,7 +24,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       ),
       body: Column(
         children: [
-          const Logo(),
+          Logo().getLogo(),
           Container(
             margin: const EdgeInsets.all(30),
             child: const Column(
