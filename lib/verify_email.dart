@@ -47,7 +47,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                               ),
                               backgroundColor: Colors.blueAccent),
                           child: const Text(
-                            'Get OTP',
+                            'Send OTP',
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
