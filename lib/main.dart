@@ -9,6 +9,7 @@ import 'package:technews/search.dart';
 import 'package:technews/see_a_news.dart';
 import 'package:technews/select_topic.dart';
 import 'package:technews/edit_profile.dart';
+import 'package:technews/settings.dart';
 import 'package:technews/sign_up.dart';
 import 'package:technews/trending.dart';
 import 'package:technews/latest.dart';
@@ -21,7 +22,6 @@ void main() {
       title: 'Tech News App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
-      initialRoute: '/log_in',
       initialRoute: '/',
       routes: {
         '/': (context) => const MainApp(),
