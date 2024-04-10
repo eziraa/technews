@@ -8,14 +8,34 @@ class CustomWidget {
       actions: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Logo().getLogo(size: 40),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.23,
+            RichText(
+              text: const TextSpan(children: [
+                TextSpan(
+                  text: "Tech",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueAccent,
+                  ),
+                ),
+                TextSpan(
+                  text: "Buzz",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+              ]),
+            ),
+            const SizedBox(
+              width: 40,
             ),
             IconButton(
               icon: const Icon(
-                Icons.notifications_outlined,
+                Icons.notifications,
                 size: 30,
               ),
               onPressed: () {
