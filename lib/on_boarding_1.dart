@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
+import 'package:technews/custom_widget.dart';
 
 class OnBoardingPage {
   List<Color> colorList = [];
@@ -47,8 +48,8 @@ class _OnBoarding1State extends State<OnBoarding1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
+      body: Container(
+        margin: EdgeInsets.only(top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -56,7 +57,7 @@ class _OnBoarding1State extends State<OnBoarding1> {
               padding: const EdgeInsets.all(10),
               margin: const EdgeInsets.only(top: 20),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: MediaQuery.of(context).size.height * 0.4,
               child: Image(
                 image: AssetImage(page.imageAddress),
                 fit: BoxFit.cover,
