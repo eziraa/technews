@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Logo extends StatelessWidget {
   const Logo({super.key});
@@ -12,9 +13,7 @@ class Logo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Image.asset('assets/images/logo.png'),
-          const CircleAvatar(
-            child: Image(image: AssetImage("assets/images/logo.png")),
-          ),
+          const SizedBox(width: 40, height: 40, child:  Image(image: AssetImage("assets/images/logo.png"))),
           const SizedBox(width: 10),
           RichText(
             text: const TextSpan(children: [
