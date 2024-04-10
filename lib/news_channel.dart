@@ -9,7 +9,6 @@ class NewsChannel extends StatefulWidget {
 }
 
 class _NewsChannelState extends State<NewsChannel> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,14 +57,22 @@ class _NewsChannelState extends State<NewsChannel> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(left: 70),
+                      margin: const EdgeInsets.only(left: 20),
                       child: const Column(
                         children: [
                           Text(
                             '1.2M',
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black54,
+                            ),
                           ),
-                          Text('Followers')
+                          Text(
+                            'Followers',
+                            style: TextStyle(
+                              color: Colors.black54,
+                            ),
+                          )
                         ],
                       ),
                     )
@@ -92,13 +99,11 @@ class _NewsChannelState extends State<NewsChannel> {
                     Container(
                       margin:
                           const EdgeInsets.only(left: 25, top: 10, right: 60),
-                      child:
-                          CustomWidget.getElevatedBtn(context, 'Following'),
+                      child: CustomWidget.getElevatedBtn(context, 'Following'),
                     ),
                     Container(
                         margin: const EdgeInsets.only(top: 10),
-                        child:
-                            CustomWidget.getElevatedBtn(context, 'Website')),
+                        child: CustomWidget.getElevatedBtn(context, 'Website')),
                   ],
                 ),
                 const SizedBox(
@@ -115,7 +120,9 @@ class _NewsChannelState extends State<NewsChannel> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10,)
+                const SizedBox(
+                  height: 10,
+                )
               ],
             ),
             Expanded(
