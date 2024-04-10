@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:technews/logo.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 
 class CustomWidget {
