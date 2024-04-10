@@ -20,7 +20,7 @@ class _SignUpPageState extends State<SignUpPage> {
         padding: const EdgeInsets.all(50),
         child: Column(
           children: [
-            const Logo(),
+            Logo().getLogo(),
             const SizedBox(height: 30),
             const Column(
               children: [
