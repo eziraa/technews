@@ -75,9 +75,12 @@ class _VerifyEmailState extends State<VerifyEmail> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 50),
-              child: CustomWidget.getElevatedBtn(context, 'Verify')
-            ),
+                margin: const EdgeInsets.only(top: 50),
+                child: CustomWidget.getElevatedBtn(
+                  context,
+                  'Verify',
+                  handler: () => {Navigator.pushNamed(context, "/forgot_password")},
+                )),
           ], // Closing square bracket for Column children
         ),
       ), // Closing parenthesis for Container
