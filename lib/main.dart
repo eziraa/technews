@@ -10,6 +10,7 @@ import 'package:technews/see_a_news.dart';
 import 'package:technews/select_topic.dart';
 import 'package:technews/edit_profile.dart';
 import 'package:technews/settings.dart';
+import 'package:technews/settings.dart';
 import 'package:technews/sign_up.dart';
 import 'package:technews/trending.dart';
 import 'package:technews/latest.dart';
@@ -22,6 +23,7 @@ void main() {
       title: 'Tech News App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
+      initialRoute: '/',
       initialRoute: '/',
       routes: {
         '/': (context) => const MainApp(),
@@ -40,6 +42,7 @@ void main() {
         '/setting': (context) => const Settings(),
         '/sign_up': (context) => const SignUpPage(),
         '/verify_email': (context) => const VerifyEmail(),
+        '/settings': (context) => const Settings()
       },
     ),
   );
