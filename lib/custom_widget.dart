@@ -237,6 +237,8 @@ class CustomWidget {
 
   static Widget getBottomNavBar(BuildContext context) {
     return BottomNavigationBar(
+      selectedItemColor: Colors.blue,
+      unselectedItemColor: const Color.fromARGB(194, 56, 52, 52),
       onTap: (index) {
         switch (index) {
           case 0:
@@ -253,22 +255,31 @@ class CustomWidget {
             break;
         }
       },
-      currentIndex: 0,
+      currentIndex: 3,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: Icon(
+            Icons.home,
+          ),
           label: "Home",
+
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.save_outlined),
+          icon: Icon(
+            Icons.search,
+          ),
           label: "search",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search_outlined),
+          icon: Icon(
+            Icons.save,
+          ),
           label: "saved",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.supervised_user_circle),
+          icon: Icon(
+            Icons.supervised_user_circle_sharp,
+          ),
           label: "Profile",
         ),
       ],
