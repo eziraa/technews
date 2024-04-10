@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:technews/custom_widget.dart';
 
@@ -88,7 +90,7 @@ class CustomSection {
                   CustomWidget.getNormalText(
                       "${"Ukraine's president, Zelenskey says".substring(0)}...",
                       size: 7),
-                  getANewsFooter(6),
+                  getANewsFooter(context, 6),
                 ],
               ),
             ],
@@ -98,34 +100,37 @@ class CustomSection {
     );
   }
 
-  static Widget getANewsFooter(double size) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        CustomWidget.getProfileImage("assets/images/bbc.jpg",
-          size: size * 4,
-        ),
-        SizedBox(
-          width: size,
-                      ),
-                      CustomWidget.getBoldText("BBC News",
-          color: Colors.black54,
-          size: size * 1.5,
-        ),
-        SizedBox(
-          width: size,
-        ),
-        Icon(
-                        Icons.access_time,
-          size: size * 2,
-                        color: Colors.black38,
-                      ),
-        SizedBox(
-          width: size,
-                      ),
-        CustomWidget.blurredText("4hour ago", size: size * 1.5),
-      ],
+  static Widget getANewsFooter(BuildContext context, double size) {
+    return GestureDetector(
+      onTap: () => {Navigator.pushNamed(context, '/news_channel')},
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          CustomWidget.getProfileImage("assets/images/bbc.jpg",
+            size: size * 4,
+          ),
+          SizedBox(
+            width: size,
+                        ),
+                        CustomWidget.getBoldText("BBC News",
+            color: Colors.black54,
+            size: size * 1.5,
+          ),
+          SizedBox(
+            width: size,
+          ),
+          Icon(
+                          Icons.access_time,
+            size: size * 2,
+                          color: Colors.black38,
+                        ),
+          SizedBox(
+            width: size,
+                        ),
+          CustomWidget.blurredText("4hour ago", size: size * 1.5),
+        ],
+      ),
     );
   }
 }
