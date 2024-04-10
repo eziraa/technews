@@ -54,7 +54,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: CustomWidget.getElevatedBtn(
                     context,
                     'Sign up',
-                    handler: () => {Navigator.pushNamed(context, "/log_in")},
+                    handler: () => {Navigator.pushNamed(context, "/select_topic")},
                   ),
                 ),
             ],
