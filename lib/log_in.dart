@@ -19,38 +19,49 @@ class _LogInPageState extends State<LogInPage> {
       body: Container(
         color: Colors.white,
         padding: const EdgeInsets.all(50),
-        child: Column(
-          children: [
-            const Logo(),
-            const SizedBox(height: 30),
-            Container(
-              margin: const EdgeInsets.only(top: 50),
-              child: const Column(
-                children: [
-                  TextField(
-                    decoration: InputDecoration(
-                        labelText: "Username", labelStyle: TextStyle()),
-                  ),
-                  SizedBox(height: 20),
-                  TextField(
-                    decoration: InputDecoration(
-                        labelText: "Password", labelStyle: TextStyle()),
-                  ),
-                  SizedBox(height: 10),
-                ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Logo().getLogo(size: 60),
+              const SizedBox(height: 30),
+              Container(
+                margin: const EdgeInsets.only(top: 50),
+                child: const Column(
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(
+                          labelText: "Username", labelStyle: TextStyle()),
+                    ),
+                    SizedBox(height: 20),
+                    TextField(
+                      decoration: InputDecoration(
+                          labelText: "Password", labelStyle: TextStyle()),
+                    ),
+                    SizedBox(height: 10),
+                  ],
+                ),
               ),
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: const TextStyle(fontSize: 20),
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
+                onPressed: () {},
+                child: const Text(
+                  'Forgot password',
+                  style: TextStyle(color: Colors.blue),
+                ),
               ),
-              onPressed: () {},
-              child: const Text('Forgot password', style: TextStyle(color: Colors.blue),),
-            ),
-            Container(
+              Container(
                 margin: const EdgeInsets.all(20),
-                child: CustomWidget.getElevatedBtn(context, 'Log in')),
-          ],
+                child: CustomWidget.getElevatedBtn(
+                  context,
+                  'Log in',
+                  handler: () => {Navigator.pushNamed(context, "/home_page")},
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
