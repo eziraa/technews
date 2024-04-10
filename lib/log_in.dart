@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:technews/custom_widget.dart';
 import 'package:technews/logo.dart';
 
 class LogInPage extends StatefulWidget {
