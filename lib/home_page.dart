@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/custom-section.dart';
+
+import 'controller/news-controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +13,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final NewsController controller = Get.put(NewsController());
+  List<dynamic> techNews = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchNews();
+  }
+
+  void fetchNews() async {
+    techNews = await controller.fetchTechNews();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,35 +45,30 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   _getTrending(),
                   CustomSection.getLatestNewsHeader(context),
-                  CustomSection.getANews(context),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context),
-                ],
+                FutureBuilder<List<dynamic>>(
+                  future: controller
+                      .fetchTechNews(), // your method that fetches the news
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<dynamic>> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator(); // show loader when data is loading
+                    } else if (snapshot.hasError) {
+                      return Text(
+                          'Error: ${snapshot.error}'); // show error message if any error occurs
+                    } else {
+                      return CustomSection.getANews(context, snapshot);
+                    }
+                  },
+                ),
+              ],
               ),
-            ),
           ),
-        ],
+        ),
+      ]
       ),
       bottomNavigationBar: CustomWidget.getBottomNavBar(context),
     );
+    
   }
 
   Widget _getTrending() {
@@ -115,8 +127,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  
-
-  
 }
