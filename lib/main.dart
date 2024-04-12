@@ -16,8 +16,11 @@ import 'package:technews/latest.dart';
 import 'package:technews/notification.dart';
 import 'package:technews/verify_email.dart';
 import 'package:technews/select_news_source.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     MaterialApp(
       title: 'Tech News App',
