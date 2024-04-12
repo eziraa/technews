@@ -11,6 +11,7 @@ class LatestPage extends StatefulWidget {
   @override
   State<LatestPage> createState() => _LatestPageState();
 }
+String channelImageUrl = '';
 
 class _LatestPageState extends State<LatestPage> {
   final Logger _logger = Logger();
@@ -85,6 +86,7 @@ class _LatestPageState extends State<LatestPage> {
                 article['articles']['title'], 
                 article['articles']['urlToImage'], 
                 article['articles']['content'], 
+                channelImageUrl,
                 article['articles']['source']['name'], 
                 article['articles']['publishedAt'], 
               ),
