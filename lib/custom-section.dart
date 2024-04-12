@@ -38,6 +38,7 @@ class CustomSection {
         scrollDirection: Axis.horizontal,
         child: Row(children: [
           for (String item in [
+            'All',
             'Artificial Intelligence (AI)',
             'Machine Learning',
             'Data Science',
