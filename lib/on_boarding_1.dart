@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
-import 'package:technews/custom_widget.dart';
 
 class OnBoardingPage {
   List<Color> colorList = [];
@@ -33,15 +32,16 @@ class _OnBoarding1State extends State<OnBoarding1> {
   @override
   void initState() {
     page = OnBoardingPage(
-        colorList: [
-          Colors.blue,
-          const Color.fromRGBO(0, 0, 0, 0.259),
-          Colors.black26
-        ],
-        imageAddress: "assets/images/onboard-0.png",
-        pageIndex: 0,
-        text:
-            "Welcome to TechBuzz! Stay informed with the latest headlines, updates, and stories. Explore breaking news and get instant updates on trending topics from around the world. Join our community for news that matters.");
+      colorList: [
+        Colors.blue,
+        const Color.fromRGBO(0, 0, 0, 0.259),
+        Colors.black26
+      ],
+      imageAddress: "assets/images/onboard-0.png",
+      pageIndex: 0,
+      text:
+          "Welcome to TechBuzz! Stay informed with the latest headlines, updates, and stories. Explore breaking news and get instant updates on trending topics from around the world. Join our community for news that matters.",
+    );
     super.initState();
   }
 
@@ -49,7 +49,7 @@ class _OnBoarding1State extends State<OnBoarding1> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
