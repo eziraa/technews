@@ -18,6 +18,13 @@ String dotDisplayer(String text) {
   }
 }
 
+String category = '';
+String newsImageUrl = '';
+String newsContent = '';
+// String channelImageUrl = '';
+String newsChannel = '';
+String time = '';
+
 class _TrendingState extends State<Trending> {
   @override
   Widget build(BuildContext context) {
@@ -65,7 +72,7 @@ class _TrendingState extends State<Trending> {
                   textAlign: TextAlign.left, // Aligning text to the left
                 ),
               ),
-                  CustomSection.getANewsFooter(context, 10)
+                  CustomSection.getANewsFooter(context, 10,  newsChannel,time)
             ],
           ));
         },
