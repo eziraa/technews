@@ -9,6 +9,13 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+String category = '';
+String newsImageUrl = '';
+String newsContent = '';
+String channelImageUrl = '';
+String newsChannel = '';
+String time = '';
+
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -28,27 +35,27 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   _getTrending(),
                   CustomSection.getLatestNewsHeader(context),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                   const SizedBox(height: 10),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                   const SizedBox(height: 10),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                   const SizedBox(height: 10),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                   const SizedBox(height: 10),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                   const SizedBox(height: 10),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                   const SizedBox(height: 10),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                   const SizedBox(height: 10),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                   const SizedBox(height: 10),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                   const SizedBox(height: 10),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                   const SizedBox(height: 10),
-                  CustomSection.getANews(context),
+                  CustomSection.getANews(context, category, newsImageUrl, newsContent, newsChannel, time),
                 ],
               ),
             ),
