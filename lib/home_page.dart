@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void fetchNews() async {
-    techNews = await controller.fetchTechNews();
+    techNews = await controller.fetchTechNewsFromJson();
     setState(() {});
   }
 
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   CustomSection.getLatestNewsHeader(context),
                 FutureBuilder<List<dynamic>>(
                   future: controller
-                      .fetchTechNews(), // your method that fetches the news
+                      .fetchTechNewsFromJson(), // your method that fetches the news
                   builder: (BuildContext context,
                       AsyncSnapshot<List<dynamic>> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -56,7 +56,12 @@ class _HomePageState extends State<HomePage> {
                       return Text(
                           'Error: ${snapshot.error}'); // show error message if any error occurs
                     } else {
-                      return CustomSection.getANews(context, snapshot);
+                      return Column(
+                        children: [
+                          for (int i = 0; i < techNews.length; i++)
+                            CustomSection.getANews(context, techNews[i])
+                        ],
+                      );
                     }
                   },
                 ),

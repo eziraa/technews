@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:technews/app.dart';
+import 'package:technews/controller/news-controller.dart';
 import 'package:technews/home_page.dart';
 import 'package:technews/log_in.dart';
 import 'package:technews/news_channel.dart';
@@ -18,8 +20,9 @@ import 'package:technews/verify_email.dart';
 import 'package:technews/select_news_source.dart';
 
 void main() {
+
   runApp(
-    MaterialApp(
+    GetMaterialApp(
       title: 'Tech News App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
@@ -41,7 +44,7 @@ void main() {
         '/sign_up': (context) => const SignUpPage(),
         '/verify_email': (context) => const VerifyEmail(),
         '/settings': (context) => const Settings(),
-        '/select_news_source':(context) => const NewsSource(),
+        '/select_news_source': (context) => const NewsSource(),
         '/news_channel': (context) => const NewsChannel()
       },
     ),

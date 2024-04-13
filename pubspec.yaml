@@ -41,6 +41,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   share: ^2.0.4
   flutter_share_me: ^1.4.0
+  http: ^1.2.0
+  timeago: ^3.6.1
+  path_provider: ^2.1.3
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +71,7 @@ flutter:
     - assets/images/onboard-0.png
     - assets/images/onboard-1.png
     - assets/images/
+    - assets/images/json/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
