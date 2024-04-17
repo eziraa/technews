@@ -56,3 +56,5 @@ lib/bottom.dart
 lib/main.dart
 
 /lib/.env
+
+lib/share.dart

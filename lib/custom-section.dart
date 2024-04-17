@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
+import 'package:technews/time.dart';
 
 class CustomSection {
   static Widget getLatestNewsHeader(BuildContext context) {
@@ -68,7 +70,7 @@ class CustomSection {
     );
   }
 
-  static Widget getANews(BuildContext context, String category, String newsImageUrl,String newsContent,String channelImageUrl, String newsChannel, String time) {
+  static Widget getANews(BuildContext context, dynamic news) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, "/news-detail");
@@ -80,16 +82,16 @@ class CustomSection {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CustomWidget.getMediumImage(newsImageUrl, size: 70),
+              CustomWidget.getNetworkImage(news['urlToImage'], size: 70),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomWidget.blurredText(category),
+                  CustomWidget.blurredText(news["source"]['name'] ?? ""),
                   CustomWidget.getNormalText(
-                      "${newsContent.substring(0)}...",
-                      size: 7),
-                  getANewsFooter(context, 6, channelImageUrl, newsChannel, time),
+                      "${news["title"].toString().substring(0)}...",
+                      size: 16),
+                  getANewsFooter(context, 6, news: news),
                 ],
               ),
             ],
@@ -99,20 +101,24 @@ class CustomSection {
     );
   }
 
-  static Widget getANewsFooter(BuildContext context, double size, String channelImageUrl, String newsChannel, String time) {
+  static Widget getANewsFooter(BuildContext context, double size,
+      {dynamic news}) {
     return GestureDetector(
-      onTap: () => {Navigator.pushNamed(context, '/news_channel')},
+      onTap: () => {
+        Get.toNamed('/news_channel', arguments: {news: news})
+      },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CustomWidget.getProfileImage(channelImageUrl,
-            size: size * 4,
-          ),
+          // CustomWidget.getProfileImage(channelImageUrl,
+          //   size: size * 4,
+          // ),
           SizedBox(
             width: size,
                         ),
-                        CustomWidget.getBoldText(newsChannel,
+          CustomWidget.getBoldText(
+            news["author"] ?? "author",
             color: Colors.black54,
             size: size * 1.5,
           ),
@@ -127,7 +133,9 @@ class CustomSection {
           SizedBox(
             width: size,
                         ),
-          CustomWidget.blurredText(time, size: size * 1.5),
+          CustomWidget.blurredText(
+              timeAgo(news["publishedAt"]).toString().substring(1) + " ago",
+              size: size * 1.5),
         ],
       ),
     );

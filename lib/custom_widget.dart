@@ -211,6 +211,23 @@ class CustomWidget {
     );
   }
 
+  static Widget getNetworkImage(String? address, {double size = 100}) {
+    return Container(
+      padding: const EdgeInsets.all(0.0), // Adjust padding as needed
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: const Color.fromARGB(255, 77, 73, 73), // Set border color here
+          width: 2.0, // Set border width here
+        ),
+        borderRadius: BorderRadius.circular(8.0), // Set border radius here
+      ),
+      child: Icon(
+        Icons.image,
+        size: size,
+      ),
+    );
+  }
+
   static Widget getElevatedBtn(BuildContext context, String text,
       {double size = 20, VoidCallback? handler}) {
     return Container(

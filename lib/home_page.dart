@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/custom-section.dart';
+
+import 'controller/news-controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,6 +20,20 @@ String newsChannel = '';
 String time = '';
 
 class _HomePageState extends State<HomePage> {
+  final NewsController controller = Get.put(NewsController());
+  List<dynamic> techNews = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchNews();
+  }
+
+  void fetchNews() async {
+    techNews = await controller.fetchTechNewsFromJson();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,35 +52,35 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   _getTrending(),
                   CustomSection.getLatestNewsHeader(context),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                  const SizedBox(height: 10),
-                  CustomSection.getANews(context, category, newsImageUrl, newsContent, channelImageUrl,newsChannel, time),
-                ],
+                FutureBuilder<List<dynamic>>(
+                  future: controller
+                      .fetchTechNewsFromJson(), // your method that fetches the news
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<dynamic>> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator(); // show loader when data is loading
+                    } else if (snapshot.hasError) {
+                      return Text(
+                          'Error: ${snapshot.error}'); // show error message if any error occurs
+                    } else {
+                      return Column(
+                        children: [
+                          for (int i = 0; i < techNews.length; i++)
+                            CustomSection.getANews(context, techNews[i])
+                        ],
+                      );
+                    }
+                  },
+                ),
+              ],
               ),
-            ),
           ),
-        ],
+        ),
+      ]
       ),
       bottomNavigationBar: CustomWidget.getBottomNavBar(context),
     );
+    
   }
 
   Widget _getTrending() {
@@ -122,8 +139,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  
-
-  
 }
