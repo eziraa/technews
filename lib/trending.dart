@@ -72,7 +72,7 @@ class _TrendingState extends State<Trending> {
                   textAlign: TextAlign.left, // Aligning text to the left
                 ),
               ),
-                  CustomSection.getANewsFooter(context, 10,  channelImageUrl,newsChannel,time)
+                  // CustomSection.getANewsFooter(context, 10,  channelImageUrl,newsChannel,time)
             ],
           ));
         },
