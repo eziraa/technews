@@ -47,7 +47,7 @@ assets/images/board-1.jpg
 .idea/
 build/
 linux/
-macos/
+
 web/
 windows/
 lib/flex.dart
