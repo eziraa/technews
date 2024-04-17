@@ -42,7 +42,6 @@ dependencies:
   share: ^2.0.4
   flutter_share_me: ^1.4.0
   flutter_dotenv: ^5.0.2
-  http: ^0.13.3
   logger: ^2.2.0
   firebase_core: ^2.29.0
   firebase_auth: ^4.19.1

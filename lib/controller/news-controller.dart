@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
-import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
+
 
 class NewsController {
   final String apiKey =
