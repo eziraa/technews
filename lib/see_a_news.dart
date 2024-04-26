@@ -62,9 +62,9 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomWidget.getImage("assets/images/4.jpg"),
+                    CustomWidget.getNetWorkImage(widget.news!.urlToImage ?? ""),
                     const SizedBox(height: 10),
-                    CustomWidget.blurredText("Europe"),
+                    // CustomWidget.blurredText("Europe"),
                     CustomWidget.getBoldText(
                         widget.news?.title ?? "There is no news title"),
                     getNewsBody(),
@@ -84,20 +84,15 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
       padding: const EdgeInsets.all(5),
       child: Column(children: [
         CustomWidget.getNormalText(
-            widget.news?.content ?? "There is no news content"),
+            widget.news?.content ??
+            widget.news?.description ??
+            "There is no news content"),
         const SizedBox(
           height: 5,
         ),
         widget.news?.url != null
             ? UrlButton(url: widget.news?.url ?? "")
             : Container()
-        // CustomWidget.getNormalText(
-        //     "The three dots often seen in user interfaces, especially on mobile devices, are typically referred to as  icon. In user interface design, they indicate that there are additional options available that are not immediately visible"),
-        // const SizedBox(
-        //   height: 5,
-        // ),
-        // CustomWidget.getNormalText(
-        //     "The three dots often seen in user interfaces, especially on mobile devices, are typically referred to as  icon. In user interface design, they indicate that there are additional options available that are not immediately visible"),
       ]),
     );
   }
