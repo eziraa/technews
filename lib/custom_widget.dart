@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 class CustomWidget {
   static AppBar getAppBar(BuildContext context) {
     return AppBar(
@@ -211,19 +211,23 @@ class CustomWidget {
     );
   }
 
-  static Widget getNetworkImage(String? address, {double size = 100}) {
-    return Container(
-      padding: const EdgeInsets.all(0.0), // Adjust padding as needed
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: const Color.fromARGB(255, 77, 73, 73), // Set border color here
-          width: 2.0, // Set border width here
+  static Widget getNetworkImage(String url, {double size = 70}) {
+    return CachedNetworkImage(
+      imageUrl: url,
+      imageBuilder: (context, imageProvider) => Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: imageProvider,
+            fit: BoxFit.cover,
+          ),
         ),
-        borderRadius: BorderRadius.circular(8.0), // Set border radius here
       ),
-      child: Icon(
-        Icons.image,
-        size: size,
+      placeholder: (context, url) => const CircularProgressIndicator(),
+      errorWidget: (context, url, error) => const Icon(
+        Icons.error,
+        size: 70,
       ),
     );
   }
