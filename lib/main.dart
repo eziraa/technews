@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:technews/app.dart';
-import 'package:technews/controller/news-controller.dart';
 import 'package:technews/home_page.dart';
 import 'package:technews/log_in.dart';
 import 'package:technews/news_channel.dart';
@@ -20,7 +19,6 @@ import 'package:technews/verify_email.dart';
 import 'package:technews/select_news_source.dart';
 
 void main() {
-
   runApp(
     GetMaterialApp(
       title: 'Tech News App',
