@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/custom-section.dart';
 
-import 'controller/news-controller.dart';
+import 'controller/news_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,64 +16,40 @@ class _HomePageState extends State<HomePage> {
   final NewsController controller = Get.put(NewsController());
   List<dynamic> techNews = [];
 
-  @override
-  void initState() {
-    super.initState();
-    fetchNews();
-  }
-
-  void fetchNews() async {
-    techNews = await controller.fetchTechNewsFromJson();
-    setState(() {});
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomWidget.getAppBar(context),
-      body: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            child: CustomWidget.getSearchBox(context),
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _getTrending(),
-                  CustomSection.getLatestNewsHeader(context),
-                FutureBuilder<List<dynamic>>(
-                  future: controller
-                      .fetchTechNewsFromJson(), // your method that fetches the news
-                  builder: (BuildContext context,
-                      AsyncSnapshot<List<dynamic>> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const CircularProgressIndicator(); // show loader when data is loading
-                    } else if (snapshot.hasError) {
-                      return Text(
-                          'Error: ${snapshot.error}'); // show error message if any error occurs
-                    } else {
-                      return Column(
-                        children: [
-                          for (int i = 0; i < techNews.length; i++)
-                            CustomSection.getANews(context, techNews[i])
-                        ],
-                      );
-                    }
-                  },
+      body: Obx(
+        () => Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(20),
+              child: CustomWidget.getSearchBox(context),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _getTrending(),
+                    CustomSection.getLatestNewsHeader(context),
+                    Column(children: [
+                      for (int i = 0; i < controller.newsList.length; i++)
+                        CustomSection.getANews(context, controller.newsList[i])
+                    ])
+                  ],
                 ),
-              ],
               ),
-          ),
+            ),
+          ],
         ),
-      ]
       ),
       bottomNavigationBar: CustomWidget.getBottomNavBar(context),
     );
-    
   }
 
   Widget _getTrending() {
