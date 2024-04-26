@@ -10,6 +10,14 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  String email = '', password = '', username = '';
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,29 +33,53 @@ class _SignUpPageState extends State<SignUpPage> {
             children: [
               Logo().getLogo(size: 60),
               const SizedBox(height: 30),
-              const Column(
-                children: [
-                  TextField(
-                    decoration: InputDecoration(
-                        labelText: "Username", labelStyle: TextStyle()),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(
-                        labelText: "Email", labelStyle: TextStyle()),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(
-                        labelText: "Password", labelStyle: TextStyle()),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    decoration: InputDecoration(
-                        labelText: "Re-enter Password", labelStyle: TextStyle()),
-                  ),
-                  SizedBox(height: 10),
-                ],
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      validator: (value) {
+                        if(value == null || value.isEmpty){
+                          return 'Please Enter Username';
+                        }
+                        return null;
+                      },
+                      controller: usernameController,
+                      decoration: const InputDecoration(
+                          labelText: "Username", labelStyle: TextStyle()),
+                    ),
+                    const SizedBox(height: 10),
+                    TextFormField(
+                      validator: (value) {
+                        if(value == null || value.isEmpty){
+                          return 'Please Enter Email';
+                        }
+                        return null;
+                      },
+                      controller: emailController,
+                      decoration: const InputDecoration(
+                          labelText: "Email", labelStyle: TextStyle()),
+                    ),
+                    const SizedBox(height: 10),
+                    TextFormField(
+                      validator: (value) {
+                        if(value == null || value.isEmpty){
+                          return 'Please Enter Password';
+                        }
+                        return null;
+                      },
+                      controller: passwordController,
+                      decoration: const InputDecoration(
+                          labelText: "Password", labelStyle: TextStyle()),
+                    ),
+                    const SizedBox(height: 10),
+                    // TextField(
+                    //   decoration: const InputDecoration(
+                    //       labelText: "Re-enter Password", labelStyle: TextStyle()),
+                    // ),
+                    const SizedBox(height: 10),
+                  ],
+                ),
               ),
              Container(
                   margin: const EdgeInsets.all(20),

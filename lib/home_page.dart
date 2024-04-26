@@ -12,6 +12,13 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+String category = '';
+String newsImageUrl = '';
+String newsContent = '';
+String channelImageUrl = '';
+String newsChannel = '';
+String time = '';
+
 class _HomePageState extends State<HomePage> {
   final NewsController controller = Get.put(NewsController());
   List<dynamic> techNews = [];

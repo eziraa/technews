@@ -47,11 +47,16 @@ assets/images/board-1.jpg
 .idea/
 build/
 linux/
-macos/
+
 web/
 windows/
 lib/flex.dart
 index.html
 lib/bottom.dart
 lib/main.dart
+
+/lib/.env
+
+/android/app/google-services.json
+
 lib/share.dart

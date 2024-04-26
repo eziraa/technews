@@ -79,38 +79,36 @@ class _ChooseNewsSourcesState extends State<ChooseNewsSources> {
                 ...newsSources.map(
                   (source) {
                     return Flexible(
-                      child: Container(
-                        child: Column(
-                          children: [
-                            CircleAvatar(
-                              radius: 30,
-                              child: Image(
-                                image: source.asset,
-                                width: 30,
-                                height: 30,
-                              ),
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            radius: 30,
+                            child: Image(
+                              image: source.asset,
+                              width: 30,
+                              height: 30,
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              source.name,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 15,
-                                  color: Color.fromARGB(255, 0, 0, 0)),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              child: source.button,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            )
-                          ],
-                        ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            source.name,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 15,
+                                color: Color.fromARGB(255, 0, 0, 0)),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            child: source.button,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          )
+                        ],
                       ),
                     );
                   },

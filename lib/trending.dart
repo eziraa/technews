@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:technews/custom-section.dart';
 import 'package:technews/custom_widget.dart';
 
 class Trending extends StatefulWidget {
@@ -17,6 +16,13 @@ String dotDisplayer(String text) {
     return text;
   }
 }
+
+String category = '';
+String newsImageUrl = '';
+String newsContent = '';
+String channelImageUrl = '';
+String newsChannel = '';
+String time = '';
 
 class _TrendingState extends State<Trending> {
   @override
@@ -65,7 +71,7 @@ class _TrendingState extends State<Trending> {
                   textAlign: TextAlign.left, // Aligning text to the left
                 ),
               ),
-                  CustomSection.getANewsFooter(context, 10)
+                  // CustomSection.getANewsFooter(context, 10,  channelImageUrl,newsChannel,time)
             ],
           ));
         },

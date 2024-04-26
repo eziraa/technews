@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
@@ -41,6 +40,7 @@ class CustomSection {
         scrollDirection: Axis.horizontal,
         child: Row(children: [
           for (String item in [
+            'All',
             'Artificial Intelligence (AI)',
             'Machine Learning',
             'Data Science',
@@ -113,9 +113,9 @@ class CustomSection {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CustomWidget.getProfileImage("assets/images/bbc.jpg",
-            size: size * 4,
-          ),
+          // CustomWidget.getProfileImage(channelImageUrl,
+          //   size: size * 4,
+          // ),
           SizedBox(
             width: size,
                         ),

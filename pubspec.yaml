@@ -41,6 +41,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   share: ^2.0.4
   flutter_share_me: ^1.4.0
+  flutter_dotenv: ^5.0.2
+  logger: ^2.2.0
+  firebase_core: ^2.29.0
+  firebase_auth: ^4.19.1
+
   http: ^1.2.0
   timeago: ^3.6.1
   path_provider: ^2.1.3
