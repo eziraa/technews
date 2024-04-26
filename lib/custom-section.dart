@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/see_a_news.dart';
 import 'package:technews/time.dart';
+import 'package:technews/trending.dart';
 
 import 'model/news_model.dart';
 
@@ -90,9 +91,9 @@ class CustomSection {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomWidget.blurredText(news.source?.name ?? ""),
+                  CustomWidget.blurredText(news.source.name),
                   CustomWidget.getNormalText(
-                      "${news.title.toString().substring(0)}...",
+                      textTrimmer(news.title ?? "No Title", 70),
                       size: 16),
                   getANewsFooter(context, 6, news: news),
                 ],
@@ -108,39 +109,51 @@ class CustomSection {
       {News? news}) {
     return GestureDetector(
       onTap: () => {Get.to(SeeNewsDetailPage(), arguments: news)},
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          // CustomWidget.getProfileImage(channelImageUrl,
-          //   size: size * 4,
-          // ),
-          SizedBox(
-            width: size,
-          ),
-          CustomWidget.getBoldText(
-            news?.author ?? "No author",
-            color: Colors.black54,
-            size: size * 1.5,
-          ),
-          SizedBox(
-            width: size,
-          ),
-          Icon(
-            Icons.access_time,
-            size: size * 2,
-            color: Colors.black38,
-          ),
-          SizedBox(
-            width: size,
-          ),
-          CustomWidget.blurredText(
-              "${timeAgo(news!.publishedAt.toString()).toString().substring(1)} ago",
-              size: size * 1.5),
-
-          CustomWidget.blurredText(news.author ?? "No Author",
-              size: size * 1.5),
-        ],
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.75,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: size,
+                ),
+                CustomWidget.getBoldText(
+                  news?.author ?? "No author",
+                  color: Colors.black54,
+                  size: size * 1.5,
+                ),
+                SizedBox(
+                  width: size,
+                ),
+                Icon(
+                  Icons.access_time,
+                  size: size * 2,
+                  color: Colors.black38,
+                ),
+                SizedBox(
+                  width: size,
+                ),
+                CustomWidget.blurredText(
+                    "${timeAgo(news!.publishedAt.toString()).toString().substring(1)} ago",
+                    size: size * 1.5),
+        
+               
+              ],
+            ),
+            Container(
+              alignment: Alignment.bottomRight,
+              child: CustomWidget.blurredText(
+                  textTrimmer(news.author ?? "No Author", 20)
+                          .contains("No Author")
+                      ? "No Author"
+                      : "By  ${textTrimmer(news.author ?? "No Author", 20)}",
+                  size: 10),
+            ),
+          ],
+        ),
       ),
     );
   }
