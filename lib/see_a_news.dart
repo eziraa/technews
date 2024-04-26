@@ -6,6 +6,7 @@ import 'package:technews/custom_widget.dart';
 import 'package:technews/model/news_model.dart';
 import 'package:technews/time.dart';
 import 'package:http/http.dart' as http;
+import 'package:technews/trending.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class SeeNewsDetailPage extends StatefulWidget {
@@ -84,9 +85,14 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
       padding: const EdgeInsets.all(5),
       child: Column(children: [
         CustomWidget.getNormalText(
+            textTrimmer(
             widget.news?.content ??
-            widget.news?.description ??
-            "There is no news content"),
+                widget.news?.description ??
+                "There is no news content",
+            (widget.news?.content ??
+                    widget.news?.description ??
+                    "There is no news content")
+                .indexOf('['))),
         const SizedBox(
           height: 5,
         ),
