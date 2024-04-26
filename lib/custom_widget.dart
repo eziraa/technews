@@ -225,9 +225,9 @@ class CustomWidget {
         ),
       ),
       placeholder: (context, url) => const CircularProgressIndicator(),
-      errorWidget: (context, url, error) => const Icon(
+      errorWidget: (context, url, error) => Icon(
         Icons.error,
-        size: 70,
+        size: size,
       ),
     );
   }
