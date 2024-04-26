@@ -26,7 +26,44 @@ class _HomePageState extends State<HomePage> {
           children: [
             Container(
               padding: const EdgeInsets.all(20),
-              child: CustomWidget.getSearchBox(context),
+              child: Container(
+                height: 50,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      spreadRadius: 5,
+                      blurRadius: 10,
+                      offset: const Offset(2, 5), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.search, color: Colors.grey),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: TextField(
+                        onTap: () {
+                          if (ModalRoute.of(context)?.settings.name !=
+                              "/search") {
+                            Navigator.pushNamed(context, "/search");
+                          }
+                        },
+                        decoration: const InputDecoration(
+                          hintText: 'Search...',
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(color: Colors.grey),
+                        ),
+                        onChanged: (String text) => {},
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             Expanded(
               child: SingleChildScrollView(
