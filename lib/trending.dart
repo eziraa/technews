@@ -8,10 +8,10 @@ class Trending extends StatefulWidget {
   State<Trending> createState() => _TrendingState();
 }
 
-String dotDisplayer(String text) {
+String textTrimmer(String text, int max) {
   int textLength = text.length;
-  if (textLength > 70) {
-    return '${text.substring(0, 69)}...';
+  if (textLength > max) {
+    return '${text.substring(0, max - 1)}...';
   } else {
     return text;
   }
@@ -62,8 +62,9 @@ class _TrendingState extends State<Trending> {
                 width: 380,
                 height: 50,
                 child: Text(
-                  dotDisplayer(
-                      'Europe Europe: Lorem, ipsum dolor sit amet consect etur adipisicing elit.Lorem, ipsum dolor ipsum dolor'),
+                      textTrimmer(
+                          'Europe Europe: Lorem, ipsum dolor sit amet consect etur adipisicing elit.Lorem, ipsum dolor ipsum dolor',
+                          70),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
