@@ -33,8 +33,8 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
                   width: MediaQuery.of(context).size.width,
                   child: Row(
                     children: [
-                      CustomWidget.getProfileImage("assets/images/1.jpg",
-                          size: 70),
+                      CustomWidget.getProfileImage(widget.news!.source.name,
+                          size: 85),
                       const SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,8 +48,7 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
                       const SizedBox(
                         width: 20,
                       ),
-                      CustomWidget.getElevatedBtn(context, "Following",
-                          size: 16)
+                      
                     ],
                   ),
                 ),
