@@ -6,6 +6,8 @@ class NewsController extends GetxController {
   var newsList = List<News>.empty().obs;
   var searchedList = List<News>.empty().obs;
 
+  String type = "news";
+
   @override
   void onInit() {
     super.onInit();
@@ -16,14 +18,24 @@ class NewsController extends GetxController {
     var news = await RemoteServices.fetchTechNews();
     if (news.isNotEmpty) {
       newsList.addAll(news);
+      searchedList.addAll(news);
     }
   }
 
-  void searchNews(List<News> newsList, String query) {
+  void searchNews(String query) {
+    searchedList.clear();
+    print(query.length);
     searchedList.addAll(newsList
-        .where((news) =>
-            news.title!.toLowerCase().contains(query.toLowerCase()) ||
-            news.source.name.toLowerCase().contains(query.toLowerCase()))
+        .where((news) => type == "News"
+            ? news.title!.toLowerCase().contains(query.toLowerCase())
+            : type == "Topics"
+                ? news.description!.toLowerCase().contains(query.toLowerCase())
+                : news.source.name.toLowerCase().contains(query.toLowerCase()))
         .toList());
+  }
+
+  void changeType(String type) {
+    this.type = type;
+    print(this.type);
   }
 }
