@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/time.dart';
 
+import 'model/news_model.dart';
+
 class CustomSection {
   static Widget getLatestNewsHeader(BuildContext context) {
     return Column(
@@ -70,7 +72,7 @@ class CustomSection {
     );
   }
 
-  static Widget getANews(BuildContext context, dynamic news) {
+  static Widget getANews(BuildContext context, News news) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, "/news-detail");
@@ -82,14 +84,14 @@ class CustomSection {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CustomWidget.getNetworkImage(news['urlToImage'], size: 70),
+              CustomWidget.getNetworkImage(news.urlToImage, size: 70),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomWidget.blurredText(news["source"]['name'] ?? ""),
+                  CustomWidget.blurredText(news.source?.name ?? ""),
                   CustomWidget.getNormalText(
-                      "${news["title"].toString().substring(0)}...",
+                      "${news.title.toString().substring(0)}...",
                       size: 16),
                   getANewsFooter(context, 6, news: news),
                 ],
@@ -102,7 +104,7 @@ class CustomSection {
   }
 
   static Widget getANewsFooter(BuildContext context, double size,
-      {dynamic news}) {
+      {News? news}) {
     return GestureDetector(
       onTap: () => {
         Get.toNamed('/news_channel', arguments: {news: news})
@@ -118,7 +120,7 @@ class CustomSection {
             width: size,
                         ),
           CustomWidget.getBoldText(
-            news["author"] ?? "author",
+            news?.author ?? "author",
             color: Colors.black54,
             size: size * 1.5,
           ),
@@ -134,7 +136,8 @@ class CustomSection {
             width: size,
                         ),
           CustomWidget.blurredText(
-              timeAgo(news["publishedAt"]).toString().substring(1) + " ago",
+              timeAgo(news!.publishedAt.toString()).toString().substring(1) +
+                  " ago",
               size: size * 1.5),
         ],
       ),
