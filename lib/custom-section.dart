@@ -137,6 +137,9 @@ class CustomSection {
           CustomWidget.blurredText(
               "${timeAgo(news!.publishedAt.toString()).toString().substring(1)} ago",
               size: size * 1.5),
+
+          CustomWidget.blurredText(news.author ?? "No Author",
+              size: size * 1.5),
         ],
       ),
     );
