@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
+
+import 'controller/news_controller.dart';
 class CustomWidget {
   static AppBar getAppBar(BuildContext context) {
     return AppBar(
@@ -29,19 +32,10 @@ class CustomWidget {
                 ),
               ]),
             ),
-            const SizedBox(
-              width: 40,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.40,
             ),
-            IconButton(
-              icon: const Icon(
-                Icons.notifications,
-                size: 30,
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, "/notification");
-              },
-              iconSize: 30,
-            ),
+            
           ],
         ),
       ],
@@ -75,6 +69,7 @@ class CustomWidget {
   }
 
   static Widget getSearchBox(BuildContext context) {
+
     return Container(
       height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -107,11 +102,12 @@ class CustomWidget {
                 hintStyle: TextStyle(color: Colors.grey),
               ),
               onChanged: (String text) => {
-                     },
+                  
+                },
             ),
           ),
         ],
-      ),
+      ),   
     );
   }
 
@@ -231,20 +227,59 @@ static Widget getNetWorkImage(String imageAddress) {
     );
   }
 
-  static Widget getProfileImage(String address, {double size = 30}) {
+  static Widget getProfileImage(String name, {double size = 30}) {
     return Container(
       padding: const EdgeInsets.all(10),
       width: size,
       height: size,
       decoration: BoxDecoration(
         border: Border.all(width: 4, color: Colors.white),
-        shape: BoxShape.circle,
-        image: const DecorationImage(
-          image: AssetImage('assets/images/bbc.jpg'),
-          fit: BoxFit.cover,
+          shape: BoxShape.circle,        
         ),
-      ),
+        child: Container(
+          // ignore: sort_child_properties_last
+          decoration: const BoxDecoration(
+            color: Colors.blueAccent,
+            shape: BoxShape.circle,
+          ),
+          child: Text(
+            name[0],
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: size * 0.45,
+              fontWeight: FontWeight.bold,
+            ),
+          ), // Set text here
+        )
     );
+  }
+
+  static Widget smallProfileImage(String name, {double size = 30}) {
+    return Container(
+        padding: const EdgeInsets.all(10),
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          border: Border.all(width: 4, color: Colors.white),
+          shape: BoxShape.circle,
+        ),
+        child: Container(
+          // ignore: sort_child_properties_last
+          decoration: const BoxDecoration(
+            color: Colors.blueAccent,
+            shape: BoxShape.circle,
+          ),
+          child: Text(
+            name[0],
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: size * 0.25,
+              fontWeight: FontWeight.bold,
+            ),
+          ), // Set text here
+        ));
   }
 
   static Widget getMediumImage(String address, {double size = 100}) {
