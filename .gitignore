@@ -46,10 +46,8 @@ assets/images/board-1.jpg
 .dart_tool/
 .idea/
 build/
-linux/
 
 web/
-windows/
 lib/flex.dart
 index.html
 lib/bottom.dart

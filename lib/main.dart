@@ -19,7 +19,6 @@ import 'package:technews/verify_email.dart';
 import 'package:technews/select_news_source.dart';
 // import 'package:firebase_core/firebase_core.dart';
 
-
 void main() {
   runApp(
     GetMaterialApp(
