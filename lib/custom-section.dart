@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
+import 'package:technews/see_a_news.dart';
 import 'package:technews/time.dart';
 
 import 'model/news_model.dart';
@@ -75,7 +76,7 @@ class CustomSection {
   static Widget getANews(BuildContext context, News news) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, "/news-detail");
+        Get.to(SeeNewsDetailPage(news: news));
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
@@ -84,7 +85,7 @@ class CustomSection {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CustomWidget.getNetworkImage(news.urlToImage, size: 70),
+              CustomWidget.getNetworkImage(news.urlToImage ?? "", size: 70),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,9 +107,7 @@ class CustomSection {
   static Widget getANewsFooter(BuildContext context, double size,
       {News? news}) {
     return GestureDetector(
-      onTap: () => {
-        Get.toNamed('/news_channel', arguments: {news: news})
-      },
+      onTap: () => {Get.to(SeeNewsDetailPage(), arguments: news)},
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -118,9 +117,9 @@ class CustomSection {
           // ),
           SizedBox(
             width: size,
-                        ),
+          ),
           CustomWidget.getBoldText(
-            news?.author ?? "author",
+            news?.author ?? "No author",
             color: Colors.black54,
             size: size * 1.5,
           ),
@@ -128,16 +127,15 @@ class CustomSection {
             width: size,
           ),
           Icon(
-                          Icons.access_time,
+            Icons.access_time,
             size: size * 2,
-                          color: Colors.black38,
-                        ),
+            color: Colors.black38,
+          ),
           SizedBox(
             width: size,
-                        ),
+          ),
           CustomWidget.blurredText(
-              timeAgo(news!.publishedAt.toString()).toString().substring(1) +
-                  " ago",
+              "${timeAgo(news!.publishedAt.toString()).toString().substring(1)} ago",
               size: size * 1.5),
         ],
       ),
