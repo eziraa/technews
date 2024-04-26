@@ -96,15 +96,18 @@ class CustomWidget {
           const SizedBox(width: 10),
           Expanded(
             child: TextField(
+              onTap: () {
+                if (ModalRoute.of(context)?.settings.name != "/search") {
+                  Navigator.pushNamed(context, "/search");
+                }
+              },
               decoration: const InputDecoration(
                 hintText: 'Search...',
                 border: InputBorder.none,
                 hintStyle: TextStyle(color: Colors.grey),
               ),
               onChanged: (String text) => {
-                if (ModalRoute.of(context)?.settings.name != "/search")
-                  Navigator.pushNamed(context, "/search")
-              },
+                     },
             ),
           ),
         ],
@@ -151,6 +154,58 @@ class CustomWidget {
       child: Image(
         image: AssetImage(imageAddress),
         fit: BoxFit.cover,
+      ),
+    );
+  }
+static Widget getNetWorkImage(String imageAddress) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20, bottom: 20),
+      width: 380,
+      height: 270,
+      decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 78, 75, 75),
+          shape: BoxShape.rectangle,
+          border: Border.all(
+            color:
+                const Color.fromARGB(205, 96, 89, 89), // Set border color here
+            width: 2.0, // Set border width here
+          ),
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: const [
+            BoxShadow(
+                color: Color.fromARGB(255, 150, 147, 147),
+                blurRadius: 8,
+                spreadRadius: 4,
+                offset: Offset(2, 6)),
+            BoxShadow(
+                color: Color.fromARGB(255, 150, 147, 147),
+                blurRadius: 8,
+                spreadRadius: 4,
+                offset: Offset(-2, -6)),
+          ]),
+      child: CachedNetworkImage(
+        imageUrl: imageAddress,
+        imageBuilder: (context, imageProvider) => Container(
+          width: 380,
+          height: 270,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: imageProvider,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        placeholder: (context, url) => const CircularProgressIndicator(),
+        errorWidget: (context, url, error) => Center(
+          child: Container(
+            height: 270,
+            width: 380,
+            child: const Icon(
+              Icons.error,
+              size: 70,
+            ),
+          ),
+        ),
       ),
     );
   }
