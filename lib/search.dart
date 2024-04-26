@@ -163,18 +163,24 @@ class _SearchPageState extends State<SearchPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(
+                  height: 10,
+                ),
                 CustomWidget.getNormalText(
                     "${news.title}...", size: 10),
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.7,
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  alignment: Alignment.centerLeft,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          CustomWidget.getProfileImage("assets/images/bbc.jpg",
-                              size: 15),
+
+                          CustomWidget.smallProfileImage(news.source.name,
+                              size: 45),
                           const SizedBox(
                             width: 5,
                           ),
@@ -199,7 +205,10 @@ class _SearchPageState extends State<SearchPage> {
                       Container(
                         alignment: Alignment.bottomRight,
                         child: CustomWidget.blurredText(
-                            textTrimmer(news.author ?? "No Author", 20),
+                            textTrimmer(news.author ?? "No Author", 20)
+                                    .contains("No Author")
+                                ? "No Author"
+                                : "By  ${textTrimmer(news.author ?? "No Author", 20)}",
                             size: 10),
                       ),
                     ],
