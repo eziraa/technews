@@ -24,7 +24,11 @@ class NewsController extends GetxController {
 
   void searchNews(String query) {
     searchedList.clear();
-    print(query.length);
+    if (query.isEmpty) {
+      searchedList.addAll(newsList);
+      return;
+    }
+
     searchedList.addAll(newsList
         .where((news) => type == "News"
             ? news.title!.toLowerCase().contains(query.toLowerCase())
