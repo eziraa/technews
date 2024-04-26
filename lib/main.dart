@@ -20,22 +20,13 @@ import 'package:technews/select_news_source.dart';
 // import 'package:firebase_core/firebase_core.dart';
 
 
-void main() async{
-
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
-
-<<<<<<< HEAD
 void main() {
-=======
-
->>>>>>> 23138f0b0a78e0d60b918e612b40b8094a657c64
   runApp(
     GetMaterialApp(
       title: 'Tech News App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
-      initialRoute: '/',
+      initialRoute: '/home_page',
       routes: {
         '/': (context) => const MainApp(),
         '/on_boarding': (context) => const OnBoarding1(),
