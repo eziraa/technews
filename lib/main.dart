@@ -25,11 +25,6 @@ void main() async{
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
 
-<<<<<<< HEAD
-void main() {
-=======
-
->>>>>>> 23138f0b0a78e0d60b918e612b40b8094a657c64
   runApp(
     GetMaterialApp(
       title: 'Tech News App',
