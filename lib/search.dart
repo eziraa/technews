@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
+import 'package:technews/model/news_model.dart';
+import 'package:technews/see_a_news.dart';
+import 'package:technews/time.dart';
+import 'package:technews/trending.dart';
+
+import 'controller/news_controller.dart';
 
 class SearchOptions {
   String? type;
@@ -15,6 +22,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  final NewsController controller = Get.put(NewsController());
   List<SearchOptions> options = [];
   SearchOptions activeOption = SearchOptions(type: 'News', task: '');
   @override
@@ -29,52 +37,74 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomWidget.getAppBar(context),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: CustomWidget.getSearchBox(context),
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
+    return Obx(
+      () => Scaffold(
+        appBar: CustomWidget.getAppBar(context),
+        body: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(15),
               child: Container(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                height: 50,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      spreadRadius: 5,
+                      blurRadius: 10,
+                      offset: const Offset(2, 5), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: Row(
                   children: [
-                    _getSearchOptions(),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
-                    const SizedBox(height: 10),
-                    _getANews(),
+                    const Icon(Icons.search, color: Colors.grey),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: TextField(
+                        decoration: const InputDecoration(
+                          hintText: 'Search...',
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(color: Colors.grey),
+                        ),
+                        onChanged: (String text) => {
+                          controller.searchNews(text),
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _getSearchOptions(),
+                      Column(
+                        children: [
+                          for (int i = 0;
+                              i < controller.searchedList.length;
+                              i++)
+                            _getANews(news: controller.newsList[i])
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        bottomNavigationBar: CustomWidget.getBottomNavBar(context),
       ),
-      bottomNavigationBar: CustomWidget.getBottomNavBar(context),
     );
   }
 
@@ -95,6 +125,7 @@ class _SearchPageState extends State<SearchPage> {
                           setState(() {
                             activeOption = option;
                           });
+                          controller.changeType(option.type ?? "");
                         },
                       ),
                       const SizedBox(width: 3)
@@ -110,7 +141,6 @@ class _SearchPageState extends State<SearchPage> {
                       color: Colors.blue,
                     ),
                   )
-
                 ],
               )
           ]),
@@ -119,48 +149,66 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget _getANews() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          CustomWidget.getMediumImage("assets/images/6.jpg", size: 60),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomWidget.blurredText("Europe"),
-              CustomWidget.getNormalText(
-                  "${"Ukraine's president, Zelenskey says".substring(0, 10)}...",
-                  size: 10),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomWidget.getProfileImage("assets/images/bbc.jpg",
-                      size: 15),
-                  const SizedBox(
-                    width: 5,
+  Widget _getANews({required News news}) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(SeeNewsDetailPage(news: news));
+      },
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            CustomWidget.getNetworkImage(news.urlToImage ?? "", size: 70),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomWidget.getNormalText(
+                    "${news.title}...", size: 10),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CustomWidget.getProfileImage("assets/images/bbc.jpg",
+                              size: 15),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          CustomWidget.getBoldText(news.source.name,
+                              color: Colors.black54, size: 9),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          const Icon(
+                            Icons.access_time,
+                            size: 10,
+                            color: Colors.black38,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          CustomWidget.blurredText(
+                              "${timeAgo(news.publishedAt.toString()).toString().substring(1)} ago",
+                              size: 10),
+                        ],
+                      ),
+                      Container(
+                        alignment: Alignment.bottomRight,
+                        child: CustomWidget.blurredText(
+                            textTrimmer(news.author ?? "No Author", 20),
+                            size: 10),
+                      ),
+                    ],
                   ),
-                  CustomWidget.getBoldText("BBC News",
-                      color: Colors.black54, size: 9),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Icon(
-                    Icons.access_time,
-                    size: 10,
-                    color: Colors.black38,
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  CustomWidget.blurredText("4hour ago", size: 10)
-                ],
-              ),
-            ],
-          ),
-          CustomWidget.getElevatedBtn(context, activeOption.task ?? "")
-        ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
