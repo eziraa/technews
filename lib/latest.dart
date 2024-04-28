@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:technews/controller/news_controller.dart';
 import 'package:technews/custom-section.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:http/http.dart' as http;
@@ -11,39 +14,41 @@ class LatestPage extends StatefulWidget {
   @override
   State<LatestPage> createState() => _LatestPageState();
 }
+
 String channelImageUrl = '';
 
 class _LatestPageState extends State<LatestPage> {
-  final Logger _logger = Logger();
-
-  List<dynamic> newsData = [];
-
   CustomWidget customWidget = CustomWidget();
+  final NewsController controller = Get.put(NewsController());
+  List<dynamic> techNews = [];
+  // final Logger _logger = Logger();
 
-  @override
-  void initState() {
-    super.initState();
-    fetchData();
-  }
+  // List<dynamic> newsData = [];
 
-  Future<void> fetchData() async {
-    final response = await http.get(
-      Uri.parse(
-          "https://newsapi.org/v2/top-headlines?category=technology&language=en&apiKey=280cb4d976424cfe8ea56c6a40e8dd05"),
-    );
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   fetchData();
+  // }
 
-    if (response.statusCode == 200) {
-      _logger.d("Response body: ${response.body}");
-      final decodedData = json.decode(response.body);
-      _logger.d("Decoded data: $decodedData");
-      setState(() {
-        newsData = decodedData['articles']; // Update here
-      });
-    } else {
-      _logger.e("Failed to fetch data. Status code: ${response.statusCode}");
-      throw Exception('Failed to load data');
-    }
-  }
+  // Future<void> fetchData() async {
+  //   final response = await http.get(
+  //     Uri.parse(
+  //         "https://newsapi.org/v2/top-headlines?category=technology&language=en&apiKey=280cb4d976424cfe8ea56c6a40e8dd05"),
+  //   );
+
+  //   if (response.statusCode == 200) {
+  //     _logger.d("Response body: ${response.body}");
+  //     final decodedData = json.decode(response.body);
+  //     _logger.d("Decoded data: $decodedData");
+  //     setState(() {
+  //       newsData = decodedData['articles']; // Update here
+  //     });
+  //   } else {
+  //     _logger.e("Failed to fetch data. Status code: ${response.statusCode}");
+  //     throw Exception('Failed to load data');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -64,43 +69,24 @@ class _LatestPageState extends State<LatestPage> {
             Navigator.pop(context);
           },
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.notifications,
-              color: Colors.black,
-            ),
-            onPressed: () {},
-          ),
-        ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
+      body: Obx(
+        () => Column(
           children: [
-            CustomSection.getNewsSourcesHrBar(),
-            // CustomSection.getANews(context,),
-            // const SizedBox(height: 5),
-            // CustomSection.getANews(context),
-            // const SizedBox(height: 5),
-            // CustomSection.getANews(context),
-            // const SizedBox(height: 5),
-            // CustomSection.getANews(context),
-            // const SizedBox(height: 5),
-            // CustomSection.getANews(context),
-            // const SizedBox(height: 5),
-            // CustomSection.getANews(context),
-            // const SizedBox(height: 5),
-            // CustomSection.getANews(context),
-            // const SizedBox(height: 5),
-            // CustomSection.getANews(context),
-            // const SizedBox(height: 5),
-            // CustomSection.getANews(context),
-            // const SizedBox(height: 5),
-            // CustomSection.getANews(context),
-            // const SizedBox(height: 5),
-            // CustomSection.getANews(context),
-            // const SizedBox(height: 5),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(children: [
+                      for (int i = 0; i < controller.newsList.length; i++)
+                        CustomSection.getANews(context, controller.newsList[i])
+                    ])
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
