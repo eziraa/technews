@@ -88,10 +88,18 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
             widget.news?.content ??
                 widget.news?.description ??
                 "There is no news content",
-            (widget.news?.content ??
-                    widget.news?.description ??
-                    "There is no news content")
-                .indexOf('['))),
+            ((widget.news?.content ??
+                        widget.news?.description ??
+                        "There is no news content")
+                    .contains('[')
+                ? (widget.news?.content ?? widget.news?.description ?? "")
+                    .indexOf('[')
+                : (widget.news?.content ?? widget.news?.description ?? "")
+                            .length >
+                        100
+                    ? 100
+                    : (widget.news?.content ?? widget.news?.description ?? "")
+                        .length))),
         const SizedBox(
           height: 5,
         ),
