@@ -1,7 +1,11 @@
 {
     "cSpell.words": [
+        "cupertino",
+        "dotenv",
         "Getx",
         "technews",
+        "timeago",
         "Zelenskey"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
