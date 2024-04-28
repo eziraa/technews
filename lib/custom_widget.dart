@@ -155,7 +155,7 @@ class CustomWidget {
   }
 static Widget getNetWorkImage(String imageAddress) {
     return Container(
-      margin: const EdgeInsets.only(top: 20, bottom: 20),
+      margin: const EdgeInsets.all(20),
       width: 380,
       height: 270,
       decoration: BoxDecoration(

@@ -5,6 +5,7 @@ import 'package:technews/services/remote_services.dart';
 class NewsController extends GetxController {
   var newsList = List<News>.empty().obs;
   var searchedList = List<News>.empty().obs;
+  var trendingNewsList = List<News>.empty().obs;
 
   String type = "news";
 
@@ -12,6 +13,7 @@ class NewsController extends GetxController {
   void onInit() {
     super.onInit();
     fetchNews();
+    fetchTrendingNews();
   }
 
   void fetchNews() async {
@@ -19,6 +21,14 @@ class NewsController extends GetxController {
     if (news.isNotEmpty) {
       newsList.addAll(news);
       searchedList.addAll(news);
+    }
+  }
+
+  void fetchTrendingNews() async {
+    var news = await RemoteServices.fetchTrendingTechNews();
+    if (news.isNotEmpty) {
+      print(news);
+      trendingNewsList.addAll(news);
     }
   }
 
