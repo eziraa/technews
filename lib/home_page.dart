@@ -1,12 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/custom-section.dart';
-import 'package:technews/model/news_model.dart';
-import 'package:technews/see_a_news.dart';
-import 'package:technews/trending.dart';
+
 
 import 'controller/news_controller.dart';
 

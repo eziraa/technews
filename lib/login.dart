@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:technews/forgot.dart';
-import 'package:technews/home.dart';
+import 'package:technews/forgot_password.dart';
 import 'package:technews/home_page.dart';
 import 'package:technews/services/auth.dart';
 import 'package:technews/signup.dart';

@@ -1,7 +1,7 @@
-import 'package:technews/home.dart';
-import 'package:technews/log.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:technews/home_page.dart';
+import 'package:technews/login.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -23,8 +23,8 @@ class _SignUpState extends State<SignUp> {
         namecontroller.text != "" &&
         mailcontroller.text != "") {
       try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
+        // UserCredential userCredential = await FirebaseAuth.instance
+        //     .createUserWithEmailAndPassword(email: email, password: password);
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text(
           "Registered Successfully",
@@ -32,7 +32,7 @@ class _SignUpState extends State<SignUp> {
         )));
         // ignore: use_build_context_synchronously
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Home()));
+            context, MaterialPageRoute(builder: (context) => const HomePage()));
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
