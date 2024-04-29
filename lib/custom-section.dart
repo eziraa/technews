@@ -1,15 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:technews/controller/news-controller.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/see_a_news.dart';
 import 'package:technews/time.dart';
 import 'package:technews/trending.dart';
+import 'package:technews/utils.dart';
 
+import 'controller/news_controller.dart';
 import 'model/news_model.dart';
 
 class CustomSection {
-  static Widget getLatestNewsHeader(BuildContext context) {
+  static Widget getLatestNewsHeader(
+      BuildContext context, NewsController controller) {
     return Column(
       children: [
         Padding(
@@ -17,7 +20,7 @@ class CustomSection {
               const EdgeInsets.only(left: 20, bottom: 0, right: 5, top: 10),
           child: Row(
             children: [
-              CustomWidget.getBoldText("Latest", size: 24),
+              CustomWidget.getBoldText("All News", size: 24),
               Expanded(
                 child: Container(),
               ),
@@ -31,46 +34,87 @@ class CustomSection {
             ],
           ),
         ),
-        getNewsSourcesHrBar()
+        Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(children: [
+              for (String item in [
+                'All',
+                'Artificial Intelligence (AI)',
+                'Machine Learning',
+                'Data Science',
+                'Blockchain and Cryptocurrency',
+                'Cybersecurity',
+                'Cloud Computing',
+                'Internet of Things (IoT)',
+                '5G and Connectivity',
+                'Augmented Reality (AR) and Virtual Reality (VR)',
+                'Gaming',
+                'Mobile Technology',
+                'Hardware',
+                'Software Development',
+                'Tech Policy and Regulation',
+                'Tech Business and Startups',
+                'Tech Events and Conferences'
+              ])
+                Row(
+                  children: [
+                    TextButton(
+                      child: CustomWidget.blurredText(item),
+                      onPressed: () {
+                        controller.newsByLanguage();
+                      },
+                    ),
+                    const SizedBox(width: 3)
+                  ],
+                )
+            ]),
+          ),
+        )
       ],
     );
   }
 
-  static getNewsSourcesHrBar() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(children: [
-          for (String item in [
-            'All',
-            'Artificial Intelligence (AI)',
-            'Machine Learning',
-            'Data Science',
-            'Blockchain and Cryptocurrency',
-            'Cybersecurity',
-            'Cloud Computing',
-            'Internet of Things (IoT)',
-            '5G and Connectivity',
-            'Augmented Reality (AR) and Virtual Reality (VR)',
-            'Gaming',
-            'Mobile Technology',
-            'Hardware',
-            'Software Development',
-            'Tech Policy and Regulation',
-            'Tech Business and Startups',
-            'Tech Events and Conferences'
-          ])
-            Row(
-              children: [
-                TextButton(
-                  child: CustomWidget.blurredText(item),
-                  onPressed: () {},
-                ),
-                const SizedBox(width: 3)
-              ],
-            )
-        ]),
+  static getNewsSourcesHrBar(NewsController controller) {
+    return (
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(children: [
+            for (String item in [
+              'All',
+              'Artificial Intelligence (AI)',
+              'Machine Learning',
+              'Data Science',
+              'Blockchain and Cryptocurrency',
+              'Cybersecurity',
+              'Cloud Computing',
+              'Internet of Things (IoT)',
+              '5G and Connectivity',
+              'Augmented Reality (AR) and Virtual Reality (VR)',
+              'Gaming',
+              'Mobile Technology',
+              'Hardware',
+              'Software Development',
+              'Tech Policy and Regulation',
+              'Tech Business and Startups',
+              'Tech Events and Conferences'
+            ])
+              Row(
+                children: [
+                  TextButton(
+                    child: CustomWidget.blurredText(item),
+                    onPressed: () {
+                      controller.newsByLanguage();
+                    },
+                  ),
+                  const SizedBox(width: 3)
+                ],
+              )
+          ]),
+        ),
       ),
     );
   }
@@ -81,7 +125,7 @@ class CustomSection {
         Get.to(SeeNewsDetailPage(news: news));
       },
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(top: 5, left: 20, right: 20),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -118,15 +162,7 @@ class CustomSection {
                 Expanded(
                   child: Container(),
                 ),
-                TextButton(
-                  child: CustomWidget.blurredText("See All"),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      "/trending",
-                    );
-                  },
-                )
+
                 // Ico
               ],
             ),
@@ -139,8 +175,8 @@ class CustomSection {
                 children: [
                   for (int i = 0; i < newsList.length; i++)
                     GestureDetector(
-                      onTap:(){
-                        Get.to(SeeNewsDetailPage(news:newsList[i]));
+                      onTap: () {
+                        Get.to(SeeNewsDetailPage(news: newsList[i]));
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,8 +191,8 @@ class CustomSection {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               CustomWidget.smallProfileImage(
-                                  newsList[i].source.name,size: 45),
-                              
+                                  newsList[i].source.name,
+                                  size: 45),
                               CustomWidget.getBoldText(newsList[i].source.name,
                                   color: Colors.black54),
                               const SizedBox(
@@ -164,13 +200,13 @@ class CustomSection {
                               ),
                               const Icon(
                                 Icons.access_time,
-                                size:15,
+                                size: 15,
                               ),
                               const SizedBox(
                                 width: 5,
                               ),
                               CustomWidget.blurredText(
-                                  "${timeAgo(newsList[i].publishedAt.toString()).toString().substring(1)} ago",
+                                  "${timeAgo(newsList[i].publishedAt.toString()).toString().replaceAll("~", "")} ago",
                                   size: 14),
                             ],
                           ),
@@ -202,7 +238,13 @@ Widget getANewsFooter(BuildContext context, double size, {News? news}) {
                 width: size,
               ),
               CustomWidget.getBoldText(
-                news?.author ?? "No author",
+                (news!.author ?? "").contains("(")
+                    ? (news.author ?? "").substring(
+                        (news.author ?? "").indexOf("(") + 1,
+                        (news.author ?? "").indexOf(")"))
+                    : (news.author ?? "").contains(",")
+                        ? news.author!.substring(0, news.author!.indexOf(","))
+                        : news.author ?? "No Author",
                 color: Colors.black54,
                 size: size * 1.5,
               ),
@@ -218,7 +260,7 @@ Widget getANewsFooter(BuildContext context, double size, {News? news}) {
                 width: size,
               ),
               CustomWidget.blurredText(
-                  "${timeAgo(news!.publishedAt.toString()).toString().substring(1)} ago",
+                  "${timeAgo(news.publishedAt.toString())}",
                   size: size * 1.5),
             ],
           ),

@@ -1,12 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/custom-section.dart';
-import 'package:technews/model/news_model.dart';
-import 'package:technews/see_a_news.dart';
-import 'package:technews/trending.dart';
 
 import 'controller/news_controller.dart';
 
@@ -54,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           if (ModalRoute.of(context)?.settings.name !=
                               "/search") {
-                            Navigator.pushNamed(context, "/search");
+                            Get.toNamed("/search");
                           }
                         },
                         decoration: const InputDecoration(
@@ -77,7 +72,67 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     CustomSection.getTrending(
                         context, controller.trendingNewsList),
-                    CustomSection.getLatestNewsHeader(context),
+Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 20, bottom: 0, right: 5, top: 10),
+                          child: Row(
+                            children: [
+                              CustomWidget.getBoldText("All News", size: 24),
+                              Expanded(
+                                child: Container(),
+                              ),
+                              TextButton(
+                                child: CustomWidget.blurredText("See All"),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, "/latest");
+                                },
+                              )
+                              // Ico
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(children: [
+                              for (String item in [
+                                'All',
+                                'Artificial Intelligence (AI)',
+                                'Machine Learning',
+                                'Data Science',
+                                'Blockchain and Cryptocurrency',
+                                'Cybersecurity',
+                                'Cloud Computing',
+                                'Internet of Things (IoT)',
+                                '5G and Connectivity',
+                                'Augmented Reality (AR) and Virtual Reality (VR)',
+                                'Gaming',
+                                'Mobile Technology',
+                                'Hardware',
+                                'Software Development',
+                                'Tech Policy and Regulation',
+                                'Tech Business and Startups',
+                                'Tech Events and Conferences'
+                              ])
+                                Row(
+                                  children: [
+                                    TextButton(
+                                      child: CustomWidget.blurredText(item),
+                                      onPressed: () {
+                                        controller.newsByLanguage();
+                                      },
+                                    ),
+                                    const SizedBox(width: 3)
+                                  ],
+                                )
+                            ]),
+                          ),
+                        )
+                      ],
+                    ),
                     Column(children: [
                       for (int i = 0; i < controller.newsList.length; i++)
                         CustomSection.getANews(context, controller.newsList[i])
@@ -89,7 +144,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomWidget.getBottomNavBar(context),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
+import 'package:technews/model/news_model.dart';
 
 import 'controller/news_controller.dart';
 class CustomWidget {
@@ -42,7 +43,7 @@ class CustomWidget {
     );
   }
 
-  static AppBar getAppBarWithShare(BuildContext context) {
+  static AppBar getAppBarWithShare(BuildContext context, {News? news}) {
     return AppBar(
       actions: [
         Row(
@@ -57,7 +58,7 @@ class CustomWidget {
                 size: 30,
               ),
               onPressed: () {
-                FlutterShareMe().shareToSystem(msg: "content");
+                FlutterShareMe().shareToSystem(msg: news?.url ?? "");
               },
               iconSize: 30,
             ),

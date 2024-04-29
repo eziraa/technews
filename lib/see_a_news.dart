@@ -7,6 +7,7 @@ import 'package:technews/model/news_model.dart';
 import 'package:technews/time.dart';
 import 'package:http/http.dart' as http;
 import 'package:technews/trending.dart';
+import 'package:technews/utils.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class SeeNewsDetailPage extends StatefulWidget {
@@ -22,7 +23,7 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomWidget.getAppBarWithShare(context),
+      appBar: CustomWidget.getAppBarWithShare(context, news: widget.news),
       body: Column(
         children: [
           Container(
@@ -41,7 +42,7 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
                         children: [
                           CustomWidget.getBoldText(widget.news!.source.name),
                           CustomWidget.blurredText(
-                              "${timeAgo(widget.news!.publishedAt.toString()).toString().substring(1)} ago",
+                              "${timeAgo(widget.news!.publishedAt.toString()).toString().replaceAll("~", "")} ago",
                               size: 12),
                         ],
                       ),
