@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:get/get.dart';
 import 'package:technews/model/news_model.dart';
 
-import 'controller/news_controller.dart';
 class CustomWidget {
   static AppBar getAppBar(BuildContext context) {
     return AppBar(
@@ -359,9 +357,9 @@ static Widget getNetWorkImage(String imageAddress) {
           case 1:
             Navigator.pushNamed(context, "/search");
             break;
-          case 2:
-            Navigator.pushNamed(context, "/saved");
-            break;
+          // case 2:
+          //   Navigator.pushNamed(context, "/saved");
+          //   break;
           case 3:
             Navigator.pushNamed(context, "/edit_profile");
             break;
@@ -382,12 +380,12 @@ static Widget getNetWorkImage(String imageAddress) {
           ),
           label: "search",
         ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.save,
-          ),
-          label: "saved",
-        ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(
+        //     Icons.save,
+        //   ),
+        //   label: "saved",
+        // ),
         BottomNavigationBarItem(
           icon: Icon(
             Icons.supervised_user_circle_sharp,

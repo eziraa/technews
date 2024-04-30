@@ -58,3 +58,5 @@ lib/main.dart
 /android/app/google-services.json
 
 lib/share.dart
+
+.env

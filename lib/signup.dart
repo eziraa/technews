@@ -24,8 +24,8 @@ class _SignUpState extends State<SignUp> {
         namecontroller.text != "" &&
         mailcontroller.text != "") {
       try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
+        // UserCredential userCredential = await FirebaseAuth.instance
+        //     .createUserWithEmailAndPassword(email: email, password: password);
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text(
           "Registered Successfully",

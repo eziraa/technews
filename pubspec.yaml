@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.1.4
-  font_awesome_flutter: ^9.2.0
+  font_awesome_flutter: ^10.7.0
   flutter_vector_icons: ^2.0.0
   cupertino_icons: ^1.0.2
   share: ^2.0.4
