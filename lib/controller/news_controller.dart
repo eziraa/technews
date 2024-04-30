@@ -7,6 +7,7 @@ class NewsController extends GetxController {
   var searchedList = List<News>.empty().obs;
   var trendingNewsList = List<News>.empty().obs;
   var newsByLanguage = List<News>.empty().obs;
+  var currentLan = "en".obs();
 
   String type = "news";
 
@@ -39,8 +40,10 @@ class NewsController extends GetxController {
     if (news.isNotEmpty) {
       newsList.clear();
       newsList.addAll(news);
+      currentLan = language;
     }
   }
+
   void searchNews(String query) {
     searchedList.clear();
     if (query.isEmpty) {
