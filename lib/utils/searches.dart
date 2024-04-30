@@ -9,11 +9,13 @@ class NewsProvider extends ChangeNotifier {
   }
 }
 class NewsService {
-  static const String _apiKey = 'YOUR_API_KEY';
-
   Future<List<Map<String, dynamic>>> fetchNews() async {
-    // Make HTTP request to fetch news data
-    return [];
+    try {
+      // Make HTTP request to fetch news data
+      return [];
+    } catch (e) {
+      throw 'Failed to fetch news data: $e';
+    }
   }
 }
 class NewsList extends StatelessWidget {
