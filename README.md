@@ -20,3 +20,8 @@ samples, guidance on mobile development, and a full API reference.
 - Browse through the latest tech news articles fetched from an external API.
 - View detailed information about each news article.
 - Receive real-time updates for new articles and article changes via Firebase.
+  
+## Technologies Used
+
+- Flutter: Flutter is Google’s UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.
+- Firebase: Firebase is a platform developed by Google for creating mobile and web applications. It provides various services such as authentication, real-time database, cloud storage, and more.
