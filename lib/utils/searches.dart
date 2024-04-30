@@ -8,3 +8,11 @@ class NewsProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
+class NewsService {
+  static const String _apiKey = 'YOUR_API_KEY';
+
+  Future<List<Map<String, dynamic>>> fetchNews() async {
+    // Make HTTP request to fetch news data
+    return [];
+  }
+}
