@@ -14,3 +14,9 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Features
+
+- Browse through the latest tech news articles fetched from an external API.
+- View detailed information about each news article.
+- Receive real-time updates for new articles and article changes via Firebase.
