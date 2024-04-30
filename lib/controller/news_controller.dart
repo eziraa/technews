@@ -7,6 +7,7 @@ class NewsController extends GetxController {
   var searchedList = List<News>.empty().obs;
   var trendingNewsList = List<News>.empty().obs;
   var newsByLanguage = List<News>.empty().obs;
+  var currentLan = "en".obs();
 
   String type = "news";
 
@@ -34,12 +35,18 @@ class NewsController extends GetxController {
     }
   }
 
-  void fetchNewsByLan() async {
-    var news = await RemoteServices.searchByLan();
-    if (news.isNotEmpty) {
-      newsList.addAll(news);
+  void fetchNewsByLan(String language) async {
+    var newsLists = await RemoteServices.searchByLan(language);
+    newsList.clear();
+    if (newsLists.isNotEmpty) {
+      newsLists.sort((a, b) => b.publishedAt.compareTo(a.publishedAt));
+      newsList
+          .addAll(newsLists.where((news) => news.source.name != "[Removed]"));
+      currentLan = language;
     }
+
   }
+
   void searchNews(String query) {
     searchedList.clear();
     if (query.isEmpty) {

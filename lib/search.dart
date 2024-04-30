@@ -195,7 +195,7 @@ class _SearchPageState extends State<SearchPage> {
                             width: 5,
                           ),
                           CustomWidget.blurredText(
-                              "${timeAgo(news.publishedAt.toString()).toString().replaceAll("~", "")} ago",
+                              "${timeAgo(news.publishedAt.toString())}",
                               size: 10),
                         ],
                       ),

@@ -39,7 +39,7 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
                         children: [
                           CustomWidget.getBoldText(widget.news!.source.name),
                           CustomWidget.blurredText(
-                              "${timeAgo(widget.news!.publishedAt.toString()).toString().replaceAll("~", "")} ago",
+                              "${timeAgo(widget.news!.publishedAt.toString())}",
                               size: 12),
                         ],
                       ),

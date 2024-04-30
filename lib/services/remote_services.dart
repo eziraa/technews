@@ -40,9 +40,16 @@ class RemoteServices {
     }
   }
   
-  static Future<List<News>> searchByLan() async {
+  static Future<List<News>> searchByLan(String language) async {
+    DateTime now = DateTime.now();
+    DateTime beforeSomeDaysAgo = now.subtract(Duration(days: 30));
+
+    String formattedNow = DateFormat('yyyy-MM-dd').format(now);
+    String formattedBeforeSomeDaysAgo =
+        DateFormat('yyyy-MM-dd').format(beforeSomeDaysAgo);
+
     var uri = Uri.parse(
-        'https://newsapi.org/v2/top-headlines?category=technology&pageSize=40&language=ar&apiKey=f78ba5b9d1f34e279c7e8b41654a846d');
+        'https://newsapi.org/v2/everything?q=technology&language=$language&from=$formattedBeforeSomeDaysAgo&to=$formattedNow&pageSize=100&sortedBy=publishedAt&language=en&apiKey=f78ba5b9d1f34e279c7e8b41654a846d');
     var response = await client.get(uri);
     if (response.statusCode == 200) {
       var jsonString = response.body;

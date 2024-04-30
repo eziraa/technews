@@ -347,6 +347,25 @@ static Widget getNetWorkImage(String imageAddress) {
 
   static Widget getBottomNavBar(BuildContext context) {
     return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search_sharp),
+          label: 'Search',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.save),
+          label: 'Saved',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.supervised_user_circle_outlined),
+          label: 'Profile',
+        ),
+        // Add more items as needed
+      ],
       selectedItemColor: Colors.blue,
       unselectedItemColor: const Color.fromARGB(194, 56, 52, 52),
       onTap: (index) {
@@ -357,42 +376,15 @@ static Widget getNetWorkImage(String imageAddress) {
           case 1:
             Navigator.pushNamed(context, "/search");
             break;
-          // case 2:
-          //   Navigator.pushNamed(context, "/saved");
-          //   break;
+          case 2:
+            Navigator.pushNamed(context, "/saved");
+            break;
           case 3:
             Navigator.pushNamed(context, "/edit_profile");
             break;
+          // Add more cases as needed for other indices
         }
       },
-      currentIndex: 3,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-          ),
-          label: "Home",
-
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.search,
-          ),
-          label: "search",
-        ),
-        // BottomNavigationBarItem(
-        //   icon: Icon(
-        //     Icons.save,
-        //   ),
-        //   label: "saved",
-        // ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.supervised_user_circle_sharp,
-          ),
-          label: "Profile",
-        ),
-      ],
     );
   }
 }

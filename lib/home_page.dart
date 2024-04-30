@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/custom-section.dart';
+import 'package:technews/utils/language.dart';
 
 import 'controller/news_controller.dart';
 
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     CustomSection.getTrending(
                         context, controller.trendingNewsList),
-Column(
+                    Column(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
@@ -98,31 +99,24 @@ Column(
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(children: [
-                              for (String item in [
-                                'All',
-                                'Artificial Intelligence (AI)',
-                                'Machine Learning',
-                                'Data Science',
-                                'Blockchain and Cryptocurrency',
-                                'Cybersecurity',
-                                'Cloud Computing',
-                                'Internet of Things (IoT)',
-                                '5G and Connectivity',
-                                'Augmented Reality (AR) and Virtual Reality (VR)',
-                                'Gaming',
-                                'Mobile Technology',
-                                'Hardware',
-                                'Software Development',
-                                'Tech Policy and Regulation',
-                                'Tech Business and Startups',
-                                'Tech Events and Conferences'
-                              ])
+                              for (Language language in languages)
                                 Row(
                                   children: [
                                     TextButton(
-                                      child: CustomWidget.blurredText(item),
+                                      style: TextButton.styleFrom(
+                                        backgroundColor:
+                                            controller.currentLan ==
+                                                    language.short
+                                                ? Colors.blueAccent
+                                                : Colors.transparent,
+                                        padding: const EdgeInsets.all(0),
+                                      ),
+                                      child:
+                                          CustomWidget.blurredText(
+                                          language.long),
                                       onPressed: () {
-                                        controller.newsByLanguage();
+                                        controller
+                                            .fetchNewsByLan(language.short);
                                       },
                                     ),
                                     const SizedBox(width: 3)
