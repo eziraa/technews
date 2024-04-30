@@ -99,15 +99,24 @@ class _HomePageState extends State<HomePage> {
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(children: [
-                              for (Language item in languages)
+                              for (Language language in languages)
                                 Row(
                                   children: [
                                     TextButton(
+                                      style: TextButton.styleFrom(
+                                        backgroundColor:
+                                            controller.currentLan ==
+                                                    language.short
+                                                ? Colors.blueAccent
+                                                : Colors.transparent,
+                                        padding: const EdgeInsets.all(0),
+                                      ),
                                       child:
-                                          CustomWidget.blurredText(item.long),
+                                          CustomWidget.blurredText(
+                                          language.long),
                                       onPressed: () {
-                                        controller.fetchNewsByLan(item.short);
-                                        print(controller.newsList);
+                                        controller
+                                            .fetchNewsByLan(language.short);
                                       },
                                     ),
                                     const SizedBox(width: 3)
