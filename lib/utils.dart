@@ -9,6 +9,6 @@ String timeAgo(String dateTimeString) {
   } else if (difference.inHours < 24) {
     return '${difference.inHours} hours ago';
   } else {
-    return '${difference.inDays} ${difference.inDays > 1 ? "days" : "day"}  agp';
+    return '${difference.inDays} ${difference.inDays > 1 ? "days" : "day"}  ago';
   }
 }
