@@ -37,3 +37,31 @@ class NewsList extends StatelessWidget {
     );
   }
 }
+class NewsApp extends StatefulWidget {
+  @override
+  _NewsAppState createState() => _NewsAppState();
+}
+
+class _NewsAppState extends State<NewsApp> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      Provider.of<NewsProvider>(context, listen: false).fetchNews();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'News App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Latest News'),
+          centerTitle: true,
+        ),
+        body: NewsList(),
+      ),
+    );
+  }
+}
