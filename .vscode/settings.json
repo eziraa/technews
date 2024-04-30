@@ -7,5 +7,6 @@
         "timeago",
         "Zelenskey"
     ],
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "cmake.sourceDirectory": "C:/Users/ezrat/MyProjects/technews/btn/flutter_awesome_buttons/example/linux"
 }

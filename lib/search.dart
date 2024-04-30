@@ -5,6 +5,7 @@ import 'package:technews/model/news_model.dart';
 import 'package:technews/see_a_news.dart';
 import 'package:technews/time.dart';
 import 'package:technews/trending.dart';
+import 'package:technews/utils.dart';
 
 import 'controller/news_controller.dart';
 
@@ -93,7 +94,7 @@ class _SearchPageState extends State<SearchPage> {
                           for (int i = 0;
                               i < controller.searchedList.length;
                               i++)
-                            _getANews(news: controller.newsList[i])
+                            _getANews(news: controller.searchedList[i])
                         ],
                       )
                     ],
@@ -103,7 +104,6 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ],
         ),
-        bottomNavigationBar: CustomWidget.getBottomNavBar(context),
       ),
     );
   }
@@ -181,9 +181,7 @@ class _SearchPageState extends State<SearchPage> {
 
                           CustomWidget.smallProfileImage(news.source.name,
                               size: 45),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          
                           CustomWidget.getBoldText(news.source.name,
                               color: Colors.black54, size: 9),
                           const SizedBox(
@@ -198,7 +196,7 @@ class _SearchPageState extends State<SearchPage> {
                             width: 5,
                           ),
                           CustomWidget.blurredText(
-                              "${timeAgo(news.publishedAt.toString()).toString().substring(1)} ago",
+                              "${timeAgo(news.publishedAt.toString()).toString().replaceAll("~", "")} ago",
                               size: 10),
                         ],
                       ),

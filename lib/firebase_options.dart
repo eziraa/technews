@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -14,6 +15,7 @@ import 'package:flutter/foundation.dart'
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
+final String apiKey = "AIzaSyCngj8Xc3XRgr2c119i7x-K5kx93iFPruA";
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -40,8 +42,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCngj8Xc3XRgr2c119i7x-K5kx93iFPruA',
+  static FirebaseOptions web = FirebaseOptions(
+    apiKey: apiKey,
     appId: '1:313457111182:web:00b60046a2cb74aa1659df',
     messagingSenderId: '313457111182',
     projectId: 'technews-1b0f7',
@@ -49,16 +51,16 @@ class DefaultFirebaseOptions {
     storageBucket: 'technews-1b0f7.appspot.com',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCICW3tviXvmhTKgo-HaOxFuYhLKNpHU9E',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: apiKey,
     appId: '1:313457111182:android:f9f51555dae865881659df',
     messagingSenderId: '313457111182',
     projectId: 'technews-1b0f7',
     storageBucket: 'technews-1b0f7.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAKglO-YqRz1S_-YH_HiFL7D-uKgHkxN_s',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: apiKey,
     appId: '1:313457111182:ios:e7c873a3e1fca8611659df',
     messagingSenderId: '313457111182',
     projectId: 'technews-1b0f7',
@@ -66,8 +68,8 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.technews',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAKglO-YqRz1S_-YH_HiFL7D-uKgHkxN_s',
+  static FirebaseOptions macos = FirebaseOptions(
+    apiKey: apiKey,
     appId: '1:313457111182:ios:e7c873a3e1fca8611659df',
     messagingSenderId: '313457111182',
     projectId: 'technews-1b0f7',
@@ -75,8 +77,8 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.technews',
   );
 
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCngj8Xc3XRgr2c119i7x-K5kx93iFPruA',
+  static FirebaseOptions windows = FirebaseOptions(
+    apiKey: apiKey,
     appId: '1:313457111182:web:24dd73851672c5271659df',
     messagingSenderId: '313457111182',
     projectId: 'technews-1b0f7',
