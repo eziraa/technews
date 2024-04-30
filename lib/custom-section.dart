@@ -228,52 +228,51 @@ Widget getANewsFooter(BuildContext context, double size, {News? news}) {
     onTap: () => {Get.to(SeeNewsDetailPage(), arguments: news)},
     child: SizedBox(
       width: MediaQuery.of(context).size.width * 0.75,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: size,
-              ),
-              CustomWidget.getBoldText(
-                (news!.author ?? "").contains("(")
-                    ? (news.author ?? "").substring(
-                        (news.author ?? "").indexOf("(") + 1,
-                        (news.author ?? "").indexOf(")"))
-                    : (news.author ?? "").contains(",")
-                        ? news.author!.substring(0, news.author!.indexOf(","))
-                        : news.author ?? "No Author",
-                color: Colors.black54,
-                size: size * 1.5,
-              ),
-              SizedBox(
-                width: size,
-              ),
-              Icon(
-                Icons.access_time,
-                size: size * 2,
-                color: Colors.black38,
-              ),
-              SizedBox(
-                width: size,
-              ),
-              CustomWidget.blurredText(
-                  "${timeAgo(news.publishedAt.toString())}",
-                  size: size * 1.5),
-            ],
-          ),
-          Container(
-            alignment: Alignment.bottomRight,
-            child: CustomWidget.blurredText(
-                textTrimmer(news.author ?? "No Author", 20)
-                        .contains("No Author")
-                    ? "No Author"
-                    : "By  ${textTrimmer(news.author ?? "No Author", 20)}",
-                size: 10),
-          ),
-        ],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: size,
+                ),
+                CustomWidget.getBoldText(
+                  (news!.author ?? "No Author") != "No Author"
+                      ? "By " +
+                          ((news.author ?? "").contains("(")
+                              ? (news.author ?? "").substring(
+                                  (news.author ?? "").indexOf("(") + 1,
+                                  (news.author ?? "").indexOf(")"))
+                              : (news.author ?? "").contains(",")
+                                  ? news.author!
+                                      .substring(0, news.author!.indexOf(","))
+                                  : news.author ?? "No Author")
+                      : "No Author",
+                  color: Colors.black54,
+                  size: size * 1.5,
+                ),
+                SizedBox(
+                  width: size,
+                ),
+                Icon(
+                  Icons.access_time,
+                  size: size * 2,
+                  color: Colors.black38,
+                ),
+                SizedBox(
+                  width: size,
+                ),
+                CustomWidget.blurredText(
+                    "${timeAgo(news.publishedAt.toString())}",
+                    size: size * 1.5),
+              ],
+            ),
+            
+          ],
+        ),
       ),
     ),
   );
