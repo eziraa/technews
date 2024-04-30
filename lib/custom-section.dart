@@ -206,7 +206,7 @@ class CustomSection {
                                 width: 5,
                               ),
                               CustomWidget.blurredText(
-                                  "${timeAgo(newsList[i].publishedAt.toString()).toString().replaceAll("~", "")} ago",
+                                  "${timeAgo(newsList[i].publishedAt.toString())}",
                                   size: 14),
                             ],
                           ),
