@@ -31,8 +31,14 @@ class NewsList extends StatelessWidget {
               itemBuilder: (context, index) {
                 final article = newsProvider.newsArticles[index];
                 return ListTile(
-                  title: Text(article['title']),
+                  title: Text(
+                    article['title'],
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   subtitle: Text(article['description']),
+                  onTap: () {
+                    // Handle article tap
+                  },
                 );
               },
             ),
