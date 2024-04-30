@@ -16,3 +16,24 @@ class NewsService {
     return [];
   }
 }
+class NewsList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final newsProvider = Provider.of<NewsProvider>(context);
+
+    return Scaffold(
+      body: newsProvider.newsArticles.isEmpty
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: newsProvider.newsArticles.length,
+              itemBuilder: (context, index) {
+                final article = newsProvider.newsArticles[index];
+                return ListTile(
+                  title: Text(article['title']),
+                  subtitle: Text(article['description']),
+                );
+              },
+            ),
+    );
+  }
+}
