@@ -31,7 +31,7 @@ class _LogInState extends State<LogIn> {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-credential') {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.orangeAccent,
+            backgroundColor: Color.fromARGB(255, 217, 107, 107),
             content: Text(
               "Wrong email or password",
               style: TextStyle(fontSize: 18.0),
@@ -49,10 +49,8 @@ class _LogInState extends State<LogIn> {
         child: Container(
           child: Column(
             children: [
-              SizedBox(
-                height: 50,
-              ),
-              Logo().getLogo(size: 60),
+              SizedBox(height: 50),
+              Logo().getLogol(size: 100),
               Container(width: MediaQuery.of(context).size.width, height: 100),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
@@ -64,8 +62,10 @@ class _LogInState extends State<LogIn> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
                         decoration: BoxDecoration(
-                            color: const Color(0xFFedf0f8),
-                            borderRadius: BorderRadius.circular(30)),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2.0),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -90,8 +90,10 @@ class _LogInState extends State<LogIn> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
                         decoration: BoxDecoration(
-                            color: const Color(0xFFedf0f8),
-                            borderRadius: BorderRadius.circular(30)),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2.0),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                         child: TextFormField(
                           controller: passwordcontroller,
                           validator: (value) {
@@ -131,7 +133,7 @@ class _LogInState extends State<LogIn> {
                           ),
                           child: const Center(
                             child: Text(
-                              "Sign In",
+                              "Log In",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18.0,
@@ -156,9 +158,12 @@ class _LogInState extends State<LogIn> {
                 },
                 child: const Text("Forgot Password?",
                     style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w500)),
+                      color: Colors.blue,
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Colors.blueAccent,
+                    )),
               ),
               const SizedBox(
                 height: 40.0,
@@ -171,7 +176,7 @@ class _LogInState extends State<LogIn> {
                 children: [
                   const Text("Don't have an account?",
                       style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.black,
                           fontSize: 14.0,
                           fontWeight: FontWeight.w500)),
                   const SizedBox(
