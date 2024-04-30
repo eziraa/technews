@@ -35,14 +35,17 @@ class NewsController extends GetxController {
     }
   }
 
-  void fetchNewsByLan(String language) async {
-    var newsLists = await RemoteServices.searchByLan(language);
+  void setCurrentLanguage(String language) {
+    currentLan = language;
+  }
+
+  void fetchNewsByLan() async {
+    var newsLists = await RemoteServices.searchByLan(currentLan);
     newsList.clear();
     if (newsLists.isNotEmpty) {
       newsLists.sort((a, b) => b.publishedAt.compareTo(a.publishedAt));
       newsList
           .addAll(newsLists.where((news) => news.source.name != "[Removed]"));
-      currentLan = language;
     }
 
   }

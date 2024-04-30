@@ -23,7 +23,7 @@ Future<void> main() async {
       theme: ThemeData(primarySwatch: Colors.grey),
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => const LogIn()),
+        GetPage(name: '/', page: () => const HomePage()),
         GetPage(name: '/on_boarding', page: () => const OnBoarding1()),
         GetPage(name: '/log_in', page: () => const LogIn()),
         GetPage(name: '/trending', page: () => const Trending()),

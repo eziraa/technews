@@ -73,7 +73,6 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
           ),
         ],
       ),
-      bottomNavigationBar: CustomWidget.getBottomNavBar(context),
     );
   }
 

@@ -84,13 +84,7 @@ class _HomePageState extends State<HomePage> {
                               Expanded(
                                 child: Container(),
                               ),
-                              TextButton(
-                                child: CustomWidget.blurredText("See All"),
-                                onPressed: () {
-                                  Navigator.pushNamed(context, "/latest");
-                                },
-                              )
-                              // Ico
+                              
                             ],
                           ),
                         ),
@@ -102,18 +96,31 @@ class _HomePageState extends State<HomePage> {
                               for (Language language in languages)
                                 Row(
                                   children: [
+                                    SizedBox(
+                                      width: 2,
+                                    ),
                                     TextButton(
                                       style: TextButton.styleFrom(
-                                        backgroundColor:
-                                            controller.currentLan ==
-                                                    language.short
-                                                ? Colors.blueAccent
-                                                : Colors.transparent,
                                         padding: const EdgeInsets.all(0),
                                       ),
-                                      child:
-                                          CustomWidget.blurredText(
-                                          language.long),
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            language.long,
+                                            style: TextStyle(
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                          Container(
+                                            height: controller.currentLan ==
+                                                    language.short
+                                                ? 5
+                                                : 0,
+                                            width: language.long.length * 10,
+                                            color: Colors.blue,
+                                          )
+                                        ],
+                                      ),
                                       onPressed: () {
                                         controller
                                             .fetchNewsByLan(language.short);
