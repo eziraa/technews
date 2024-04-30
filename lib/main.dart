@@ -1,30 +1,21 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:technews/app.dart';
 import 'package:technews/firebase_options.dart';
-import 'package:technews/home_page.dart';
 import 'package:technews/login.dart';
 import 'package:technews/news_channel.dart';
 import 'package:technews/on_boarding_1.dart';
-import 'package:technews/saved.dart';
 import 'package:technews/search.dart';
-import 'package:technews/select_topic.dart';
-import 'package:technews/edit_profile.dart';
-import 'package:technews/settings.dart';
 import 'package:technews/sign_up.dart';
 import 'package:technews/trending.dart';
 import 'package:technews/latest.dart';
-import 'package:technews/notification.dart';
-import 'package:technews/verify_email.dart';
 import 'package:technews/select_news_source.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart' as dotenv;
 
 Future<void> main() async {
   // await dotenv.dotenv.load(fileName: '.env');
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp();
   runApp(
     GetMaterialApp(
       title: 'Tech News App',

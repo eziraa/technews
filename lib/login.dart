@@ -3,7 +3,6 @@
 import 'package:technews/forgot_password.dart';
 import 'package:technews/home_page.dart';
 import 'package:technews/logo.dart';
-import 'package:technews/services/auth.dart';
 import 'package:technews/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +31,7 @@ class _LogInState extends State<LogIn> {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-credential') {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.orangeAccent,
+            backgroundColor: Color.fromARGB(255, 217, 107, 107),
             content: Text(
               "Wrong email or password",
               style: TextStyle(fontSize: 18.0),
@@ -50,9 +49,9 @@ class _LogInState extends State<LogIn> {
         child: Container(
           child: Column(
             children: [
-              Logo().getLogo(size: 60),
+              SizedBox(height: 50),
+              Logo().getLogol(size: 100),
               Container(width: MediaQuery.of(context).size.width, height: 100),
-              
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                 child: Form(
@@ -63,14 +62,15 @@ class _LogInState extends State<LogIn> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
                         decoration: BoxDecoration(
-                            color: const Color(0xFFedf0f8),
-                            borderRadius: BorderRadius.circular(30)),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2.0),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please Enter E-mail';
-                            }
-                            else if (!value.contains("@"))
+                            } else if (!value.contains("@"))
                               return 'Please Enter E-mail';
                             return null;
                           },
@@ -90,8 +90,10 @@ class _LogInState extends State<LogIn> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
                         decoration: BoxDecoration(
-                            color: const Color(0xFFedf0f8),
-                            borderRadius: BorderRadius.circular(30)),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2.0),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                         child: TextFormField(
                           controller: passwordcontroller,
                           validator: (value) {
@@ -122,18 +124,19 @@ class _LogInState extends State<LogIn> {
                           userLogin();
                         },
                         child: Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width * 0.3,
                           padding: const EdgeInsets.symmetric(
                               vertical: 13.0, horizontal: 30.0),
                           decoration: BoxDecoration(
-                              color: const Color(0xFF273671),
-                              borderRadius: BorderRadius.circular(30)),
+                            color: Colors.blueAccent,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                           child: const Center(
                             child: Text(
-                              "Sign In",
+                              "Log In",
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 22.0,
+                                  fontSize: 18.0,
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
@@ -155,15 +158,16 @@ class _LogInState extends State<LogIn> {
                 },
                 child: const Text("Forgot Password?",
                     style: TextStyle(
-                        color: Color(0xFF8c8e98),
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w500)),
+                      color: Colors.blue,
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Colors.blueAccent,
+                    )),
               ),
               const SizedBox(
                 height: 40.0,
               ),
-              
-             
               const SizedBox(
                 height: 40.0,
               ),
@@ -172,8 +176,8 @@ class _LogInState extends State<LogIn> {
                 children: [
                   const Text("Don't have an account?",
                       style: TextStyle(
-                          color: Color(0xFF8c8e98),
-                          fontSize: 18.0,
+                          color: Colors.black,
+                          fontSize: 14.0,
                           fontWeight: FontWeight.w500)),
                   const SizedBox(
                     width: 5.0,
@@ -186,11 +190,14 @@ class _LogInState extends State<LogIn> {
                               builder: (context) => const SignUp()));
                     },
                     child: const Text(
-                      "SignUp",
+                      "Sign Up",
                       style: TextStyle(
-                          color: Color(0xFF273671),
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w500),
+                        color: Colors.blueAccent,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.blueAccent,
+                      ),
                     ),
                   ),
                 ],

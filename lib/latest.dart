@@ -56,7 +56,7 @@ class _LatestPageState extends State<LatestPage> {
       appBar: AppBar(
         title: const SizedBox(
           child: Text(
-            'Latest News',
+            'All News',
             textAlign: TextAlign.left,
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:technews/login.dart';
 import 'package:technews/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -42,14 +43,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         child: Column(
           children: [
             const SizedBox(
-              height: 70.0,
+              height: 200.0,
             ),
             Container(
               alignment: Alignment.topCenter,
               child: const Text(
                 "Password Recovery",
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.blueAccent,
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold),
               ),
@@ -57,13 +58,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             const SizedBox(
               height: 10.0,
             ),
-            const Text(
-              "Enter your mail",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold),
-            ),
+            // const Text(
+            //   "Enter your email",
+            //   style: TextStyle(
+            //       color: Colors.blueAccent,
+            //       fontSize: 20.0,
+            //       fontWeight: FontWeight.bold),
+            // ),
             Expanded(
               child: Form(
                 key: _formkey,
@@ -72,24 +73,25 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   child: ListView(
                     children: [
                       Container(
+                        margin: const EdgeInsets.all(20),
                         padding: const EdgeInsets.only(left: 10.0),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white70, width: 2.0),
+                          border: Border.all(color: Colors.blueAccent, width: 2.0),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Enter Email';
+                              return 'Please Enter Email:';
                             }
                             return null;
                           },
                           controller: mailcontroller,
                           style: const TextStyle(color: Colors.white),
                           decoration: const InputDecoration(
-                              hintText: "Email",
+                              hintText: "Enter your email",
                               hintStyle: TextStyle(
-                                  fontSize: 18.0, color: Colors.white),
+                                  fontSize: 18.0, color: Colors.black45),
                               prefixIcon: Icon(
                                 Icons.person,
                                 color: Colors.white70,
@@ -111,16 +113,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           }
                         },
                         child: Container(
-                          width: 140,
+                          // width: 140,
+                          margin: const EdgeInsets.only(left: 20, right: 20),
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.blueAccent,
                               borderRadius: BorderRadius.circular(10)),
                           child: const Center(
                             child: Text(
-                              "Send Email",
+                              "Send Code",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -133,11 +136,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            "Don't have an account?",
-                            style:
-                                TextStyle(fontSize: 18.0, color: Colors.white),
-                          ),
+                          const Text("Reset your password?",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w500)),
                           const SizedBox(
                             width: 5.0,
                           ),
@@ -146,16 +149,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const SignUp()));
+                                      builder: (context) => const LogIn()));
                             },
                             child: const Text(
-                              "Create",
+                              "Log In",
                               style: TextStyle(
-                                  color: Color.fromARGB(225, 184, 166, 6),
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w500),
+                                color: Colors.blueAccent,
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w500,
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.blueAccent,
+                              ),
                             ),
-                          )
+                          ),
                         ],
                       )
                     ],
