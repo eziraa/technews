@@ -24,8 +24,8 @@ class _SignUpState extends State<SignUp> {
         namecontroller.text != "" &&
         mailcontroller.text != "") {
       try {
-        // UserCredential userCredential = await FirebaseAuth.instance
-        //     .createUserWithEmailAndPassword(email: email, password: password);
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password);
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text(
           "Registered Successfully",
@@ -66,13 +66,13 @@ class _SignUpState extends State<SignUp> {
         child: Container(
           child: Column(
             children: [
+              SizedBox(height: 50),
               Logo().getLogo(size: 60),
               Container(
                 width: MediaQuery.of(context).size.width,
                 child: Container(
                     width: MediaQuery.of(context).size.width, height: 100),
               ),
-              
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                 child: Form(
@@ -83,8 +83,10 @@ class _SignUpState extends State<SignUp> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
                         decoration: BoxDecoration(
-                            color: const Color(0xFFedf0f8),
-                            borderRadius: BorderRadius.circular(30)),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2.0),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -107,8 +109,10 @@ class _SignUpState extends State<SignUp> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
                         decoration: BoxDecoration(
-                            color: const Color(0xFFedf0f8),
-                            borderRadius: BorderRadius.circular(30)),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2.0),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -131,8 +135,10 @@ class _SignUpState extends State<SignUp> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
                         decoration: BoxDecoration(
-                            color: const Color(0xFFedf0f8),
-                            borderRadius: BorderRadius.circular(30)),
+                          border:
+                              Border.all(color: Colors.blueAccent, width: 2.0),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -164,18 +170,18 @@ class _SignUpState extends State<SignUp> {
                           registration();
                         },
                         child: Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width * 0.4,
                           padding: const EdgeInsets.symmetric(
                               vertical: 13.0, horizontal: 30.0),
                           decoration: BoxDecoration(
-                              color: const Color(0xFF273671),
+                              color: Colors.blueAccent,
                               borderRadius: BorderRadius.circular(30)),
                           child: const Center(
                             child: Text(
                               "Sign Up",
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 22.0,
+                                  fontSize: 18.0,
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
@@ -188,8 +194,6 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 40.0,
               ),
-              
-              
               const SizedBox(
                 height: 40.0,
               ),
@@ -198,8 +202,8 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   const Text("Already have an account?",
                       style: TextStyle(
-                          color: Color(0xFF8c8e98),
-                          fontSize: 18.0,
+                          color: Colors.black,
+                          fontSize: 14.0,
                           fontWeight: FontWeight.w500)),
                   const SizedBox(
                     width: 5.0,
@@ -212,11 +216,14 @@ class _SignUpState extends State<SignUp> {
                               builder: (context) => const LogIn()));
                     },
                     child: const Text(
-                      "LogIn",
+                      "Log In",
                       style: TextStyle(
-                          color: Color(0xFF273671),
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w500),
+                        color: Colors.blueAccent,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.blueAccent,
+                      ),
                     ),
                   ),
                 ],
