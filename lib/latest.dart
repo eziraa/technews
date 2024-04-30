@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+// import 'package:get/get_core/src/get_main.dart';
 import 'package:technews/controller/news_controller.dart';
 import 'package:technews/custom-section.dart';
 import 'package:technews/custom_widget.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:logger/logger.dart';
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
+// import 'package:logger/logger.dart';
 
 class LatestPage extends StatefulWidget {
   const LatestPage({Key? key}) : super(key: key);
