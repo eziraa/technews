@@ -34,9 +34,10 @@ class NewsController extends GetxController {
     }
   }
 
-  void fetchNewsByLan() async {
-    var news = await RemoteServices.searchByLan();
+  void fetchNewsByLan(String language) async {
+    var news = await RemoteServices.searchByLan(language);
     if (news.isNotEmpty) {
+      newsList.clear();
       newsList.addAll(news);
     }
   }
