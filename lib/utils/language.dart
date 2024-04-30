@@ -11,13 +11,11 @@ List<Language> languages = [
   Language(short: 'en', long: 'English'),
   Language(short: 'es', long: 'Spanish'),
   Language(short: 'fr', long: 'French'),
-  Language(short: 'he', long: 'Hebrew'),
   Language(short: 'it', long: 'Italian'),
   Language(short: 'nl', long: 'Dutch'),
   Language(short: 'no', long: 'Norwegian'),
   Language(short: 'pt', long: 'Portuguese'),
   Language(short: 'ru', long: 'Russian'),
   Language(short: 'sv', long: 'Swedish'),
-  Language(short: 'ud', long: 'Urdu'),
   Language(short: 'zh', long: 'Chinese'),
 ];
