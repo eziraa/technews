@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/model/news_model.dart';
-import 'package:technews/time.dart';
 import 'package:technews/trending.dart';
 import 'package:technews/utils.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
