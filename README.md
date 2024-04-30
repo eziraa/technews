@@ -43,6 +43,7 @@ To get started with this project, follow the steps below:
 flutter pub get
 4. Run the app:
 flutter run
+```
 ## Firebase Configuration
 
 1. Enable Firebase services you need for the app (e.g., Authentication, Firestore, etc.) from the Firebase console.
