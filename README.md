@@ -1,4 +1,4 @@
-# technews
+# Technews
 
 A new Flutter project.
 
@@ -26,7 +26,7 @@ samples, guidance on mobile development, and a full API reference.
 - Flutter: Flutter is Google’s UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.
 - Firebase: Firebase is a platform developed by Google for creating mobile and web applications. It provides various services such as authentication, real-time database, cloud storage, and more.
 
-## Getting Started
+## Installation
 
 To get started with this project, follow the steps below:
 
@@ -35,7 +35,7 @@ To get started with this project, follow the steps below:
 - Make sure you have Flutter installed. You can install it from [here](https://flutter.dev/docs/get-started/install).
 - Create a Firebase project and configure it with your Flutter app. You can find detailed instructions [here](https://firebase.google.com/docs/flutter/setup).
 
-### Installation
+### Getting the Code
  ```bash
 1. Clone this repository to your local machine
 2. Navigate to the project directory
