@@ -1,6 +1,8 @@
 // ignore_for_file: library_prefixes
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:technews/controller/news_controller.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/model/news_model.dart';
 import 'package:technews/trending.dart';
@@ -28,7 +30,7 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width * 0.9,
                   child: Row(
                     children: [
                       CustomWidget.getProfileImage(widget.news!.source.name,
@@ -43,10 +45,16 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
                               size: 12),
                         ],
                       ),
-                      const SizedBox(
-                        width: 20,
+                      Expanded(
+                        child: Container(),
                       ),
-                      
+                      CustomWidget.getElevatedBtn(context, "Save",
+                          size: 14,
+                          handler: () => {
+                                Get.find<NewsController>()
+                                    .saveNews(widget.news ?? "" as News)
+
+                              })
                     ],
                   ),
                 ),
@@ -60,7 +68,8 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomWidget.getNetWorkImage(widget.news!.urlToImage ?? ""),
+                    CustomWidget.getNetWorkImage(
+                        context, widget.news!.urlToImage ?? ""),
                     const SizedBox(height: 10),
                     // CustomWidget.blurredText("Europe"),
                     CustomWidget.getBoldText(
