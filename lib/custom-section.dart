@@ -176,39 +176,49 @@ class CustomSection {
                       onTap: () {
                         Get.to(SeeNewsDetailPage(news: newsList[i]));
                       },
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomWidget.getNetWorkImage(
-                            newsList[i].urlToImage ?? "",
-                          ),
-                          CustomWidget.getNormalText(
-                              textTrimmer(newsList[i].title ?? "No Title", 70),
-                              size: 16),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              CustomWidget.smallProfileImage(
-                                  newsList[i].source.name,
-                                  size: 45),
-                              CustomWidget.getBoldText(newsList[i].source.name,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomWidget.getNetWorkImage(
+                              context,
+                              newsList[i].urlToImage ?? "",
+                            ),
+                            CustomWidget.getNormalText(
+                                textTrimmer(
+                                    newsList[i].title ?? "No Title", 40),
+                                size: 16),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  CustomWidget.smallProfileImage(
+                                      newsList[i].source.name,
+                                      size: 45),
+                                  CustomWidget.getBoldText(
+                                    newsList[i].source.name,
+                                  ),
+                                  const SizedBox(
+                                    width: 15,
+                                  ),
+                                  const Icon(
+                                    Icons.access_time,
+                                    size: 15,
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  CustomWidget.blurredText(
+                                      "${timeAgo(newsList[i].publishedAt.toString())}",
+                                      size: 14),
+                                ],
                               ),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              const Icon(
-                                Icons.access_time,
-                                size: 15,
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              CustomWidget.blurredText(
-                                  "${timeAgo(newsList[i].publishedAt.toString())}",
-                                  size: 14),
-                            ],
-                          ),
-                        ],
+                            ),
+                          ],
+                        ),
                       ),
                     )
                 ],
@@ -266,7 +276,6 @@ Widget getANewsFooter(BuildContext context, double size, {News? news}) {
                     size: size * 1.5),
               ],
             ),
-            
           ],
         ),
       ),
