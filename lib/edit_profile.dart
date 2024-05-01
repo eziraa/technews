@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:technews/controller/theme_controller.dart';
+import 'package:technews/controller/user_controller.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/services/remote_services.dart';
 
@@ -19,6 +20,8 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final ThemeController themeController = Get.put(ThemeController());
+  final UserController userController = Get.put(UserController());
+  final TextEditingController nameController = Get.put(TextEditingController());
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -99,7 +102,7 @@ class _EditProfileState extends State<EditProfile> {
                 const SizedBox(height: 30),
                 Container(
                   margin: const EdgeInsets.only(top: 50),
-                  child: const Column(
+                  child: Column(
                     children: [
                       TextField(
                         decoration: InputDecoration(
@@ -111,6 +114,9 @@ class _EditProfileState extends State<EditProfile> {
                       SizedBox(height: 10),
                       SizedBox(height: 10),
                       TextField(
+                        
+                        controller: nameController,
+                        
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "FullName",
