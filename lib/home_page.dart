@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:technews/controller/theme_controller.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/custom-section.dart';
+import 'package:technews/drawer.dart';
 import 'package:technews/utils/language.dart';
 
 import 'controller/news_controller.dart';
@@ -15,12 +17,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final NewsController controller = Get.put(NewsController());
+  final ThemeController themeController = Get.put(ThemeController());
 
   // List<dynamic> techNews = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomWidget.getAppBar(context),
+      drawer: CustomDrawer(),
       body: Obx(
         () => Column(
           children: [
@@ -30,7 +34,9 @@ class _HomePageState extends State<HomePage> {
                 height: 50,
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: themeController.themeMode.value == ThemeMode.dark
+                      ? Color.fromARGB(255, 89, 88, 88)
+                      : Colors.white54,
                   borderRadius: const BorderRadius.all(Radius.circular(20)),
                   boxShadow: [
                     BoxShadow(
@@ -53,10 +59,13 @@ class _HomePageState extends State<HomePage> {
                             Get.toNamed("/search");
                           }
                         },
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
+                          fillColor: Colors.green,
                           hintText: 'Search...',
                           border: InputBorder.none,
-                          hintStyle: TextStyle(color: Colors.grey),
+                          hintStyle: TextStyle(
+                            color: Colors.grey,
+                          ),
                         ),
                         onChanged: (String text) => {},
                       ),
@@ -84,7 +93,6 @@ class _HomePageState extends State<HomePage> {
                               Expanded(
                                 child: Container(),
                               ),
-                              
                             ],
                           ),
                         ),
@@ -123,7 +131,8 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       onPressed: () {
                                         controller
-                                            .fetchNewsByLan(language.short);
+                                            .setCurrentLanguage(language.short);
+                                        controller.fetchNewsByLan();
                                       },
                                     ),
                                     const SizedBox(width: 3)
