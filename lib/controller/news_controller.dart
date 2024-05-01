@@ -6,6 +6,7 @@ class NewsController extends GetxController {
   var newsList = List<News>.empty().obs;
   var searchedList = List<News>.empty().obs;
   var trendingNewsList = List<News>.empty().obs;
+  var savedNews = List<News>.empty().obs;
   var newsByLanguage = List<News>.empty().obs;
   var currentLan = "en".obs();
 
@@ -19,7 +20,7 @@ class NewsController extends GetxController {
   }
 
   void fetchNews() async {
-    var newsLists = await RemoteServices.fetchTrendingTechNews();
+    var newsLists = await RemoteServices.fetchTechNews();
     if (newsLists.isNotEmpty) {
       newsLists.sort((a, b) => b.publishedAt.compareTo(a.publishedAt));
       newsList
@@ -71,6 +72,14 @@ class NewsController extends GetxController {
 
   void saveNews(News news) async {
     await RemoteServices.saveNews(news);
-    print(news.title);
+    
+  }
+
+  void getSavedNews() async {
+    var newsLists = await RemoteServices.getSavedNews();
+    if (newsLists.isNotEmpty) {
+      newsLists.sort((a, b) => b.publishedAt.compareTo(a.publishedAt));
+      savedNews.addAll(newsLists);
+    }
   }
 }
