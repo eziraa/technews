@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
 import 'package:technews/model/news_model.dart';
 import 'package:intl/intl.dart';
@@ -60,4 +62,26 @@ class RemoteServices {
       return Future.error(response.statusCode);
     }
   }
+  static Future<void> saveNews(News news) async {
+    final String userId = "1";
+
+    final String newsJson = jsonEncode(news.toJson());
+
+    final DocumentReference savedNewsDoc =
+        FirebaseFirestore.instance.collection('savedNews').doc(userId);
+
+    final DocumentSnapshot docSnapshot = await savedNewsDoc.get();
+    if (docSnapshot.exists) {
+      List<String> savedNews = List<String>.from(docSnapshot['news'] as List);
+      savedNews.add(newsJson);
+      await savedNewsDoc.update({
+        'news': savedNews,
+      });
+    } else {
+      await savedNewsDoc.set({
+        'news': [newsJson],
+      });
+    }
+  }
+
 }
