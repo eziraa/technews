@@ -51,7 +51,42 @@ flutter run
 2. Configure your Flutter app with the Firebase project by adding the necessary Firebase configuration files (`google-services.json` for Android or `GoogleService-Info.plist` for iOS) to your project.
    
 3. Initialize Firebase in your Flutter app. Refer to the [Firebase documentation](https://firebase.google.com/docs/flutter/setup) for detailed instructions.
-[![Overview Video](assets/video_2024-05-01_19-11-54.mp4)](link-to-your-video)
+
+## OverViews
+
+__Get Started__
+  ![alt text](/assets/photo_9_2024-05-01_19-21-06.jpg)
+
+. __OnBoarding__
+  ![alt text](/assets/photo_4_2024-05-01_19-21-06.jpg)
+
+  ![alt text](/assets/photo_5_2024-05-01_19-21-06.jpg)
+__Log In__
+  ![alt text](/assets/nn.jpg)
+
+. __Sharing news__
+
+![alt text](/assets/photo_1_2024-05-01_19-21-06.jpg)
+
+. __Loading News__
+
+ ![alt text](/assets/photo_2_2024-05-01_19-21-06.jpg)
+. _Changing Theme__
+
+  ![alt text](/assets/photo_3_2024-05-01_19-21-06.jpg)
+  
+. __Changing Theme__
+
+  ![alt text](/assets/photo_6_2024-05-01_19-21-06.jpg)
+
+. __See list of news__
+   ![alt text](/assets/photo_8_2024-05-01_19-21-06.jpg)
+
+. __Loading News__
+    ![alt text](/assets/photo_10_2024-05-01_19-21-06.jpg)
+
+. __Saving News__
+     ![alt text](/assets/photo_11_2024-05-01_19-21-06.jpg)
 
 ## Contributing
 Contributions are welcome! Please feel free to submit a pull request or open an issue if you encounter any problems or have suggestions for improvements.
