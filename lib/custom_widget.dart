@@ -119,10 +119,7 @@ class CustomWidget {
                 border: InputBorder.none,
                 hintStyle: TextStyle(
                     color: Colors.grey,
-                    backgroundColor:
-                        themeController.themeMode.value == ThemeMode.dark
-                            ? Color.fromARGB(255, 215, 11, 11)
-                            : Colors.white54),
+                ),
               ),
               onChanged: (String text) => {},
             ),
