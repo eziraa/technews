@@ -47,7 +47,6 @@ class NewsController extends GetxController {
       newsList
           .addAll(newsLists.where((news) => news.source.name != "[Removed]"));
     }
-
   }
 
   void searchNews(String query) {
@@ -68,5 +67,10 @@ class NewsController extends GetxController {
 
   void changeType(String type) {
     this.type = type;
+  }
+
+  void saveNews(News news) async {
+    await RemoteServices.saveNews(news);
+    print(news.title);
   }
 }
