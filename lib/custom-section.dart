@@ -223,7 +223,6 @@ class CustomSection {
 
 Widget getANewsFooter(BuildContext context, double size, {News? news}) {
   return GestureDetector(
-    onTap: () => {Get.to(SeeNewsDetailPage(), arguments: news)},
     child: SizedBox(
       width: MediaQuery.of(context).size.width * 0.75,
       child: SingleChildScrollView(
