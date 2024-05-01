@@ -1,5 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:get/get.dart';
+import 'package:technews/controller/theme_controller.dart';
+import 'package:technews/custom_widget.dart';
 import 'package:technews/forgot_password.dart';
 import 'package:technews/home_page.dart';
 import 'package:technews/logo.dart';
@@ -19,6 +22,7 @@ class _LogInState extends State<LogIn> {
 
   TextEditingController mailcontroller = new TextEditingController();
   TextEditingController passwordcontroller = new TextEditingController();
+  final ThemeController themeController = Get.put(ThemeController());
 
   final _formkey = GlobalKey<FormState>();
 
@@ -43,7 +47,9 @@ class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: themeController.themeMode == ThemeMode.light
+          ? Colors.white70
+          : Colors.black87,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
@@ -51,7 +57,7 @@ class _LogInState extends State<LogIn> {
             children: [
               SizedBox(height: 50),
               Logo().getLogol(size: 100),
-              Container(width: MediaQuery.of(context).size.width, height: 100),
+              Container(width: MediaQuery.of(context).size.width, height: 50),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                 child: Form(
@@ -61,11 +67,7 @@ class _LogInState extends State<LogIn> {
                       Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Colors.black, width: 2.0),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                        decoration: CustomWidget.getBoxDecoration(),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -89,11 +91,7 @@ class _LogInState extends State<LogIn> {
                       Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Colors.black, width: 2.0),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                        decoration: CustomWidget.getBoxDecoration(),
                         child: TextFormField(
                           controller: passwordcontroller,
                           validator: (value) {
@@ -124,7 +122,7 @@ class _LogInState extends State<LogIn> {
                           userLogin();
                         },
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.3,
+                          width: MediaQuery.of(context).size.width * 0.4,
                           padding: const EdgeInsets.symmetric(
                               vertical: 13.0, horizontal: 30.0),
                           decoration: BoxDecoration(
@@ -176,7 +174,6 @@ class _LogInState extends State<LogIn> {
                 children: [
                   const Text("Don't have an account?",
                       style: TextStyle(
-                          color: Colors.black,
                           fontSize: 14.0,
                           fontWeight: FontWeight.w500)),
                   const SizedBox(
