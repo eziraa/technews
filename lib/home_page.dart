@@ -60,7 +60,6 @@ class _HomePageState extends State<HomePage> {
                           }
                         },
                         decoration: InputDecoration(
-                          fillColor: Colors.green,
                           hintText: 'Search...',
                           border: InputBorder.none,
                           hintStyle: TextStyle(

@@ -192,7 +192,7 @@ class CustomSection {
                                   newsList[i].source.name,
                                   size: 45),
                               CustomWidget.getBoldText(newsList[i].source.name,
-                                  color: Colors.black54),
+                              ),
                               const SizedBox(
                                 width: 15,
                               ),
@@ -248,7 +248,6 @@ Widget getANewsFooter(BuildContext context, double size, {News? news}) {
                                       .substring(0, news.author!.indexOf(","))
                                   : news.author ?? "No Author")
                       : "No Author",
-                  color: Colors.black54,
                   size: size * 1.5,
                 ),
                 SizedBox(
