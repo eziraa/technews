@@ -34,8 +34,8 @@ class _OnBoarding1State extends State<OnBoarding1> {
     page = OnBoardingPage(
       colorList: [
         Colors.blue,
-        const Color.fromRGBO(0, 0, 0, 0.259),
-        Colors.black26
+        Color.fromARGB(66, 164, 160, 160),
+        Color.fromARGB(66, 141, 139, 139)
       ],
       imageAddress: "assets/images/onboard-0.png",
       pageIndex: 0,
@@ -72,7 +72,6 @@ class _OnBoarding1State extends State<OnBoarding1> {
                       text: 'Get instant Tech News',
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Colors.black,
                         fontSize: 24,
                       ),
                     ),
@@ -85,7 +84,7 @@ class _OnBoarding1State extends State<OnBoarding1> {
               child: Text(
                 page.text,
                 style: const TextStyle(
-                    color: Colors.black, fontSize: 16, fontFamily: "arial"),
+                     fontSize: 16, fontFamily: "arial"),
               ),
             ),
             const SizedBox(height: 80),
@@ -113,7 +112,8 @@ class _OnBoarding1State extends State<OnBoarding1> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (page.pageIndex < 2) {
-                          page.colorList[page.pageIndex] = Colors.black26;
+                          page.colorList[page.pageIndex] =
+                              Color.fromARGB(66, 125, 123, 123);
                           page.colorList[page.pageIndex + 1] =
                               Colors.blueAccent;
                           setState(
