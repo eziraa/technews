@@ -17,6 +17,7 @@ class NewsController extends GetxController {
     super.onInit();
     fetchNews();
     fetchTrendingNews();
+    getSavedNews();
   }
 
   void fetchNews() async {
@@ -72,7 +73,7 @@ class NewsController extends GetxController {
 
   void saveNews(News news) async {
     await RemoteServices.saveNews(news);
-    
+    savedNews.add(news);
   }
 
   void getSavedNews() async {
@@ -81,5 +82,9 @@ class NewsController extends GetxController {
       newsLists.sort((a, b) => b.publishedAt.compareTo(a.publishedAt));
       savedNews.addAll(newsLists);
     }
+  }
+  void removeNewsFromSaved(News news) async {
+    await RemoteServices.removeNews(news);
+    savedNews.remove(news);
   }
 }
