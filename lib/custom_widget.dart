@@ -175,11 +175,11 @@ class CustomWidget {
     );
   }
 
-  static Widget getNetWorkImage(String imageAddress) {
+  static Widget getNetWorkImage(BuildContext context, String imageAddress) {
     return Container(
       margin: const EdgeInsets.all(20),
-      width: 380,
-      height: 270,
+      width: MediaQuery.of(context).size.width * 0.78,
+      height: 200,
       decoration: BoxDecoration(
           color: const Color.fromARGB(255, 78, 75, 75),
           shape: BoxShape.rectangle,
@@ -420,6 +420,13 @@ class CustomWidget {
           // Add more cases as needed for other indices
         }
       },
+    );
+  }
+
+  static BoxDecoration getBoxDecoration() {
+    return BoxDecoration(
+      border: Border.all(color: Color.fromARGB(255, 112, 109, 109), width: 2.0),
+      borderRadius: BorderRadius.circular(15),
     );
   }
 }
