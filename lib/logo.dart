@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:technews/controller/theme_controller.dart';
 
 class Logo {
   Widget getLogo({double size = 140}) {
+    final ThemeController themeController = Get.find<ThemeController>();
+
     return Container(
       padding: const EdgeInsets.only(top: 20),
       child: Row(
@@ -22,8 +26,8 @@ class Logo {
           ),
           const SizedBox(width: 10),
           RichText(
-            text: const TextSpan(children: [
-              TextSpan(
+            text: TextSpan(children: [
+              const TextSpan(
                 text: "Tech",
                 style: TextStyle(
                   fontSize: 30,
@@ -36,7 +40,9 @@ class Logo {
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: themeController.themeMode.value == ThemeMode.dark
+                      ? Colors.white70
+                      : Colors.black87,
                 ),
               ),
             ]),
@@ -47,6 +53,7 @@ class Logo {
   }
 
   Widget getLogol({double size = 140}) {
+    final ThemeController themeController = Get.find<ThemeController>();
     return Container(
       padding: const EdgeInsets.only(top: 20),
       child: Column(
@@ -67,7 +74,7 @@ class Logo {
           ),
           const SizedBox(height: 20),
           RichText(
-            text: const TextSpan(children: [
+            text: TextSpan(children: [
               TextSpan(
                 text: "Tech",
                 style: TextStyle(
@@ -81,7 +88,9 @@ class Logo {
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: themeController.themeMode.value == ThemeMode.dark
+                      ? Colors.white70
+                      : Colors.black87,
                 ),
               ),
             ]),

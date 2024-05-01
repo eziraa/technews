@@ -25,7 +25,8 @@ class UserController extends GetxController {
     _user.value = newUser;
   }
 
-  void setCurrentUser(User newUser) {
-    _user.value = newUser;
+  void setCurrentUser(String id, name, email, phoneNumber) {
+    _user.value =
+        User(id: id, name: name, email: email, phoneNumber: phoneNumber);
   }
 }

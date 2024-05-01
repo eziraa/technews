@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:technews/controller/theme_controller.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/model/news_model.dart';
 import 'package:technews/see_a_news.dart';
@@ -23,6 +24,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   final NewsController controller = Get.put(NewsController());
+  final ThemeController themeController = Get.put(ThemeController());
   List<SearchOptions> options = [];
   SearchOptions activeOption = SearchOptions(type: 'News', task: '');
   @override
@@ -48,7 +50,9 @@ class _SearchPageState extends State<SearchPage> {
                 height: 50,
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: themeController.themeMode.value == ThemeMode.dark
+                      ? Color.fromARGB(255, 89, 88, 88)
+                      : Colors.white54,
                   borderRadius: const BorderRadius.all(Radius.circular(20)),
                   boxShadow: [
                     BoxShadow(
@@ -101,8 +105,11 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               ),
             ),
+
           ],
+
         ),
+        bottomNavigationBar: CustomWidget.getBottomNavBar(context, 1),
       ),
     );
   }
@@ -165,8 +172,7 @@ class _SearchPageState extends State<SearchPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                CustomWidget.getNormalText(
-                    "${news.title}...", size: 10),
+                CustomWidget.getNormalText("${news.title}...", size: 10),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.75,
                   alignment: Alignment.centerLeft,
@@ -177,12 +183,9 @@ class _SearchPageState extends State<SearchPage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-
                           CustomWidget.smallProfileImage(news.source.name,
                               size: 45),
-                          
-                          CustomWidget.getBoldText(news.source.name,
-                              color: Colors.black54, size: 9),
+                          CustomWidget.getBoldText(news.source.name, size: 9),
                           const SizedBox(
                             width: 5,
                           ),

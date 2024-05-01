@@ -1,7 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:technews/controller/user_controller.dart';
 import 'package:technews/model/news_model.dart';
 import 'package:intl/intl.dart';
 
@@ -63,7 +66,7 @@ class RemoteServices {
     }
   }
   static Future<void> saveNews(News news) async {
-    final String userId = "1";
+    final String userId = UserController().user.id;
 
     final String newsJson = jsonEncode(news.toJson());
 
@@ -119,20 +122,19 @@ class RemoteServices {
     }
   }
 
-// Future<News> getNews() async {
-//   final String userId = "1";
+  Future<String> uploadProfileImage(File imageFile, String uid) async {
+    final Reference storageReference =
+        FirebaseStorage.instance.ref().child('profileImages/$uid');
 
-//   final DocumentReference newsDoc =
-//       FirebaseFirestore.instance.collection('news').doc(userId);
+    final UploadTask uploadTask = storageReference.putFile(imageFile);
 
-//   final DocumentSnapshot docSnapshot = await newsDoc.get();
-//   if (docSnapshot.exists) {
-//     Map<String, dynamic> newsData = docSnapshot.data() as Map<String, dynamic>;
-//     String newsJson = jsonEncode(newsData);
-//     return newsFromJson(newsJson);
-//   } else {
-//     throw Exception('Document does not exist');
-//   }
-// }
+    final TaskSnapshot downloadUrl = (await uploadTask.whenComplete(() {}));
+
+    final String url = (await downloadUrl.ref.getDownloadURL());
+
+    return url;
+  }
+
+
 
 }

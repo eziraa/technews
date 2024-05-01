@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 import 'package:technews/controller/theme_controller.dart';
+import 'package:technews/controller/user_controller.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/home_page.dart';
 import 'package:technews/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:technews/logo.dart';
+import 'package:technews/model/user_model.dart';
 
 import 'services/database.dart';
 
@@ -22,6 +24,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passwordController = new TextEditingController();
   TextEditingController mailController = new TextEditingController();
   TextEditingController phoneNumController = new TextEditingController();
+  UserController userController = Get.put(UserController());
 
   final _formkey = GlobalKey<FormState>();
 
@@ -30,12 +33,15 @@ class _SignUpState extends State<SignUp> {
         nameController.text != "" &&
         mailController.text != "") {
       try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
         DatabaseMethods().registerUser(userCredential.user!.uid,
+            nameController.text, mailController.text, phoneNumController.text);
+        
+        userController.setCurrentUser(userCredential.user!.uid,
             nameController.text, mailController.text, phoneNumController.text);
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text(
@@ -85,7 +91,7 @@ class _SignUpState extends State<SignUp> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 child: Container(
-                    width: MediaQuery.of(context).size.width, height: 100),
+                    width: MediaQuery.of(context).size.width, height: 70),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
@@ -133,6 +139,9 @@ class _SignUpState extends State<SignUp> {
                               hintStyle: TextStyle(
                                   color: Color(0xFFb2b7bf), fontSize: 18.0)),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 30.0,
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(
@@ -223,8 +232,7 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   const Text("Already have an account?",
                       style: TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w500)),
+                          fontSize: 14.0, fontWeight: FontWeight.w500)),
                   const SizedBox(
                     width: 5.0,
                   ),

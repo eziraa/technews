@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:technews/about.dart';
 import 'package:technews/controller/theme_controller.dart';
+import 'package:technews/edit_profile.dart';
 import 'package:technews/firebase_options.dart';
 import 'package:technews/home_page.dart';
 import 'package:technews/login.dart';
-import 'package:technews/news_channel.dart';
 import 'package:technews/on_boarding_1.dart';
+import 'package:technews/saved.dart';
 import 'package:technews/search.dart';
 import 'package:technews/sign_up.dart';
 import 'package:technews/trending.dart';
@@ -26,20 +27,22 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Obx(
       () => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),
         themeMode: themeController.themeMode.value,
         initialRoute: '/',
         getPages: [
-          GetPage(name: '/', page: () => HomePage()),
+          GetPage(name: '/', page: () => LogIn()),
           GetPage(name: '/on_boarding', page: () => const OnBoarding1()),
           GetPage(name: '/log_in', page: () => const LogIn()),
           GetPage(name: '/trending', page: () => const Trending()),
           GetPage(name: '/latest', page: () => const LatestPage()),
           GetPage(name: '/search', page: () => const SearchPage()),
+          GetPage(name: '/saved', page: () => const SavedPage()),
+          GetPage(name: '/profile', page: () => const EditProfile()),
           GetPage(name: '/sign_up', page: () => const SignUpPage()),
           GetPage(name: '/select_news_source', page: () => const NewsSource()),
-          GetPage(name: '/news_channel', page: () => const NewsChannel()),
           GetPage(name: '/about', page: () => AboutPage()),
         ],
       ),

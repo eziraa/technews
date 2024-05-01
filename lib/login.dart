@@ -2,10 +2,12 @@
 
 import 'package:get/get.dart';
 import 'package:technews/controller/theme_controller.dart';
+import 'package:technews/controller/user_controller.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/forgot_password.dart';
 import 'package:technews/home_page.dart';
 import 'package:technews/logo.dart';
+import 'package:technews/services/database.dart';
 import 'package:technews/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +25,7 @@ class _LogInState extends State<LogIn> {
   TextEditingController mailcontroller = new TextEditingController();
   TextEditingController passwordcontroller = new TextEditingController();
   final ThemeController themeController = Get.put(ThemeController());
+  final UserController userController = Get.put(UserController());
 
   final _formkey = GlobalKey<FormState>();
 
@@ -32,6 +35,9 @@ class _LogInState extends State<LogIn> {
           .signInWithEmailAndPassword(email: email, password: password);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const HomePage()));
+      User user = DatabaseMethods().getUserByEmail(email) as User;
+      userController.setCurrentUser(
+          user.uid, user.displayName, user.email, user.phoneNumber);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-credential') {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -174,8 +180,7 @@ class _LogInState extends State<LogIn> {
                 children: [
                   const Text("Don't have an account?",
                       style: TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w500)),
+                          fontSize: 14.0, fontWeight: FontWeight.w500)),
                   const SizedBox(
                     width: 5.0,
                   ),
