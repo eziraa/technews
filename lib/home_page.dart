@@ -151,8 +151,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ],
+
         ),
       ),
+      bottomNavigationBar: CustomWidget.getBottomNavBar(context, 0),
     );
   }
 }
