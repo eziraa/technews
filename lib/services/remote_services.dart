@@ -84,4 +84,36 @@ class RemoteServices {
     }
   }
 
+  static Future<List<News>> getSavedNews() async {
+    final String userId = "1";
+
+    final DocumentReference savedNewsDoc =
+        FirebaseFirestore.instance.collection('savedNews').doc(userId);
+
+    final DocumentSnapshot docSnapshot = await savedNewsDoc.get();
+    if (docSnapshot.exists) {
+      String savedNewsJson = (docSnapshot['news']).toString();
+      var jsonObject = jsonDecode(savedNewsJson);
+      return newsFromJson(jsonEncode(jsonObject));
+    } else {
+      return [];
+    }
+  }
+
+// Future<News> getNews() async {
+//   final String userId = "1";
+
+//   final DocumentReference newsDoc =
+//       FirebaseFirestore.instance.collection('news').doc(userId);
+
+//   final DocumentSnapshot docSnapshot = await newsDoc.get();
+//   if (docSnapshot.exists) {
+//     Map<String, dynamic> newsData = docSnapshot.data() as Map<String, dynamic>;
+//     String newsJson = jsonEncode(newsData);
+//     return newsFromJson(newsJson);
+//   } else {
+//     throw Exception('Document does not exist');
+//   }
+// }
+
 }
