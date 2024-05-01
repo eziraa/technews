@@ -1,8 +1,13 @@
+import 'package:get/get.dart';
+import 'package:technews/controller/theme_controller.dart';
+import 'package:technews/custom_widget.dart';
 import 'package:technews/home_page.dart';
 import 'package:technews/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:technews/logo.dart';
+
+import 'services/database.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -13,19 +18,25 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   String email = "", password = "", name = "";
-  TextEditingController namecontroller = new TextEditingController();
-  TextEditingController passwordcontroller = new TextEditingController();
-  TextEditingController mailcontroller = new TextEditingController();
+  TextEditingController nameController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
+  TextEditingController mailController = new TextEditingController();
+  TextEditingController phoneNumController = new TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
 
   registration() async {
     if (password != null &&
-        namecontroller.text != "" &&
-        mailcontroller.text != "") {
+        nameController.text != "" &&
+        mailController.text != "") {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
+            .createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        DatabaseMethods().registerUser(userCredential.user!.uid,
+            nameController.text, mailController.text, phoneNumController.text);
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text(
           "Registered Successfully",
@@ -59,8 +70,11 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find<ThemeController>();
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: themeController.themeMode.value == ThemeMode.dark
+          ? Colors.black87
+          : Colors.white,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
@@ -82,11 +96,7 @@ class _SignUpState extends State<SignUp> {
                       Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Colors.black, width: 2.0),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                        decoration: CustomWidget.getBoxDecoration(),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -94,7 +104,7 @@ class _SignUpState extends State<SignUp> {
                             }
                             return null;
                           },
-                          controller: namecontroller,
+                          controller: nameController,
                           decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText: "Name",
@@ -108,11 +118,7 @@ class _SignUpState extends State<SignUp> {
                       Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Colors.black, width: 2.0),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                        decoration: CustomWidget.getBoxDecoration(),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -120,10 +126,29 @@ class _SignUpState extends State<SignUp> {
                             }
                             return null;
                           },
-                          controller: mailcontroller,
+                          controller: mailController,
                           decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText: "Email",
+                              hintStyle: TextStyle(
+                                  color: Color(0xFFb2b7bf), fontSize: 18.0)),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 2.0, horizontal: 30.0),
+                        decoration: CustomWidget.getBoxDecoration(),
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please Enter Your phone number';
+                            }
+                            return null;
+                          },
+                          controller: phoneNumController,
+                          decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Phone Number",
                               hintStyle: TextStyle(
                                   color: Color(0xFFb2b7bf), fontSize: 18.0)),
                         ),
@@ -134,11 +159,7 @@ class _SignUpState extends State<SignUp> {
                       Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 2.0, horizontal: 30.0),
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Colors.black, width: 2.0),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                        decoration: CustomWidget.getBoxDecoration(),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -146,7 +167,7 @@ class _SignUpState extends State<SignUp> {
                             }
                             return null;
                           },
-                          controller: passwordcontroller,
+                          controller: passwordController,
                           decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText: "Password",
@@ -162,9 +183,9 @@ class _SignUpState extends State<SignUp> {
                         onTap: () {
                           if (_formkey.currentState!.validate()) {
                             setState(() {
-                              email = mailcontroller.text;
-                              name = namecontroller.text;
-                              password = passwordcontroller.text;
+                              email = mailController.text;
+                              name = nameController.text;
+                              password = passwordController.text;
                             });
                           }
                           registration();
@@ -202,7 +223,6 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   const Text("Already have an account?",
                       style: TextStyle(
-                          color: Colors.black,
                           fontSize: 14.0,
                           fontWeight: FontWeight.w500)),
                   const SizedBox(
