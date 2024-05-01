@@ -63,7 +63,7 @@ class _LogInState extends State<LogIn> {
                             vertical: 2.0, horizontal: 30.0),
                         decoration: BoxDecoration(
                           border:
-                              Border.all(color: Colors.blueAccent, width: 2.0),
+                              Border.all(color: Colors.black, width: 2.0),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: TextFormField(
@@ -91,7 +91,7 @@ class _LogInState extends State<LogIn> {
                             vertical: 2.0, horizontal: 30.0),
                         decoration: BoxDecoration(
                           border:
-                              Border.all(color: Colors.blueAccent, width: 2.0),
+                              Border.all(color: Colors.black, width: 2.0),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: TextFormField(
