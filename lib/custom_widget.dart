@@ -291,11 +291,12 @@ class CustomWidget {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          border: Border.all(width: 4, color: Colors.white),
+          border: Border.all(width: 4, color: Colors.transparent),
           shape: BoxShape.circle,
         ),
         child: Container(
           // ignore: sort_child_properties_last
+          padding: EdgeInsets.only(top: 1.2),
           decoration: const BoxDecoration(
             color: Colors.blueAccent,
             shape: BoxShape.circle,
