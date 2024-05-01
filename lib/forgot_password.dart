@@ -1,8 +1,8 @@
 import 'package:technews/custom_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:technews/view/login.dart';
-import 'package:technews/view/logo.dart';
+import 'package:technews/login.dart';
+import 'package:technews/logo.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
