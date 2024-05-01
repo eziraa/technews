@@ -1,4 +1,6 @@
+import 'package:technews/custom_widget.dart';
 import 'package:technews/login.dart';
+import 'package:technews/logo.dart';
 import 'package:technews/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +45,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         child: Column(
           children: [
             const SizedBox(
-              height: 200.0,
+              height: 50.0,
+            ),
+            Logo().getLogo(size: 70),
+            const SizedBox(
+              height: 50.0,
             ),
             Container(
               alignment: Alignment.topCenter,
@@ -58,13 +64,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             const SizedBox(
               height: 10.0,
             ),
-            // const Text(
-            //   "Enter your email",
-            //   style: TextStyle(
-            //       color: Colors.blueAccent,
-            //       fontSize: 20.0,
-            //       fontWeight: FontWeight.bold),
-            // ),
+            const Text(
+              "Enter your email",
+              style: TextStyle(
+                  color: Colors.blueAccent,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold),
+            ),
             Expanded(
               child: Form(
                 key: _formkey,
@@ -75,10 +81,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       Container(
                         margin: const EdgeInsets.all(20),
                         padding: const EdgeInsets.only(left: 10.0),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 2.0),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+                        decoration: CustomWidget.getBoxDecoration(),
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -91,7 +94,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           decoration: const InputDecoration(
                               hintText: "Enter your email",
                               hintStyle: TextStyle(
-                                  fontSize: 18.0, color: Colors.black45),
+                                  fontSize: 18.0),
                               prefixIcon: Icon(
                                 Icons.person,
                                 color: Colors.white70,
@@ -138,7 +141,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         children: [
                           const Text("Reset your password?",
                               style: TextStyle(
-                                  color: Colors.black,
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.w500)),
                           const SizedBox(
