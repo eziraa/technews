@@ -73,10 +73,11 @@ class _SignUpPageState extends State<SignUpPage> {
                           labelText: "Password", labelStyle: TextStyle()),
                     ),
                     const SizedBox(height: 10),
-                    // TextField(
-                    //   decoration: const InputDecoration(
-                    //       labelText: "Re-enter Password", labelStyle: TextStyle()),
-                    // ),
+                    TextField(
+                      decoration: const InputDecoration(
+                          labelText: "Re-enter Password",
+                          labelStyle: TextStyle()),
+                    ),
                     const SizedBox(height: 10),
                   ],
                 ),
