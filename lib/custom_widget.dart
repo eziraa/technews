@@ -104,7 +104,6 @@ class CustomWidget {
           const SizedBox(width: 10),
           Expanded(
             child: TextField(
-
               onTap: () {
                 if (ModalRoute.of(context)?.settings.name != "/search") {
                   Navigator.pushNamed(context, "/search");
@@ -125,9 +124,7 @@ class CustomWidget {
                             ? Color.fromARGB(255, 215, 11, 11)
                             : Colors.white54),
               ),
-              onChanged: (String text) => {
-                
-              },
+              onChanged: (String text) => {},
             ),
           ),
         ],
@@ -376,8 +373,17 @@ class CustomWidget {
     );
   }
 
-  static Widget getBottomNavBar(BuildContext context) {
+  static Widget getBottomNavBar(BuildContext context, int currentIndex) {
+    final ThemeController themeController = Get.find<ThemeController>();
     return BottomNavigationBar(
+      backgroundColor: themeController.themeMode.value == ThemeMode.dark
+          ? Colors.black
+          : Colors.white,
+      unselectedItemColor: themeController.themeMode.value == ThemeMode.dark
+          ? Colors.white
+          : Colors.black,
+      selectedItemColor: Colors.blue,
+      currentIndex: currentIndex,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -397,8 +403,6 @@ class CustomWidget {
         ),
         // Add more items as needed
       ],
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: const Color.fromARGB(194, 56, 52, 52),
       onTap: (index) {
         switch (index) {
           case 0:
@@ -411,12 +415,11 @@ class CustomWidget {
             Navigator.pushNamed(context, "/saved");
             break;
           case 3:
-            Navigator.pushNamed(context, "/edit_profile");
+            Navigator.pushNamed(context, "/profile");
             break;
           // Add more cases as needed for other indices
         }
       },
     );
   }
-
 }
