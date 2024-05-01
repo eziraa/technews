@@ -31,7 +31,7 @@ class CustomWidget {
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: themeController.themeMode.value == ThemeMode.dark
-                        ? Colors.white70
+                        ? Color.fromARGB(179, 94, 93, 93)
                         : Colors.black87,
                   ),
                 ),
@@ -238,8 +238,8 @@ class CustomWidget {
       data,
       style: TextStyle(
           color: themeController.themeMode.value == ThemeMode.dark
-              ? Color.fromARGB(255, 193, 191, 191)
-              : const Color.fromARGB(255, 60, 60, 60),
+              ? Colors.white60
+              : Colors.black54,
           fontSize: size,
           fontWeight: FontWeight.bold),
     );
