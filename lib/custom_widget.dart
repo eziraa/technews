@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
+import 'package:technews/controller/theme_controller.dart';
 import 'package:technews/model/news_model.dart';
 
 class CustomWidget {
   static AppBar getAppBar(BuildContext context) {
+    final ThemeController themeController = Get.find<ThemeController>();
+
     return AppBar(
       actions: [
         Row(
@@ -12,7 +16,7 @@ class CustomWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             RichText(
-              text: const TextSpan(children: [
+              text: TextSpan(children: [
                 TextSpan(
                   text: "Tech",
                   style: TextStyle(
@@ -26,7 +30,9 @@ class CustomWidget {
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: themeController.themeMode.value == ThemeMode.dark
+                        ? Colors.white70
+                        : Colors.black87,
                   ),
                 ),
               ]),
@@ -34,7 +40,6 @@ class CustomWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.40,
             ),
-            
           ],
         ),
       ],
@@ -42,7 +47,13 @@ class CustomWidget {
   }
 
   static AppBar getAppBarWithShare(BuildContext context, {News? news}) {
+    final ThemeController themeController = Get.find<ThemeController>();
+
     return AppBar(
+      iconTheme: IconThemeData(
+          color: themeController.themeMode.value == ThemeMode.dark
+              ? Colors.white70
+              : Colors.black87),
       actions: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,12 +79,15 @@ class CustomWidget {
   }
 
   static Widget getSearchBox(BuildContext context) {
+    final ThemeController themeController = Get.find<ThemeController>();
 
     return Container(
       height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: themeController.themeMode.value == ThemeMode.dark
+            ? Color.fromARGB(255, 89, 88, 88)
+            : Colors.white54,
         borderRadius: const BorderRadius.all(Radius.circular(20)),
         boxShadow: [
           BoxShadow(
@@ -90,23 +104,34 @@ class CustomWidget {
           const SizedBox(width: 10),
           Expanded(
             child: TextField(
+
               onTap: () {
                 if (ModalRoute.of(context)?.settings.name != "/search") {
                   Navigator.pushNamed(context, "/search");
                 }
               },
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
+                // fillColor: themeController.themeMode.value == ThemeMode.dark
+                //     ? Color.fromARGB(255, 89, 88, 88)
+                //     : Colors.white54,
+                fillColor: Colors.green, // Change this to your desired color
+
                 hintText: 'Search...',
                 border: InputBorder.none,
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: TextStyle(
+                    color: Colors.grey,
+                    backgroundColor:
+                        themeController.themeMode.value == ThemeMode.dark
+                            ? Color.fromARGB(255, 215, 11, 11)
+                            : Colors.white54),
               ),
               onChanged: (String text) => {
-                  
-                },
+                
+              },
             ),
           ),
         ],
-      ),   
+      ),
     );
   }
 
@@ -114,7 +139,7 @@ class CustomWidget {
     return Text(
       data,
       style: TextStyle(
-          color: const Color.fromARGB(255, 150, 147, 147),
+          color: Color.fromARGB(255, 150, 147, 147),
           fontSize: size,
           fontWeight: FontWeight.bold),
     );
@@ -152,7 +177,8 @@ class CustomWidget {
       ),
     );
   }
-static Widget getNetWorkImage(String imageAddress) {
+
+  static Widget getNetWorkImage(String imageAddress) {
     return Container(
       margin: const EdgeInsets.all(20),
       width: 380,
@@ -205,12 +231,17 @@ static Widget getNetWorkImage(String imageAddress) {
     );
   }
 
-  static Widget getBoldText(String data,
-      {Color color = Colors.black, double size = 16}) {
+  static Widget getBoldText(String data, {double size = 16}) {
+    final ThemeController themeController = Get.find<ThemeController>();
+
     return Text(
       data,
-      style:
-          TextStyle(color: color, fontSize: size, fontWeight: FontWeight.bold),
+      style: TextStyle(
+          color: themeController.themeMode.value == ThemeMode.dark
+              ? Color.fromARGB(255, 193, 191, 191)
+              : const Color.fromARGB(255, 60, 60, 60),
+          fontSize: size,
+          fontWeight: FontWeight.bold),
     );
   }
 
@@ -228,12 +259,12 @@ static Widget getNetWorkImage(String imageAddress) {
 
   static Widget getProfileImage(String name, {double size = 30}) {
     return Container(
-      padding: const EdgeInsets.all(10),
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        border: Border.all(width: 4, color: Colors.white),
-          shape: BoxShape.circle,        
+        padding: const EdgeInsets.all(10),
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          border: Border.all(width: 4, color: Colors.white),
+          shape: BoxShape.circle,
         ),
         child: Container(
           // ignore: sort_child_properties_last
@@ -250,8 +281,7 @@ static Widget getNetWorkImage(String imageAddress) {
               fontWeight: FontWeight.bold,
             ),
           ), // Set text here
-        )
-    );
+        ));
   }
 
   static Widget smallProfileImage(String name, {double size = 30}) {
@@ -335,7 +365,6 @@ static Widget getNetWorkImage(String imageAddress) {
               borderRadius: BorderRadius.circular(10),
             ),
             backgroundColor: Colors.blueAccent),
-            
         child: Text(
           text,
           style: TextStyle(
@@ -387,4 +416,5 @@ static Widget getNetWorkImage(String imageAddress) {
       },
     );
   }
+
 }
