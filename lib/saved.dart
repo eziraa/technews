@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:technews/controller/news_controller.dart';
+import 'package:technews/custom-section.dart';
 import 'package:technews/custom_widget.dart';
+import 'package:technews/model/news_model.dart';
 
 class SavedPage extends StatefulWidget {
   const SavedPage({super.key});
@@ -9,57 +13,48 @@ class SavedPage extends StatefulWidget {
 }
 
 class _SavedPageState extends State<SavedPage> {
+  final NewsController newsController = Get.put(NewsController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomWidget.getAppBar(context),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: Column(
-          children: [
-            CustomWidget.getSearchBox(context),
-            Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _getSavedNews(),
-                      _getANews(),
-                      const SizedBox(height: 10),
-                      _getANews(),
-                      const SizedBox(height: 10),
-                      _getANews(),
-                      const SizedBox(height: 10),
-                      _getANews(),
-                      const SizedBox(height: 10),
-                      _getANews(),
-                      const SizedBox(height: 10),
-                      _getANews(),
-                      const SizedBox(height: 10),
-                      _getANews(),
-                      const SizedBox(height: 10),
-                      _getANews(),
-                      const SizedBox(height: 10),
-                      _getANews(),
-                      const SizedBox(height: 10),
-                      _getANews(),
-                      const SizedBox(height: 10),
-                      _getANews(),
-                    ],
+      body: Obx(
+        () => Container(
+          width: MediaQuery.of(context).size.width,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                  child: CustomWidget.getSearchBox(context),
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // _savedNewsHeader(),
+                          for (News news in newsController.savedNews)
+                            CustomSection.getANews(context, news)
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
+      bottomNavigationBar: CustomWidget.getBottomNavBar(context, 2),
     );
   }
 
-  Widget _getSavedNews() {
+  Widget _savedNewsHeader() {
     return Column(
       children: [
         Container(
@@ -74,17 +69,16 @@ class _SavedPageState extends State<SavedPage> {
     );
   }
 
-  Widget _getANews() {
+  Widget _getANews(News news) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          CustomWidget.getMediumImage("assets/images/6.jpg", size: 60),
+          CustomWidget.getNetworkImage(news.urlToImage ?? "", size: 60),
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomWidget.blurredText("Europe"),
               CustomWidget.getNormalText(
                   "${"Ukraine's president, Zelenskey says".substring(0, 10)}...",
                   size: 10),
@@ -96,8 +90,7 @@ class _SavedPageState extends State<SavedPage> {
                   const SizedBox(
                     width: 5,
                   ),
-                  CustomWidget.getBoldText("BBC News",
-                      color: Colors.black54, size: 9),
+                  CustomWidget.getBoldText("BBC News", size: 9),
                   const SizedBox(
                     width: 5,
                   ),
