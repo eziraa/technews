@@ -99,6 +99,25 @@ class RemoteServices {
       return [];
     }
   }
+  static Future<void> removeNews(News news) async {
+    final String userId = "1";
+
+    final String newsJson = jsonEncode(news.toJson());
+
+    final DocumentReference savedNewsDoc =
+        FirebaseFirestore.instance.collection('savedNews').doc(userId);
+
+    final DocumentSnapshot docSnapshot = await savedNewsDoc.get();
+    if (docSnapshot.exists) {
+      List<String> savedNews = List<String>.from(docSnapshot['news'] as List);
+      savedNews.remove(newsJson);
+      await savedNewsDoc.update({
+        'news': savedNews,
+      });
+    } else {
+      print("No saved news found");
+    }
+  }
 
 // Future<News> getNews() async {
 //   final String userId = "1";
