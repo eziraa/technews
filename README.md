@@ -51,8 +51,8 @@ flutter run
 2. Configure your Flutter app with the Firebase project by adding the necessary Firebase configuration files (`google-services.json` for Android or `GoogleService-Info.plist` for iOS) to your project.
    
 3. Initialize Firebase in your Flutter app. Refer to the [Firebase documentation](https://firebase.google.com/docs/flutter/setup) for detailed instructions.
-## Contributing
 [![Overview Video](https://github.com/eziraa/technews/blob/main/assets/video_2024-05-01_19-11-54.mp4)](link-to-your-video)
+## Contributing
 Contributions are welcome! Please feel free to submit a pull request or open an issue if you encounter any problems or have suggestions for improvements.
 
 
