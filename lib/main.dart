@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:technews/about.dart';
+import 'package:technews/app.dart';
 import 'package:technews/controller/theme_controller.dart';
 import 'package:technews/edit_profile.dart';
 import 'package:technews/firebase_options.dart';
@@ -33,7 +34,7 @@ class _MyAppState extends State<MyApp> {
         themeMode: themeController.themeMode.value,
         initialRoute: '/',
         getPages: [
-          GetPage(name: '/', page: () => LogIn()),
+          GetPage(name: '/', page: () => MainApp()),
           GetPage(name: '/on_boarding', page: () => const OnBoarding1()),
           GetPage(name: '/log_in', page: () => const LogIn()),
           GetPage(name: '/trending', page: () => const Trending()),
@@ -54,6 +55,6 @@ Future<void> main() async {
   // await dotenv.dotenv.load(fileName: '.env');
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
   runApp(MyApp());
 }

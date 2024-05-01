@@ -5,12 +5,10 @@ import 'package:technews/controller/theme_controller.dart';
 import 'package:technews/controller/user_controller.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/forgot_password.dart';
-import 'package:technews/home_page.dart';
-import 'package:technews/logo.dart';
 import 'package:technews/services/database.dart';
-import 'package:technews/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:technews/view/logo.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});

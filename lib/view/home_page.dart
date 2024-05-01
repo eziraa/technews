@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:technews/controller/news_controller.dart';
 import 'package:technews/controller/theme_controller.dart';
 import 'package:technews/custom_widget.dart';
 import 'package:technews/custom-section.dart';
 import 'package:technews/drawer.dart';
 import 'package:technews/utils/language.dart';
-
-import 'controller/news_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -151,7 +150,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ],
-
         ),
       ),
       bottomNavigationBar: CustomWidget.getBottomNavBar(context, 0),
