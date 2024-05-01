@@ -1,13 +1,9 @@
-import 'dart:io';
-
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:technews/controller/theme_controller.dart';
 import 'package:technews/controller/user_controller.dart';
 import 'package:technews/custom_widget.dart';
-import 'package:technews/services/remote_services.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -112,9 +108,7 @@ class _EditProfileState extends State<EditProfile> {
                       SizedBox(height: 10),
                       SizedBox(height: 10),
                       TextField(
-                        
                         controller: nameController,
-                        
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "FullName",

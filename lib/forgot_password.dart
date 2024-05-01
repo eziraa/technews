@@ -1,9 +1,8 @@
 import 'package:technews/custom_widget.dart';
-import 'package:technews/login.dart';
-import 'package:technews/logo.dart';
-import 'package:technews/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:technews/view/login.dart';
+import 'package:technews/view/logo.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -93,8 +92,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           style: const TextStyle(color: Colors.white),
                           decoration: const InputDecoration(
                               hintText: "Enter your email",
-                              hintStyle: TextStyle(
-                                  fontSize: 18.0),
+                              hintStyle: TextStyle(fontSize: 18.0),
                               prefixIcon: Icon(
                                 Icons.person,
                                 color: Colors.white70,
@@ -141,8 +139,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         children: [
                           const Text("Reset your password?",
                               style: TextStyle(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w500)),
+                                  fontSize: 14.0, fontWeight: FontWeight.w500)),
                           const SizedBox(
                             width: 5.0,
                           ),
@@ -151,7 +148,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const LogIn()));
+                                      builder: (context) => LogIn()));
                             },
                             child: const Text(
                               "Log In",

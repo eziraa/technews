@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:technews/controller/news_controller.dart';
 import 'package:technews/custom_widget.dart';
+import 'package:technews/model/news_model.dart';
 import 'package:technews/see_a_news.dart';
 import 'package:technews/trending.dart';
 import 'package:technews/utils.dart';
-
-import 'controller/news_controller.dart';
-import 'model/news_model.dart';
 
 class CustomSection {
   static Widget getLatestNewsHeader(
