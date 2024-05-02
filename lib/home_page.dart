@@ -101,6 +101,7 @@ class _HomePageState extends State<HomePage> {
                             child: Row(children: [
                               for (Language language in languages)
                                 Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
                                       width: 2,
@@ -114,13 +115,12 @@ class _HomePageState extends State<HomePage> {
                                           Text(
                                             language.long,
                                             style: TextStyle(
-                                              color: Colors.black54,
                                             ),
                                           ),
                                           Container(
                                             height: controller.currentLan ==
                                                     language.short
-                                                ? 5
+                                                ? 3
                                                 : 0,
                                             width: language.long.length * 10,
                                             color: Colors.blue,
