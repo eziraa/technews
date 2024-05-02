@@ -46,7 +46,6 @@ class _MainAppState extends State<MainApp> {
                       style: TextStyle(
                         fontSize: 60,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black87,
                       ),
                     ),
                   ]),

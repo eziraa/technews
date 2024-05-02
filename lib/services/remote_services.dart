@@ -10,7 +10,7 @@ import 'package:intl/intl.dart';
 
 class RemoteServices {
   static var client = http.Client();
-  
+
   static Future<List<News>> fetchTechNews() async {
     DateTime now = DateTime.now();
     DateTime twoDaysAgo = now.subtract(Duration(days: 2));
@@ -44,7 +44,7 @@ class RemoteServices {
       return Future.error(response.statusCode);
     }
   }
-  
+
   static Future<List<News>> searchByLan(String language) async {
     DateTime now = DateTime.now();
     DateTime beforeSomeDaysAgo = now.subtract(Duration(days: 30));
@@ -65,11 +65,15 @@ class RemoteServices {
       return Future.error(response.statusCode);
     }
   }
+
   static Future<void> saveNews(News news) async {
-    final String userId = UserController().user.id;
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    User? user = auth.currentUser;
+    final String userId = user!.uid;
 
     final String newsJson = jsonEncode(news.toJson());
-
+    print(userId);
     final DocumentReference savedNewsDoc =
         FirebaseFirestore.instance.collection('savedNews').doc(userId);
 
@@ -88,8 +92,11 @@ class RemoteServices {
   }
 
   static Future<List<News>> getSavedNews() async {
-    final String userId = "1";
+    FirebaseAuth auth = FirebaseAuth.instance;
 
+    User? user = auth.currentUser;
+    final String userId = user!.uid;
+    print(userId);
     final DocumentReference savedNewsDoc =
         FirebaseFirestore.instance.collection('savedNews').doc(userId);
 
@@ -102,6 +109,7 @@ class RemoteServices {
       return [];
     }
   }
+
   static Future<void> removeNews(News news) async {
     final String userId = "1";
 
@@ -134,7 +142,4 @@ class RemoteServices {
 
     return url;
   }
-
-
-
 }

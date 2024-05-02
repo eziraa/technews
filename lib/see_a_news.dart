@@ -50,7 +50,7 @@ class _SeeNewsDetailPageState extends State<SeeNewsDetailPage> {
                         Expanded(
                           child: Container(),
                         ),
-                        _newsController.savedNews.contains(widget.news!)
+                        _newsController.savedNews.contains(widget.news)
                             ? IconButton(
                                 onPressed: () {
                                   _newsController

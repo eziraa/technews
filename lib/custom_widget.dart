@@ -3,6 +3,7 @@ import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:technews/controller/theme_controller.dart';
+import 'package:technews/home_page.dart';
 import 'package:technews/model/news_model.dart';
 
 class CustomWidget {
@@ -118,7 +119,7 @@ class CustomWidget {
                 hintText: 'Search...',
                 border: InputBorder.none,
                 hintStyle: TextStyle(
-                    color: Colors.grey,
+                  color: Colors.grey,
                 ),
               ),
               onChanged: (String text) => {},
@@ -403,16 +404,16 @@ class CustomWidget {
       onTap: (index) {
         switch (index) {
           case 0:
-            Navigator.pushNamed(context, "/home_page");
+            Get.toNamed("/home");
             break;
           case 1:
-            Navigator.pushNamed(context, "/search");
+            Get.toNamed("/search");
             break;
           case 2:
-            Navigator.pushNamed(context, "/saved");
+            Get.toNamed("/saved");
             break;
           case 3:
-            Navigator.pushNamed(context, "/profile");
+            Get.toNamed("/profile");
             break;
           // Add more cases as needed for other indices
         }
